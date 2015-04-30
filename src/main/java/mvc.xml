@@ -12,6 +12,11 @@
 
 <mvc:annotation-driven/>
 
+<mvc:view-controller path="main" view-name="main"/>
+<mvc:view-controller path="login/form" view-name="login/form"/>
+<mvc:view-controller path="login/fail" view-name="login/fail"/>
+
+
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/WEB-INF/views/"
 	p:suffix=".jsp"

@@ -25,48 +25,22 @@ public class LoginController {
 	static Log log = LogFactory.getLog(LoginController.class);
 	
 	
-	@RequestMapping(value="/form", method=RequestMethod.GET)
-	public String getLogin(){
-
-		return "/login/form";
-	}
-	
 	
 	
 	@Autowired
 	DataSource datasource;
 
 	
-//	@RequestMapping(value="/form", method=RequestMethod.POST)
-//	public String loginResult(Login loginformation, HttpSession session){
-//		log.info("#############################");
-//		log.info(loginformation.getId());
-//		log.info(loginformation.getPassword());
-//		log.info(loginformation.getName());
-//		log.info("#############################");
-//
-//		
-//		JdbcTemplate template = new JdbcTemplate(datasource);
-//		
-//		String sql = "select * from login where id= ?";
-//
-//		
-//		Login userinfo = template.queryForObject(sql, new Object[] {loginformation.getId()}, new BeanPropertyRowMapper<Login>(Login.class) );
-//		
-//		if(loginformation.getPassword().equals(userinfo.getPassword())){
-//			session.setAttribute("userinfo", userinfo);
-//			return "/login/form";
-//		}else {
-//			return "redirect:form";
-//		}
-//		
-//		
-//	}
-	
 	@RequestMapping(value="/form", method=RequestMethod.POST)
 	@ResponseBody
 	public LoginResult form(Login loginformation, HttpSession session){
-
+		
+		log.info("#####################");
+		log.info("######form##POST###########");
+		log.info("#####################");
+		
+		
+		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
 		String sql = "select * from login where id= ?";
@@ -103,7 +77,7 @@ public class LoginController {
 		
 		session.invalidate();
 		
-		return "redirect:form";
+		return "redirect:http://211.183.8.80:8080/HeartLinkWeb/m/main";
 	}
 	
 
