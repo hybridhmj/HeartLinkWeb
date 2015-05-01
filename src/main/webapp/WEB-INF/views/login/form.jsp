@@ -171,6 +171,7 @@
 	
 	<div id="qqq" data-ng-show="loginck.logincheck=='true'">
 		<a href="logout" class="btn btn-default">로그아웃</a>
+
 	</div>
 	
 	<a href="#" class="btn btn-primary" data-ng-show="loginck.logincheck=='true'">마음맺기하러가장~</a>

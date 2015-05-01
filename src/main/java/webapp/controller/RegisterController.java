@@ -16,22 +16,58 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import webapp.model.Login;
 import webapp.model.LoginResult;
+import webapp.model.Member;
+import webapp.model.MemberResult;
 
 
 @Controller
-@RequestMapping(value="/register")
+@RequestMapping(value="/member")
 public class RegisterController {
 
 	static Log log = LogFactory.getLog(RegisterController.class);
 	
 	
-	@RequestMapping(value="/registerform", method=RequestMethod.GET)
-	public String getLogin(){
+	@Autowired
+	DataSource dataSource;
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public MemberResult getLogin(Member member){
+		
+		log.info("#####################");
+		log.info("######register##POST###########");
+		log.info("#####################");
 
-		return "/register/registerform";
+		JdbcTemplate template = new JdbcTemplate(dataSource);
+		
+		
+		String sql = "insert into member " +
+				 " (id, password, age, nickname, area, sex, kakaoid) " +
+				 "values " +
+				 " (?, ?, ?, ?, ?, ?, ?)";
+		
+		
+		MemberResult result = new MemberResult();
+		result.setMember(member);
+		
+		
+		try {
+			template.update(sql, member.getId(),member.getPassword(),member.getAge(),member.getNickname(),member.getAge(),member.getSex(),member.getKakaoid());
+			result.setStatus(true);
+			result.setStatusText("OK");
+		} catch (DataAccessException e) {
+			result.setStatus(false);
+			result.setStatusText(e.getMessage());
+		}
+
+		
+		return result;
+	
 	}
 
-
+	
+	
+	
+	
 	
 	
 }

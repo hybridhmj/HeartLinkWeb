@@ -14,6 +14,7 @@
 <script type="text/javascript" src="${angular}/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="${angular}/angular-animate.min.js"></script>
 <script type="text/javascript" src="${angular}/angular-route.min.js"></script>
+<script type="text/javascript" src="${angular}/angular-touch.min.js"></script>
 <script type="text/javascript" src="${bootstrap}/js/bootstrap.min.js"></script>
 
 
