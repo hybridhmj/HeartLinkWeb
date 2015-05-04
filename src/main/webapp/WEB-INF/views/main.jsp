@@ -149,32 +149,10 @@ app.controller("cityController", function($scope) {
 	        <a class="navbar-brand" href="#"><small>질문(Q&A)</small></a>
 	    </div>
 
-	
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse navbar-right" id="myNavbar" >
-	    	<div data-ng-show="loginck.logincheck=='false'">
-			      <form name="loginForm" data-ng-submit="loginsubmit()" role="form" method="post" class="navbar-form form-inline">
-					  <div class="form-group">
-			    		<label for="id">ID:</label>
-			   			<input type="text" class="form-control" id="id" name="id" data-ng-model="id" data-ng-dirty="true" data-ng-required="true">
-			  		  </div>
-			 		  <div class="form-group">
-			    		<label for="password">Password:</label>
-			   			<input type="password" class="form-control" id="password" name="password" data-ng-model="password" data-ng-dirty="true" data-ng-required="true" data-ng-pattern="/^.{4,12}$/" maxlength="15">
-			 		  </div>
-			 		  <button id="loginbtn" type="submit" class="btn btn-default" data-ng-disabled="loginForm.$invalid">로그인</button>
-				</form>
-			</div>
-			<div data-ng-show="loginck.logincheck=='true'">
-				<a href="login/logout" class="btn btn-default">로그아웃</a>
-			</div>
+	   
+	    	
+
 			
-			
-			
-			
-<!-- 			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-ng-show="loginck.logincheck=='false'"> -->
-<!--   회원가입 -->
-<!-- </button> -->
 
 <a data-toggle="modal" data-target="#myModal" data-ng-show="loginck.logincheck=='false'">회원가입</a>
 
@@ -240,8 +218,6 @@ app.controller("cityController", function($scope) {
 </div>
 
 
-
-	  	</div>
 	</nav>
 	
 </header>
@@ -251,6 +227,23 @@ app.controller("cityController", function($scope) {
 
 
 <section>
+			<div data-ng-show="loginck.logincheck=='false'">
+			      <form name="loginForm" data-ng-submit="loginsubmit()" role="form" method="post" class="navbar-form form-inline">
+					  <div class="form-group">
+			    		<label for="id">ID:</label>
+			   			<input type="text" class="form-control" id="id" name="id" data-ng-model="id" data-ng-dirty="true" data-ng-required="true">
+			  		  </div>
+			 		  <div class="form-group">
+			    		<label for="password">Password:</label>
+			   			<input type="password" class="form-control" id="password" name="password" data-ng-model="password" data-ng-dirty="true" data-ng-required="true" data-ng-pattern="/^.{4,12}$/" maxlength="15">
+			 		  </div>
+			 		  <button id="loginbtn" type="submit" class="btn btn-default" data-ng-disabled="loginForm.$invalid">로그인</button>
+				</form>
+			</div>
+			<div data-ng-show="loginck.logincheck=='true'">
+				<a href="login/logout" class="btn btn-default">로그아웃</a>
+			</div>
+
 	<ng-view>
 	
 	</ng-view>
