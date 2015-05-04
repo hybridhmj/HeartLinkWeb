@@ -12,7 +12,8 @@
 
 <mvc:annotation-driven/>
 
-<mvc:view-controller path="main" view-name="main"/>
+<mvc:view-controller path="intro" view-name="intro"/>
+<mvc:view-controller path="login" view-name="login"/>
 <mvc:view-controller path="login/form" view-name="login/form"/>
 <mvc:view-controller path="login/fail" view-name="login/fail"/>
 
