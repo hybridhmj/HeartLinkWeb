@@ -98,7 +98,7 @@ app.controller("mainController", function($scope) {
 
 <div class="row container">
 		  <div class="col-xs-6 text-center"> <button type="button" class="btn btn-info">체험하기</button></div>
-		  <div class="col-xs-6 text-center"><a href="login" class="btn btn-info">운명찾기</a></div>
+		  <div class="col-xs-6 text-center"><a href="main" class="btn btn-info">운명찾기</a></div>
 		
 </div>
 

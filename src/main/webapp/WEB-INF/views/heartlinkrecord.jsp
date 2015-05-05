@@ -3,5 +3,5 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 
-<h2>여기는 mysituation 입니다</h2>
-<h3>mysituationCOntroller를 heartlink 상황을 보여줍니다.</h3>
+<h2>여기는 heartlinkrecord 입니다</h2>
+<h3>heartlinkrecordCOntroller를 heartlink 게임 내역을 보여줍니다.</h3>

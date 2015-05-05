@@ -9,13 +9,21 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 <context:component-scan base-package="webapp.controller"/>
+<context:component-scan base-package="com.webapp.controller"/>
 
 <mvc:annotation-driven/>
 
 <mvc:view-controller path="intro" view-name="intro"/>
+<mvc:view-controller path="main" view-name="main"/>
+<mvc:view-controller path="home" view-name="home"/>
+<mvc:view-controller path="about" view-name="about"/>
+<mvc:view-controller path="contact" view-name="contact"/>
+<mvc:view-controller path="signup" view-name="signup"/>
 <mvc:view-controller path="login" view-name="login"/>
-<mvc:view-controller path="login/form" view-name="login/form"/>
-<mvc:view-controller path="login/fail" view-name="login/fail"/>
+<mvc:view-controller path="profile" view-name="profile"/>
+<mvc:view-controller path="mysituation" view-name="mysituation"/>
+<mvc:view-controller path="heartlinkrecord" view-name="heartlinkrecord"/>
+
 
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
