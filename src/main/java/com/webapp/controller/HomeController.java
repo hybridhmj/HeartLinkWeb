@@ -1,4 +1,4 @@
-package webapp.controller;
+package com.webapp.controller;
 
 public class HomeController {
 

@@ -1,4 +1,4 @@
-package webapp.controller;
+package com.webapp.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -21,7 +21,7 @@ import webapp.model.MemberResult;
 
 
 @Controller
-@RequestMapping(value="/member")
+@RequestMapping(value="/login")
 public class RegisterController {
 
 	static Log log = LogFactory.getLog(RegisterController.class);
@@ -41,9 +41,9 @@ public class RegisterController {
 		
 		
 		String sql = "insert into member " +
-				 " (id, password, age, nickname, area, sex, kakaoid) " +
+				 " (id, password, age, area, sex, kakaoid) " +
 				 "values " +
-				 " (?, ?, ?, ?, ?, ?, ?)";
+				 " (?, ?, ?, ?, ?, ?)";
 		
 		
 		MemberResult result = new MemberResult();
@@ -51,7 +51,7 @@ public class RegisterController {
 		
 		
 		try {
-			template.update(sql, member.getId(),member.getPassword(),member.getAge(),member.getNickname(),member.getAge(),member.getSex(),member.getKakaoid());
+			template.update(sql, member.getId(),member.getPassword(),member.getAge(),member.getSex(),member.getKakaoid());
 			result.setStatus(true);
 			result.setStatusText("OK");
 		} catch (DataAccessException e) {

@@ -97,7 +97,7 @@ app.controller("mainController", function($scope, $http, $rootScope, $templateCa
 			alert("server error...");
 		});
     	
-		$location.path("/home");
+		$location.path("/login");
 	};
 	
 	/*
