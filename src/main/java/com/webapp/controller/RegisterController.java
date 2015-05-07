@@ -10,14 +10,15 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import webapp.model.Login;
-import webapp.model.LoginResult;
-import webapp.model.Member;
-import webapp.model.MemberResult;
+import com.webapp.model.Member;
+import com.webapp.model.MemberStatus;
+
+
 
 
 @Controller
@@ -28,35 +29,48 @@ public class RegisterController {
 	
 	
 	@Autowired
-	DataSource dataSource;
+	DataSource datasource;
 	
+	@ResponseBody
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public MemberResult getLogin(Member member){
+	public MemberStatus getLogin(@RequestBody Member member){
 		
 		log.info("#####################");
 		log.info("######register##POST###########");
-		log.info("#####################");
-
-		JdbcTemplate template = new JdbcTemplate(dataSource);
+		log.info("######" + member.getRgid()+ member.getRgpassword()+ member.getRgbirth()+member.getRgsex()+ member.getRgarea()+ member.getKakaoid() + "#######");
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
 		
 		
 		String sql = "insert into member " +
-				 " (id, password, age, area, sex, kakaoid) " +
+				 " (rgid, rgpassword, rgbirth, rgsex, rgarea, kakaoid) " +
 				 "values " +
 				 " (?, ?, ?, ?, ?, ?)";
 		
 		
-		MemberResult result = new MemberResult();
+		MemberStatus result = new MemberStatus();
+		
 		result.setMember(member);
 		
 		
 		try {
-			template.update(sql, member.getId(),member.getPassword(),member.getAge(),member.getSex(),member.getKakaoid());
+			
+			log.info("#####################");
+			log.info("######try 밑이다###########");
+			log.info("#####################");
+			
+			template.update(sql, member.getRgid(), member.getRgpassword(), member.getRgbirth(),member.getRgsex(), member.getRgarea(), member.getKakaoid());
+			
+			log.info("#####################");
+			log.info("######그 밑이다.###########");
+			log.info("#####################");
+
 			result.setStatus(true);
-			result.setStatusText("OK");
+	
+
 		} catch (DataAccessException e) {
 			result.setStatus(false);
-			result.setStatusText(e.getMessage());
+
 		}
 
 		

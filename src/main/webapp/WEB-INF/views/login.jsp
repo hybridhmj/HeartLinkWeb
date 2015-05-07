@@ -66,7 +66,7 @@
 			  </div>
 			  <div class="col-xs-12">
 			  	<label for="rgpassword"></label>
-			    <input type="password" class="form-control" id="rgpassword" name="rgpassword" placeholder="비밀번호">
+			    <input type="password" class="form-control" data-ng-model="rgpassword" id="rgpassword" name="rgpassword" placeholder="비밀번호">
 			  </div>
 			  <div class="col-xs-12">
 			  	<label for="ckpassword"></label>
@@ -74,7 +74,7 @@
 			  </div>
 			  <div class="col-xs-12">
 			  	<label for="rgbirth"></label>
-			    <input type="number" class="form-control" id="rgbirth" name="rgbirth" placeholder="생년월일(-없이)">
+			    <input type="number" class="form-control" data-ng-model="rgbirth"  id="rgbirth" name="rgbirth" placeholder="생년월일(-없이)">
 			  </div>
 			</div>  
 			
@@ -104,7 +104,7 @@
       		<div class="row form-group">  
 	      		<div class="col-xs-12">
 	      			<label for="kakaoid"></label>
-			    	<input type="text" class="form-control" id="kakaoid" name="rgkakaoid" placeholder="카카오톡ID">
+			    	<input type="text" class="form-control" data-ng-model="kakaoid"  id="kakaoid" name="rgkakaoid" placeholder="카카오톡ID">
 	      		</div>
 			</div>
 			
