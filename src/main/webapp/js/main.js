@@ -53,6 +53,24 @@ app.config(function($routeProvider) {
             templateUrl: 'heartlinkrecord',
             controller: 'heartlinkrecordController'
         })
+        
+        // list_view page
+        .when('/list_view', {
+            templateUrl: 'list_view',
+            controller: 'listViewController'
+        })
+        
+        // write_form page
+        .when('/write_form', {
+            templateUrl: 'write_form',
+            controller: 'writeController'
+        })
+        
+        // write_form page
+        .when('/register', {
+            templateUrl: 'register',
+            controller: 'registerController'
+        })
     
 	 	// otherwise page
     	.otherwise({redirectTo: '/login'});

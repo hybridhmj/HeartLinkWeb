@@ -23,6 +23,9 @@
 <mvc:view-controller path="profile" view-name="profile"/>
 <mvc:view-controller path="mysituation" view-name="mysituation"/>
 <mvc:view-controller path="heartlinkrecord" view-name="heartlinkrecord"/>
+<mvc:view-controller path="write_form" view-name="write_form"/>
+<mvc:view-controller path="list_view" view-name="list_view"/>
+<mvc:view-controller path="register" view-name="register"/>
 
 
 

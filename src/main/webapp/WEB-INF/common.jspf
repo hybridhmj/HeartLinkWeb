@@ -33,3 +33,6 @@
 <script type="text/javascript" src="${js}/profile.js"></script>
 <script type="text/javascript" src="${js}/mysituation.js"></script>
 <script type="text/javascript" src="${js}/heartlinkrecord.js"></script>
+<script type="text/javascript" src="${js}/list_view.js"></script>
+<script type="text/javascript" src="${js}/write_form.js"></script>
+<script type="text/javascript" src="${js}/register.js"></script>
