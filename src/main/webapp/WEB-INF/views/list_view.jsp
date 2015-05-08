@@ -31,8 +31,4 @@
 
 </li>
 </ul>
-<<<<<<< HEAD
 <a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>
-=======
-<a href="#/write_form" data-ng-click="aaa()">Q&A작성</a>
->>>>>>> 8b384b23bbd502fa479ef07d6fd938a76a9a1dd2
