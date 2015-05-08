@@ -2,8 +2,11 @@
  * homeController
  */
 
-app.controller("homeController", function($scope, $http) {
+app.controller("homeController", function($scope, $http, $location) {
 //		alert("homeController");
 	console.log("homeController start...");
-	$scope.$parent.pageClass = 'page-home';	
+//	$scope.$parent.pageClass = 'page-home';	
+	
+	
+	
 });

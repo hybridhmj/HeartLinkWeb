@@ -67,7 +67,7 @@ app.controller("mainController", function($scope) {
 	
 </style>
 
-<title>template.jsp</title>
+<title>intro.jsp</title>
 </head>
 <body data-ng-controller="mainController"
 	  data-ng-swipe-left="countp()"
