@@ -27,6 +27,7 @@
 <mvc:view-controller path="list_view" view-name="list_view"/>
 <mvc:view-controller path="register" view-name="register"/>
 
+<mvc:view-controller path="show_content" view-name="show_content"/>
 
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
 import com.heartlink.model.QnAResult;
+import com.heartlink.model.Test;
 
 
 @Controller
@@ -90,5 +92,40 @@ public class QnAController {
 	
 	}
 	
+//	@RequestMapping(value="/ccc", method=RequestMethod.GET)
+//	@ResponseBody
+//	public String question(Integer id) {
+//		
+//		log.info("########################################");
+//		log.info("slected id = " + id);
+//		log.info("########################################");
+//		
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		String sql = "select * from article where id = ?";
+//		
+//		Article article = template.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<Article>(Article.class));
+//		
+//		log.info(article.getId() + " / " + article.getTitle() + " / " + article.getWriterName());
+//
+//		return "show_content";
+//	}
+//	
+	
+	@RequestMapping(value="/ccc", method=RequestMethod.POST)
+	@ResponseBody
+	public Article question(@RequestBody Test test) {
+		
+		log.info("########################################");
+		log.info("slected id = " + test.getId());
+		log.info("########################################");
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		String sql = "select * from article where id = ?";
+		
+		Article article = template.queryForObject(sql, new Object[] {test.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		
+		
+		return article;
+	}
 	
 }

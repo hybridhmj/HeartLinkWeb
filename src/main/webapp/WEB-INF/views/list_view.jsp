@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 
-<h1>{{title}}</h1>
+<h1>Q&A 리스트 :)</h1>
 <hr>
 
 <ul>
@@ -16,10 +16,10 @@
 		<th>작성자</th>
 
 	</tr>
-	
 	<tr data-ng-repeat="article in articles">
 		<td>{{article.id}}</td>
-		<td><a href="show_content">{{article.title}}</a></td>
+		<td><a data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td>
+<!-- 		<td><a href="qna/ccc?id=" data-ng-click="showId({{article.id}})" type="GET">{{article.title}}</a></td> -->
 		<td>{{article.writerName}}</td>
 	</tr>
 </table> 
@@ -31,4 +31,4 @@
 
 </li>
 </ul>
-<a href="#/write_form">Q&A작성</a>
+<a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>

@@ -19,7 +19,7 @@
 <input type="submit" value="submit" name="submit" id="submit" class="btn btn-primary"/>
 <input type="reset" value="reset" class="btn btn-primary"/>
 
-<a href="qna" class="btn btn-primary" style="color: white">목록보기</a>
+<a href="#list_view" class="btn btn-primary" style="color: white">목록보기</a>
 
 
 </form>

@@ -36,3 +36,4 @@
 <script type="text/javascript" src="${js}/list_view.js"></script>
 <script type="text/javascript" src="${js}/write_form.js"></script>
 <script type="text/javascript" src="${js}/register.js"></script>
+<script type="text/javascript" src="${js}/show_content.js"></script>

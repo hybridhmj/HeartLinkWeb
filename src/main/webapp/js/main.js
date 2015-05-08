@@ -4,7 +4,7 @@
 
 var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute", "ngTouch"]);
 app.config(function($routeProvider) {
-
+	
     $routeProvider
         // home page
         .when('/home', {
@@ -66,6 +66,12 @@ app.config(function($routeProvider) {
             controller: 'writeController'
         })
         
+        // show_content page
+        .when('/show_content', {
+            templateUrl: 'show_content',
+            controller: 'showController'
+        })
+        
         // write_form page
         .when('/register', {
             templateUrl: 'register',
@@ -79,6 +85,8 @@ app.config(function($routeProvider) {
 
 app.controller("mainController", function($scope, $http, $rootScope, $templateCache, $location) {
 //	alert("mainController");
+	
+	$scope.contentID="";
 	
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
     		if (typeof current != 'undefined') {
