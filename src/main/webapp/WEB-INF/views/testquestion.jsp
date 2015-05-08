@@ -12,7 +12,7 @@
 
 var app = angular.module("myApp", ["ngAnimate", "ngSanitize", "ngRoute", "ngTouch"]);
 
-app.controller("mainController", function($scope) {
+app.controller("mainController", function($scope, $http, $location) {
 	$scope.num=0;
 	
 	
@@ -47,6 +47,22 @@ app.controller("mainController", function($scope) {
 		$scope.countp();
 	};
 	
+	$scope.question = function() {
+		alert($scope.s1);
+		alert($scope.s2);
+		alert($scope.s3);
+		alert($scope.s4);
+		alert($scope.s5);
+		
+	};
+	
+	
+	$http.get("q/question").success(function(loginstatus) {
+	   $scope.que = loginstatus;
+	   $scope.$apply();
+	  }).error(function() {
+	     alert("server error...");
+	});
 
 	
 });
@@ -67,7 +83,7 @@ app.controller("mainController", function($scope) {
 	
 </style>
 
-<title>intro.jsp</title>
+<title>template.jsp</title>
 </head>
 <body data-ng-controller="mainController"
 	  data-ng-swipe-left="countp()"
@@ -82,11 +98,41 @@ app.controller("mainController", function($scope) {
 		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
 		</button>
   		
-  		<img data-ng-show="num == 0" src="http://nv2.adcreative.naver.net/ad3/1004/1004874/1_1820.jpg" class="center-block" alt="Responsive image">
-	    <img data-ng-show="num == 1" src="http://nv2.adcreative.naver.net/ad3/1004/1004874/1_1820.jpg" class="center-block" alt="Responsive image" >
-	    <img data-ng-show="num == 2" src="http://img.naver.net/static/www/mobile/edit/2015/0430/mobile_14321058691.jpg" class="center-block" alt="Responsive image">
-	    <img data-ng-show="num == 3" src="http://img.naver.net/static/www/u/2015/0430/nmms_115529311.jpg" class="center-block" alt="Responsive image">
-	    <img data-ng-show="num == 4" src="http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif" class="center-block" alt="Responsive image">
+  		
+  		<form data-ng-submit="question()" role="form">
+  		
+<!--   		<div data-ng-show="num == 0"><img src="http://nv2.adcreative.naver.net/ad3/1004/1004874/1_1820.jpg" class="center-block" alt="Responsive image">  -->
+<!--   			<div class="col-xs-12" >성별: -->
+<!-- 				  <div class="btn-group" > -->
+<!-- 					<label for="rgman" class="btn btn-default btn-lg"> -->
+<!-- 						<input type="radio" name="s1" id="rgman" data-ng-model="s1" autocomplete="off" value="a">남 -->
+<!-- 					</label> -->
+<!-- 					<label for="rgwomen" class="btn btn-default btn-lg"> -->
+<!-- 						 <input type="radio" name="s1" id="rgwomen" data-ng-model="s1" autocomplete="off" value="b">여 -->
+<!-- 					</label> -->
+<!-- 				  </div> -->
+<!-- 			</div> -->
+<!--   		</div> -->
+
+		<div data-ng-show="num == 0"></div>
+	    <div data-ng-show="num == 1"></div>
+	    <div data-ng-show="num == 2"></div>
+	    <div data-ng-show="num == 3"></div>
+	    <div data-ng-show="num == 4"></div>
+		
+		
+		<div data-ng-repeat="article in articles">
+		{{article.id}}
+		<a href="show_content">{{article.title}}</a>
+		{{article.writerName}}
+		</div>
+		
+		
+		
+		
+		
+		<button data-ng-show="num == 4" type="submit" class="btn btn-primary">보내기</button>
+		</form>
 		
 		<button type="button" data-ng-click="rightbtn()" class="btn btn-default carousel-control right">
 		<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
@@ -96,11 +142,6 @@ app.controller("mainController", function($scope) {
 
 </div>
 
-<div class="row container">
-		  <div class="col-xs-6 text-center"> <button type="button" class="btn btn-info">체험하기</button></div>
-		  <div class="col-xs-6 text-center"><a href="main" class="btn btn-info">운명찾기</a></div>
-		
-</div>
 
 </body>
 </html>

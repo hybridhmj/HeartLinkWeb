@@ -3,7 +3,7 @@
  */
 
 app.controller("listViewController", function($scope, $http, $location) {
-
+	$scope.id="1";
 	
    $http.get("qna/aaa").success(function(loginstatus) {
          $scope.articles = loginstatus;
@@ -13,15 +13,10 @@ app.controller("listViewController", function($scope, $http, $location) {
    });
    
    
-   $scope.showId = function(id) {
-//	   alert("id = " + id);
-
-	   $scope.$parent.contentID = id;
-	   
-	   $location.path("/show_content");
+   
+   $scope.aaa = function() {
+	   $scope.$parent.pageClass = 'page-about';
+	$scope.parent.id=$scope.id;
    };
-      
+   
 });
-
-
-
