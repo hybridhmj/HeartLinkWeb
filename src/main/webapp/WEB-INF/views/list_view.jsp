@@ -31,4 +31,4 @@
 
 </li>
 </ul>
-<a href="#/write_form">Q&A작성</a>
+<a href="#/write_form" data-ng-click="aaa()">Q&A작성</a>
