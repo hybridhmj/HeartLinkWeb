@@ -10,22 +10,22 @@
       
       	<form data-ng-submit="registersubmit()" role="form" method="post">
 	      	<div class="row form-group">
-			  <div class="col-xs-12">
-			  	<label for="rgid"></label>
-			    <input type="text" class="form-control" data-ng-model="rgid" id="rgid" name="rgid" placeholder="아이디">
-			  </div>
-			  <div class="col-xs-12">
-			  	<label for="rgpassword"></label>
-			    <input type="password" class="form-control" data-ng-model="rgpassword" id="rgpassword" name="rgpassword" placeholder="비밀번호">
-			  </div>
-			  <div class="col-xs-12">
-			  	<label for="ckpassword"></label>
-			    <input type="password" class="form-control" id="ckpassword" placeholder="비밀번호 재확인">
-			  </div>
-			  <div class="col-xs-12">
-			  	<label for="rgbirth"></label>
-			    <input type="number" class="form-control" data-ng-model="rgbirth"  id="rgbirth" name="rgbirth" placeholder="생년월일(-없이)">
-			  </div>
+				  <div class="col-xs-12">
+				  	<label for="rgid"></label>
+				    <input type="text" class="form-control" data-ng-model="rgid" id="rgid" name="rgid" placeholder="아이디">
+				  </div>
+				  <div class="col-xs-12">
+				  	<label for="rgpassword"></label>
+				    <input type="password" class="form-control" data-ng-model="rgpassword" id="rgpassword" name="rgpassword" placeholder="비밀번호">
+				  </div>
+				  <div class="col-xs-12">
+				  	<label for="ckpassword"></label>
+				    <input type="password" class="form-control" id="ckpassword" placeholder="비밀번호 재확인">
+				  </div>
+				  <div class="col-xs-12">
+				  	<label for="rgbirth"></label>
+				    <input type="number" class="form-control" data-ng-model="rgbirth"  id="rgbirth" name="rgbirth" placeholder="생년월일(-없이)">
+				  </div>
 			</div>
 			  <div class="col-xs-12" >성별:
 				  <div class="btn-group" >
