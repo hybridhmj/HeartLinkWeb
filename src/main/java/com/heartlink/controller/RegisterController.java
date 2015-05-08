@@ -1,4 +1,4 @@
-package com.webapp.controller;
+package com.heartlink.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webapp.model.Member;
-import com.webapp.model.MemberStatus;
+import com.heartlink.model.Member;
+import com.heartlink.model.MemberStatus;
 
 
 

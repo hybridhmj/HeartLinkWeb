@@ -36,8 +36,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav" data-ng-show="login.status">
-				    <li><a href="#/write_form">Page 1</a></li>
-				    <li><a href="#/list_view">Page 2</a></li>
+				    <li><a href="#/list_view">Q&A 게시판</a></li>
+				    <li><a href="#/home">Page 2</a></li>
 				    <li class="dropdown">
 			        	<a class="dropdown-toggle" data-toggle="dropdown" href="">Page 3
 			        	<span class="caret"></span></a>

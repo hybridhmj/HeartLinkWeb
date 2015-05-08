@@ -1,4 +1,4 @@
-package com.webapp.controller;
+package com.heartlink.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webapp.model.LoginStatus;
-import com.webapp.model.User;
+import com.heartlink.model.LoginStatus;
+import com.heartlink.model.Member;
+import com.heartlink.model.User;
 
 @Controller
 @RequestMapping("/login")
@@ -40,14 +41,14 @@ public class LoginController {
 		JdbcTemplate template = new JdbcTemplate(datasource);
 
 		
-		String sql = "select * from login where id= ?";
+		String sql = "select * from member where rgid= ?";
 		
-		User userinfo = template.queryForObject(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<User>(User.class) );
+		Member userinfo = template.queryForObject(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
 		
 		LoginStatus result = new LoginStatus();
 		
 		
-		if (userinfo.getPassword().equals(user.getPassword())) {
+		if (userinfo.getRgpassword().equals(user.getPassword())) {
 			session.setAttribute("user", user);
 			result.setStatus(true);
 			

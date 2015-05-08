@@ -1,9 +1,8 @@
 
 
-package com.webapp.controller;
+package com.heartlink.controller;
 
 import java.sql.SQLException;
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webapp.model.Article;
-import com.webapp.model.QnAResult;
+import com.heartlink.model.Article;
+import com.heartlink.model.QnAResult;
 
 
 @Controller

@@ -1,10 +1,9 @@
-package webapp.model;
+package com.heartlink.model;
 
-public class Login {
+public class User {
 
 	String id;
-	Integer password;
-
+	String password;
 	
 	public String getId() {
 		return id;
@@ -12,10 +11,10 @@ public class Login {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(Integer password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	

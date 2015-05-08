@@ -18,7 +18,7 @@ app.controller("registerController", function($scope, $http, $location) {
 			if (memberstatus.status == true) {
 				alert("if==true들어옴");
 
-				$location.path("/home");
+				$location.path("/login");
 				
 			}else {
 				alert("로그인 실패...");

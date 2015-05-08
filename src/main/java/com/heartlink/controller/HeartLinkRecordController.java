@@ -1,4 +1,4 @@
-package com.webapp.controller;
+package com.heartlink.controller;
 
 public class HeartLinkRecordController {
 

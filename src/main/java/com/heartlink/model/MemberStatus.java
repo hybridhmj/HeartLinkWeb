@@ -1,4 +1,4 @@
-package com.webapp.model;
+package com.heartlink.model;
 
 public class MemberStatus {
 	Boolean status = false;
