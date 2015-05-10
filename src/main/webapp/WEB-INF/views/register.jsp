@@ -58,6 +58,8 @@
 			
 		        <button type="button" class="btn btn-default" data-dismiss="modal">나가기</button>
 		        <button type="submit" class="btn btn-primary">가입하기</button>
+		        
+
       	</form>
 
 

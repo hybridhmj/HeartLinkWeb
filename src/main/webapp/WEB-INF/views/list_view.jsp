@@ -2,6 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
+<nav>
+  <ul class="pagination">
+    <li data-ng-show="pages[0]!=1">
+      <a class="btn" data-ng-click="backPage(pages[0])" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li data-ng-repeat="n in pages">
+    <a class="btn" data-ng-click="callPage(n)">{{n}}</a>
+    </li>
+  
+    <li data-ng-show="pages.length==5">
+      <a class="btn" data-ng-click="nextPage(pages[4])" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 <h1>Q&A 리스트 :)</h1>
 <hr>
@@ -18,8 +36,7 @@
 	</tr>
 	<tr data-ng-repeat="article in articles">
 		<td>{{article.id}}</td>
-		<td><a data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td>
-<!-- 		<td><a href="qna/ccc?id=" data-ng-click="showId({{article.id}})" type="GET">{{article.title}}</a></td> -->
+		<td><a class="btn" data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td>
 		<td>{{article.writerName}}</td>
 	</tr>
 </table> 
@@ -28,7 +45,13 @@
 
 <li>
 
-
 </li>
 </ul>
 <a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>
+
+
+
+
+
+
+

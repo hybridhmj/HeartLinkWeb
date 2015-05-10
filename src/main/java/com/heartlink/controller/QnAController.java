@@ -3,6 +3,7 @@
 package com.heartlink.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
 import com.heartlink.model.QnAResult;
+import com.heartlink.model.Qnapage;
 import com.heartlink.model.Test;
 
 
@@ -30,7 +33,7 @@ import com.heartlink.model.Test;
 public class QnAController {
 
 	static Log log = LogFactory.getLog(QnAController.class);
-
+	static int totalPageNum=0;
 	
 	
 	@Autowired
@@ -91,41 +94,158 @@ public class QnAController {
 		return result;
 	
 	}
-	
-//	@RequestMapping(value="/ccc", method=RequestMethod.GET)
-//	@ResponseBody
-//	public String question(Integer id) {
-//		
-//		log.info("########################################");
-//		log.info("slected id = " + id);
-//		log.info("########################################");
-//		
-//		JdbcTemplate template = new JdbcTemplate(datasource);
-//		String sql = "select * from article where id = ?";
-//		
-//		Article article = template.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<Article>(Article.class));
-//		
-//		log.info(article.getId() + " / " + article.getTitle() + " / " + article.getWriterName());
-//
-//		return "show_content";
-//	}
-//	
+
 	
 	@RequestMapping(value="/ccc", method=RequestMethod.POST)
 	@ResponseBody
 	public Article question(@RequestBody Test test) {
 		
 		log.info("########################################");
-		log.info("slected id = " + test.getId());
+		log.info("slected id = ");
 		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		String sql = "select * from article where id = ?";
 		
 		Article article = template.queryForObject(sql, new Object[] {test.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
-		
+
 		
 		return article;
 	}
+	
+	@SuppressWarnings("deprecation")
+	@RequestMapping(value="/qnapage", method=RequestMethod.GET)
+	@ResponseBody
+	public ArrayList<Integer> page() {
+		
+		log.info("########################################");
+		log.info("#########QnaPAGE######################");
+		log.info("########################################");
+		
+		
+		Qnapage totalpage = new Qnapage();
+		
+		int qnaTotalRow=0;
+		int qnaTotalPage=0;
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		qnaTotalRow = template.queryForInt("select count(*) from article");
+		
+		log.info("#########################################"+qnaTotalRow);
+		
+		qnaTotalPage = qnaTotalRow / 10;
+		
+		
+		if( qnaTotalRow % 10 > 0){
+			qnaTotalPage++;
+		}
+
+		totalPageNum = qnaTotalPage;
+		totalpage.setQnaTotalPage(qnaTotalPage);
+		
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=1; i<=qnaTotalPage; i++){
+			if(i==6){
+				break;
+			}
+			list.add(i);
+		}
+		return list;
+	}
+	
+
+	@RequestMapping(value="/qnapageplus", method=RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<Integer> pageplus(@RequestBody Qnapage qnaTotalPage) {
+		
+		log.info("#############lastValue()#################"+qnaTotalPage.getQnaTotalPage());
+		
+		Integer beforeqnaTotalPage = qnaTotalPage.getQnaTotalPage();
+		
+		Integer newqnaTotalPage = 0;
+		
+		if(totalPageNum >= (beforeqnaTotalPage + 5)){
+			newqnaTotalPage = beforeqnaTotalPage + 5;
+		}else {
+			int rest = totalPageNum%beforeqnaTotalPage;
+			newqnaTotalPage = beforeqnaTotalPage + rest;
+		}
+
+		
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=(beforeqnaTotalPage+1); i<=newqnaTotalPage; i++){
+			if(i==(newqnaTotalPage+1)){
+				break;
+			}
+			list.add(i);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(value="/qnapageminus", method=RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<Integer> pageminus(@RequestBody Qnapage qnaTotalPage) {
+		
+		log.info("#############lastValue()#################"+qnaTotalPage.getQnaTotalPage());
+		
+		Integer newqnaTotalPage = qnaTotalPage.getQnaTotalPage()-1;
+
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=(newqnaTotalPage-4); i<=newqnaTotalPage; i++){
+			list.add(i);
+		}
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/callpage", method=RequestMethod.POST)
+	@ResponseBody
+	public List<Article> callpage(@RequestBody Qnapage qnaTotalPage) {
+		
+		log.info("########################################");
+		log.info("List<Article> callpage()...");
+		log.info("########################################");
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+
+		int start = (qnaTotalPage.getQnaTotalPage()*10)-9;
+		int end = 10*qnaTotalPage.getQnaTotalPage();
+		
+		log.info("########################################");
+		log.info(start);
+		log.info("########################################");
+		log.info(end);
+		
+		String sql = "select * from (select rownum rn, aa.* from (select * from article order by id desc)aa) where rn between ? and ?";
+
+		 List<Article> list =template.query(sql, new Object[] {start, end}, new BeanPropertyRowMapper<Article>(Article.class));
+		
+		if(list.isEmpty()){
+			log.info("## list empty ##");
+		}else{
+			log.info("## list not empty ##");
+		}
+		
+		for(Article l : list) {
+			log.info(l.getTitle());
+		}
+
+		return list;
+	}
+	
+	
+	
+	
 	
 }
