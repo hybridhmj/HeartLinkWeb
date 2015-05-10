@@ -15,38 +15,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
+import com.heartlink.model.Question;
 
 @Controller
 @RequestMapping("/q")
 public class QuestionController {
 	
-	static Log log = LogFactory.getLog(QnAController.class);
+	static Log log = LogFactory.getLog(QuestionController.class);
 	
 	@Autowired
 	DataSource datasource;
 	
+	
 	@RequestMapping(value="/question", method=RequestMethod.GET)
 	@ResponseBody
-	public List<Article> question() {
+	public List<Question> question() {
 		
 		log.info("########################################");
-		log.info("List<Article> question()...");
+		log.info("QuestionController()...");
 		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
-		List<Article> list = template.query("select * from article order by 1 desc", new BeanPropertyRowMapper<Article>(Article.class));
-	
-		if(list.isEmpty()){
+		
+		List<Question> questions = template.query("select * from a1_b1", new BeanPropertyRowMapper<Question>(Question.class));
+		
+		if(questions.isEmpty()){
 			log.info("## list empty ##");
 		}else{
 			log.info("## list not empty ##");
 		}
 		
-		for(Article l : list) {
-			log.info(l.getTitle());
-		}
-
-		return list;
+		
+		
+		return questions;
 	}
 
 }

@@ -99,7 +99,7 @@ app.controller("mainController", function($scope, $http, $location) {
 		</button>
   		
   		
-  		<form data-ng-submit="question()" role="form">
+  		<form data-ng-submit="question()" role="form" >
   		
 <!--   		<div data-ng-show="num == 0"><img src="http://nv2.adcreative.naver.net/ad3/1004/1004874/1_1820.jpg" class="center-block" alt="Responsive image">  -->
 <!--   			<div class="col-xs-12" >성별: -->

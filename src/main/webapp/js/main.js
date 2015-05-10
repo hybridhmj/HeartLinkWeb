@@ -77,6 +77,12 @@ app.config(function($routeProvider) {
             templateUrl: 'register',
             controller: 'registerController'
         })
+        
+        // write_form page
+        .when('/question', {
+            templateUrl: 'question',
+            controller: 'questionController'
+        })
     
 	 	// otherwise page
     	.otherwise({redirectTo: '/login'});
