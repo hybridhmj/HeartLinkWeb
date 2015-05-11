@@ -8,8 +8,6 @@ app.controller("profileController", function($scope, $http) {
 	
 	$http.get("../m/pro/profile").success(function(result) {
 		$scope.re = result;
-		
-		
 	});
 
 
