@@ -1,6 +1,6 @@
 package com.heartlink.model;
 
-public class Test {
+public class Show {
 
 	String id;
 
@@ -11,5 +11,5 @@ public class Test {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 }

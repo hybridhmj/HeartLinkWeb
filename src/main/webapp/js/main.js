@@ -72,7 +72,7 @@ app.config(function($routeProvider) {
             controller: 'showController'
         })
         
-        // write_form page
+        // register page
         .when('/register', {
             templateUrl: 'register',
             controller: 'registerController'
@@ -82,6 +82,18 @@ app.config(function($routeProvider) {
         .when('/question', {
             templateUrl: 'question',
             controller: 'questionController'
+        })
+        
+        // delete_list page
+        .when('/delete_list', {
+            templateUrl: 'delete_list',
+            controller: 'deleteController'
+        })
+        
+        // delete_list page
+        .when('/update_list', {
+            templateUrl: 'update_list',
+            controller: 'updateController'
         })
     
 	 	// otherwise page

@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -23,9 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
+import com.heartlink.model.Delete;
 import com.heartlink.model.QnAResult;
 import com.heartlink.model.Qnapage;
-import com.heartlink.model.Test;
+import com.heartlink.model.Show;
 
 
 @Controller
@@ -39,6 +41,7 @@ public class QnAController {
 	@Autowired
 	DataSource datasource;
 	
+	// list_view
 	@RequestMapping(value="/aaa", method=RequestMethod.GET)
 	@ResponseBody
 	public List<Article> question() {
@@ -63,7 +66,7 @@ public class QnAController {
 		return list;
 	}
 	
-
+	// write_form
 	@RequestMapping(value="/bbb", method=RequestMethod.POST)
 	@ResponseBody
 	public QnAResult question(@RequestBody Article article, HttpSession session) throws SQLException { // 로그인 처리
@@ -95,23 +98,104 @@ public class QnAController {
 	
 	}
 
-	
+	// show_content
 	@RequestMapping(value="/ccc", method=RequestMethod.POST)
 	@ResponseBody
-	public Article question(@RequestBody Test test) {
+	public Article question(@RequestBody Show show) {
 		
 		log.info("########################################");
-		log.info("slected id = ");
+		log.info("show_content = > slected id = " + show.getId());
 		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		String sql = "select * from article where id = ?";
 		
-		Article article = template.queryForObject(sql, new Object[] {test.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		Article article = template.queryForObject(sql, new Object[] {show.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
 
 		
 		return article;
 	}
+	
+	// delete_list
+	@RequestMapping(value="/ddd", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean question(@RequestBody Delete del) {
+		
+		log.info("########################################");
+		log.info("delete_list = > slected id = " + del.getId() 
+				+ " // password = " + del.getPassword());
+		log.info("########################################");
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		String sql = "select * from article where id = ?";
+		
+		Article article = template.queryForObject(sql, new Object[] {del.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		
+//		log.info("password" + article.getPassword());
+		
+		boolean correct = true;
+		
+		if(del.getPassword().equals(article.getPassword())) {
+			correct = true;
+			log.info(correct);
+			sql = "delete from article where id = ?";
+			int count = template.update(sql, del.getId());
+			
+			if(count > 0) {
+				log.info("삭제 완료");
+			} else {
+				log.info("없는 데이터를 삭제하려고 합니다.");
+			}
+			
+		} else {
+			correct = false;
+			log.info(correct);
+		}
+		
+		return correct;
+	}
+	
+
+//	// update_list
+//	@RequestMapping(value="/eee", method=RequestMethod.POST)
+//	@ResponseBody
+//	public boolean question(@RequestBody Delete del, int num) {
+//		
+//		log.info("########################################");
+//		log.info("delete_list = > slected id = " + del.getId() 
+//				+ " // password = " + del.getPassword());
+//		log.info("########################################");
+//		
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		String sql = "select * from article where id = ?";
+//		
+//		Article article = template.queryForObject(sql, new Object[] {del.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+//		
+////		log.info("password" + article.getPassword());
+//		
+//		boolean correct = true;
+//		
+//		if(del.getPassword().equals(article.getPassword())) {
+//			correct = true;
+//			log.info(correct);
+//			sql = "delete from article where id = ?";
+//			int count = template.update(sql, del.getId());
+//			
+//			if(count > 0) {
+//				log.info("삭제 완료");
+//			} else {
+//				log.info("없는 데이터를 삭제하려고 합니다.");
+//			}
+//			
+//		} else {
+//			correct = false;
+//			log.info(correct);
+//		}
+//		
+//		return correct;
+//	}
+	
+	
 	
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value="/qnapage", method=RequestMethod.GET)
