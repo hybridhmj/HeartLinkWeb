@@ -10,7 +10,7 @@ app.controller("deleteController", function($scope, $http, $location) {
 	$scope.deleteID = function(password) {
 //		alert(password);
 	
-		$http.post("qna/eee", {id : $scope.id, password : password}).success(function(correct) {
+		$http.post("qna/ddd", {id : $scope.id, password : password}).success(function(correct) {
 
 			$scope.correct = correct;
 			
