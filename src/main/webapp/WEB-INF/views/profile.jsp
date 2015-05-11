@@ -5,3 +5,24 @@
 
 <h2>여기는 프로필 jsp 입니다</h2>
 <h3>profileCOntroller를 사용해서 개인정보를 불러올 곳입니다.</h3>
+
+<div class="container">
+	<table class="table">
+		<thead>
+			<td>아이디</td>
+			<td>생년월일</td>
+			<td>성별</td>	
+			<td>지역</td>	
+			<td>Kakao Id</td>		
+		</thead>
+		<tbody>
+	      <tr class="success">
+	        <td>{{re.rgid}}</td>
+	        <td>{{re.rgbirth}}</td>
+	        <td>{{re.rgsex}}</td>
+	        <td>{{re.rgarea}}</td>
+	        <td>{{re.rgkakaoid}}</td>
+	      </tr>
+	    </tbody>
+	</table>
+</div>

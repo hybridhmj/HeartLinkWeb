@@ -30,7 +30,8 @@
 <mvc:view-controller path="mapping" view-name="mapping"/>
 
 <mvc:view-controller path="show_content" view-name="show_content"/>
-
+<mvc:view-controller path="delete_list" view-name="delete_list"/>
+<mvc:view-controller path="update_list" view-name="update_list"/>
 
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 	p:prefix="/WEB-INF/views/"

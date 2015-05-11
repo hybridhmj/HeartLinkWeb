@@ -84,7 +84,18 @@ app.config(function($routeProvider) {
             controller: 'questionController'
         })
         
-        // write_form page
+        // delete_list page
+        .when('/delete_list', {
+            templateUrl: 'delete_list',
+            controller: 'deleteController'
+        })
+        
+        // delete_list page
+        .when('/update_list', {
+            templateUrl: 'update_list',
+            controller: 'updateController'
+        })
+        
         .when('/mapping', {
             templateUrl: 'mapping',
             controller: 'mappingController'

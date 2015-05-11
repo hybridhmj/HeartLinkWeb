@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/taglib.jspf" %>
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
 <h1>Q&A 작성 :)</h1>
 <hr>
@@ -19,7 +20,7 @@
 <input type="submit" value="submit" name="submit" id="submit" class="btn btn-primary"/>
 <input type="reset" value="reset" class="btn btn-primary"/>
 
-<a href="#list_view" class="btn btn-primary" style="color: white">목록보기</a>
+<a href="#/list_view" class="btn btn-primary" style="color: white">목록보기</a>
 
 
 </form>

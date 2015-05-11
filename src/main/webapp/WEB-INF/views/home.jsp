@@ -45,6 +45,9 @@
 	<section>
 		적중률 : 
 	</section>
+	<div>
+		<input >
+	</div>
 
 </form>
 
