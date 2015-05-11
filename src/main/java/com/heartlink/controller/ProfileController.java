@@ -1,5 +1,7 @@
 package com.heartlink.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -17,57 +19,45 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Member;
 import com.heartlink.model.MemberStatus;
+import com.heartlink.model.Question;
+import com.heartlink.model.User;
 
 
 
 
 @Controller
-@RequestMapping(value="/login")
-public class RegisterController {
+@RequestMapping(value="/pro")
+public class ProfileController {
 
-	static Log log = LogFactory.getLog(RegisterController.class);
+	static Log log = LogFactory.getLog(ProfileController.class);
+	
+	User user;
 	
 	
 	@Autowired
 	DataSource datasource;
 	
 	@ResponseBody
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public MemberStatus getLogin(@RequestBody Member member){
+	@RequestMapping(value="/profile", method=RequestMethod.GET)
+	public Member getProfile(HttpSession session){
+		User sessionuser = (User)session.getAttribute("user");
 		
 		log.info("#####################");
-		log.info("######register##POST###########");
-		log.info("######" + member.getRgid()+ member.getRgpassword()+ member.getRgbirth()+member.getRgsex()+ member.getRgarea()+ member.getKakaoid() + "#######");
+		log.info("########getProfile######");
+		log.info("#####################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
+		String sql = "select * from member where rgid = ?";
 		
-		String sql = "insert into member " +
-				 " (rgid, rgpassword, rgbirth, rgsex, rgarea, kakaoid) " +
-				 "values " +
-				 " (?, ?, ?, ?, ?, ?)";
+		Member profile = template.queryForObject(sql, new Object[] {sessionuser.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
 		
+		log.info("#####################");
+		log.info("#######"+ profile.getRgarea() +"######");
+		log.info("#####################");
+			
 		
-		MemberStatus result = new MemberStatus();
-		
-		result.setMember(member);
-		
-		
-		try {
-
-			template.update(sql, member.getRgid(), member.getRgpassword(), member.getRgbirth(),member.getRgsex(), member.getRgarea(), member.getKakaoid());
-
-			result.setStatus(true);
-	
-
-		} catch (DataAccessException e) {
-			result.setStatus(false);
-
-		}
-
-		
-		return result;
-	
+		return profile;
 	}
 
 	

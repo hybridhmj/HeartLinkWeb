@@ -45,10 +45,14 @@
 	<section>
 		적중률 : 
 	</section>
+	<div>
+		<input >
+	</div>
 
 </form>
 
 <hr>
+
 
 
 <a href="#about" class="btn btn-success btn-lg">About</a>

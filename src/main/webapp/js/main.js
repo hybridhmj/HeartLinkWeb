@@ -72,7 +72,7 @@ app.config(function($routeProvider) {
             controller: 'showController'
         })
         
-        // register page
+        // write_form page
         .when('/register', {
             templateUrl: 'register',
             controller: 'registerController'
@@ -94,6 +94,11 @@ app.config(function($routeProvider) {
         .when('/update_list', {
             templateUrl: 'update_list',
             controller: 'updateController'
+        })
+        
+        .when('/mapping', {
+            templateUrl: 'mapping',
+            controller: 'mappingController'
         })
     
 	 	// otherwise page
@@ -147,10 +152,13 @@ app.controller("mainController", function($scope, $http, $rootScope, $templateCa
 	/*
 	 * 로그인 유무 체크
 	 */
+	
 	$http.get("../m/login/logincheck").success(function(loginstatus) {
 			console.log("로그인 유무 체크 = " + JSON.stringify(loginstatus));
 			$scope.login = loginstatus;
 	}).error(function() {
 		alert("server error...");
 	});
+	
+
 });

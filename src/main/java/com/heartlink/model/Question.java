@@ -7,6 +7,7 @@ public class Question {
 	String sel_3;
 	Integer num;
 	String bind;
+	String value;
 
 	public String getSel_1() {
 		return sel_1;
@@ -38,9 +39,12 @@ public class Question {
 	public void setBind(String bind) {
 		this.bind = bind;
 	}
-
-	
-	
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
 	
 	
 }
