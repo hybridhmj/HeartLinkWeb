@@ -54,16 +54,8 @@ public class RegisterController {
 		
 		
 		try {
-			
-			log.info("#####################");
-			log.info("######try 밑이다###########");
-			log.info("#####################");
-			
+
 			template.update(sql, member.getRgid(), member.getRgpassword(), member.getRgbirth(),member.getRgsex(), member.getRgarea(), member.getKakaoid());
-			
-			log.info("#####################");
-			log.info("######그 밑이다.###########");
-			log.info("#####################");
 
 			result.setStatus(true);
 	

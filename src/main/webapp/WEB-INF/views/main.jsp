@@ -14,7 +14,6 @@
 
 </head>
 <body data-ng-controller="mainController">
-
 <!-- ############## -->
 <!-- Navigation Bar -->
 <!-- ############## -->

@@ -83,6 +83,12 @@ app.config(function($routeProvider) {
             templateUrl: 'question',
             controller: 'questionController'
         })
+        
+        // write_form page
+        .when('/mapping', {
+            templateUrl: 'mapping',
+            controller: 'mappingController'
+        })
     
 	 	// otherwise page
     	.otherwise({redirectTo: '/login'});
@@ -135,10 +141,13 @@ app.controller("mainController", function($scope, $http, $rootScope, $templateCa
 	/*
 	 * 로그인 유무 체크
 	 */
+	
 	$http.get("../m/login/logincheck").success(function(loginstatus) {
 			console.log("로그인 유무 체크 = " + JSON.stringify(loginstatus));
 			$scope.login = loginstatus;
 	}).error(function() {
 		alert("server error...");
 	});
+	
+
 });
