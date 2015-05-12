@@ -41,3 +41,4 @@
 <script type="text/javascript" src="${js}/mapping.js"></script>
 <script type="text/javascript" src="${js}/delete_list.js"></script>
 <script type="text/javascript" src="${js}/update_list.js"></script>
+<script type="text/javascript" src="${js}/update_form.js"></script>

@@ -90,10 +90,16 @@ app.config(function($routeProvider) {
             controller: 'deleteController'
         })
         
-        // delete_list page
+        // update_list page
         .when('/update_list', {
             templateUrl: 'update_list',
-            controller: 'updateController'
+            controller: 'updatesController'
+        })
+        
+        // update_form page
+        .when('/update_form', {
+            templateUrl: 'update_form',
+            controller: 'updateFormController'
         })
         
         .when('/mapping', {
