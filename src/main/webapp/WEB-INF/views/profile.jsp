@@ -5,7 +5,6 @@
 
 <h2>여기는 프로필 jsp 입니다</h2>
 <h3>profileCOntroller를 사용해서 개인정보를 불러올 곳입니다.</h3>
-
 <div class="container">
 	<table class="table">
 		<thead>
@@ -25,4 +24,11 @@
 	      </tr>
 	    </tbody>
 	</table>
+	
+	<form class="form-inline">
+		<div class="form-group" data-ng-controller="profileController">
+			<p>{{msg.message}}</p>
+			<a href="#/profile_1" class="danger">상태 메시지 수정</a>
+	    </div>
+  	</form>
 </div>

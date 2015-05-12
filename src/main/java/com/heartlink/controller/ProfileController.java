@@ -1,25 +1,20 @@
 package com.heartlink.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.model.Condition;
 import com.heartlink.model.Member;
-import com.heartlink.model.MemberStatus;
-import com.heartlink.model.Question;
 import com.heartlink.model.User;
 
 
@@ -58,6 +53,29 @@ public class ProfileController {
 			
 		
 		return profile;
+	}
+	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/condition", method=RequestMethod.GET)
+	public Condition getProfileMessage(){
+		
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		
+		String sql = "select * from condition where num = 2";
+		
+		Condition message = new Condition();
+		
+		message = template.queryForObject(sql, new BeanPropertyRowMapper<Condition>(Condition.class));
+		
+		log.info("#####################");
+		log.info("#######"+ message.getMessage() +"######");
+		log.info("#####################");
+			
+		
+		return message;
 	}
 
 	

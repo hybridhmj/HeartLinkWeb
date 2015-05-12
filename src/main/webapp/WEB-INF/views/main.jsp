@@ -26,6 +26,8 @@
 				<a class="navbar-brand active" href="#/profile"><small>프로필</small></a>
 				<a class="navbar-brand active" href="#/mysituation"><small>운명현황</small></a>
 				<a class="navbar-brand active" href="#/heartlinkrecord"><small>게임이력</small></a>
+				<a class="navbar-brand active" href="#/examjsp"><small>연습용</small></a>
+				<a class="navbar-brand active" href="#/last"><small>last연습용</small></a>
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 				    <span class="icon-bar"></span>

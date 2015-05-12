@@ -42,6 +42,12 @@ app.config(function($routeProvider) {
             controller: 'profileController'
         })
         
+        // profile_1 page
+        .when('/profile_1', {
+            templateUrl: 'profile_1',
+            controller: 'profile_1Controller'
+        })
+        
         // mysituation page
         .when('/mysituation', {
             templateUrl: 'mysituation',
@@ -99,6 +105,11 @@ app.config(function($routeProvider) {
         .when('/mapping', {
             templateUrl: 'mapping',
             controller: 'mappingController'
+        })
+        
+        .when('/examjsp', {
+            templateUrl: 'examjsp',
+            controller: 'examjspController'
         })
     
 	 	// otherwise page
