@@ -12,7 +12,7 @@ app.controller("questionController", function($scope, $http, $location) {
 	
 	
 	$scope.countp = function() {
-		
+
 		if($scope.num==24) {
 			$scope.num = 1;
 		}else {

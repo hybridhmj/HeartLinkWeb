@@ -67,57 +67,118 @@ public class QuestionController {
 		log.info("######answer##POST###########");
 		log.info(QuestionAnswer.getAnswer1() + " " + QuestionAnswer.getAnswer13() + " " + QuestionAnswer.getAnswer20() + " " + QuestionAnswer.getAnswer15() + " " + QuestionAnswer.getAnswer10() );
 		log.info(user.getId());
-	
-		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		QuestionAnswerStatus result = new QuestionAnswerStatus();
-
-
+		String countsql = "select count(*) from matchingrecord where recordid = ?";
 		
-		String sql = "insert into heartlinkrecord " +
-				 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid) " +
-				 " values " +
-				 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
-		
-		
-		try {
-
-			template.update(sql, QuestionAnswer.getAnswer1(),
-								QuestionAnswer.getAnswer2(),
-								QuestionAnswer.getAnswer3(),
-								QuestionAnswer.getAnswer4(),
-								QuestionAnswer.getAnswer5(),
-								QuestionAnswer.getAnswer6(),
-								QuestionAnswer.getAnswer7(),
-								QuestionAnswer.getAnswer8(),
-								QuestionAnswer.getAnswer9(),
-								QuestionAnswer.getAnswer10(),
-								QuestionAnswer.getAnswer11(),
-								QuestionAnswer.getAnswer12(),
-								QuestionAnswer.getAnswer13(),
-								QuestionAnswer.getAnswer14(),
-								QuestionAnswer.getAnswer15(),
-								QuestionAnswer.getAnswer16(),
-								QuestionAnswer.getAnswer17(),
-								QuestionAnswer.getAnswer18(),
-								QuestionAnswer.getAnswer19(),
-								QuestionAnswer.getAnswer20(),
-								QuestionAnswer.getAnswer21(),
-								QuestionAnswer.getAnswer22(),
-								QuestionAnswer.getAnswer23(),
-								QuestionAnswer.getAnswer24(),
-								user.getId());
-
-			result.setStatus(true);
 	
+		log.info("#####################");
+		log.info(template.queryForInt(countsql, user.getId()));
+		log.info("#####################");
+		
+		int count = template.queryForInt(countsql, user.getId());
+		
+		if(0<count){
+			int num = template.queryForInt("select MAX(num) from heartlinkrecord");
+			num += 1;
+			log.info("id =" + num);
 
-		} catch (DataAccessException e) {
-			result.setStatus(false);
+			
+			String sql = "insert into heartlinkrecord " +
+					 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, num) " +
+					 " values " +
+					 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+			try {
+
+				template.update(sql, QuestionAnswer.getAnswer1(),
+									QuestionAnswer.getAnswer2(),
+									QuestionAnswer.getAnswer3(),
+									QuestionAnswer.getAnswer4(),
+									QuestionAnswer.getAnswer5(),
+									QuestionAnswer.getAnswer6(),
+									QuestionAnswer.getAnswer7(),
+									QuestionAnswer.getAnswer8(),
+									QuestionAnswer.getAnswer9(),
+									QuestionAnswer.getAnswer10(),
+									QuestionAnswer.getAnswer11(),
+									QuestionAnswer.getAnswer12(),
+									QuestionAnswer.getAnswer13(),
+									QuestionAnswer.getAnswer14(),
+									QuestionAnswer.getAnswer15(),
+									QuestionAnswer.getAnswer16(),
+									QuestionAnswer.getAnswer17(),
+									QuestionAnswer.getAnswer18(),
+									QuestionAnswer.getAnswer19(),
+									QuestionAnswer.getAnswer20(),
+									QuestionAnswer.getAnswer21(),
+									QuestionAnswer.getAnswer22(),
+									QuestionAnswer.getAnswer23(),
+									QuestionAnswer.getAnswer24(),
+									user.getId(),
+									num);
+
+				result.setStatus(true);
+		
+
+			} catch (DataAccessException e) {
+				result.setStatus(false);
+
+			}
+			
+			return result;
+		}else{
+			String sql = "insert into matchingrecord " +
+					 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid) " +
+					 " values " +
+					 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			try {
+
+				template.update(sql, QuestionAnswer.getAnswer1(),
+									QuestionAnswer.getAnswer2(),
+									QuestionAnswer.getAnswer3(),
+									QuestionAnswer.getAnswer4(),
+									QuestionAnswer.getAnswer5(),
+									QuestionAnswer.getAnswer6(),
+									QuestionAnswer.getAnswer7(),
+									QuestionAnswer.getAnswer8(),
+									QuestionAnswer.getAnswer9(),
+									QuestionAnswer.getAnswer10(),
+									QuestionAnswer.getAnswer11(),
+									QuestionAnswer.getAnswer12(),
+									QuestionAnswer.getAnswer13(),
+									QuestionAnswer.getAnswer14(),
+									QuestionAnswer.getAnswer15(),
+									QuestionAnswer.getAnswer16(),
+									QuestionAnswer.getAnswer17(),
+									QuestionAnswer.getAnswer18(),
+									QuestionAnswer.getAnswer19(),
+									QuestionAnswer.getAnswer20(),
+									QuestionAnswer.getAnswer21(),
+									QuestionAnswer.getAnswer22(),
+									QuestionAnswer.getAnswer23(),
+									QuestionAnswer.getAnswer24(),
+									user.getId());
+
+				result.setStatus(true);
+		
+
+			} catch (DataAccessException e) {
+				result.setStatus(false);
+
+			}
+			
+			return result;
 		}
 		
-		return result;
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
