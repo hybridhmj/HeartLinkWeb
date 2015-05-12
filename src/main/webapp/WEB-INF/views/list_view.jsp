@@ -11,7 +11,7 @@
 <div>
 <table border="1">
 
-	<tr style="background-color: pink">
+	<tr style="background-color: #33CCCC">
 		<th>글 번호</th>
 		<th>제목</th>
 		<th>작성자</th>

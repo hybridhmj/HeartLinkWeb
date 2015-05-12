@@ -13,6 +13,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import com.heartlink.model.Delete;
 import com.heartlink.model.QnAResult;
 import com.heartlink.model.Qnapage;
 import com.heartlink.model.Show;
+import com.heartlink.model.Update;
 
 
 @Controller
@@ -156,44 +158,74 @@ public class QnAController {
 	}
 	
 
-//	// update_list
-//	@RequestMapping(value="/eee", method=RequestMethod.POST)
-//	@ResponseBody
-//	public boolean question(@RequestBody Delete del, int num) {
-//		
-//		log.info("########################################");
-//		log.info("delete_list = > slected id = " + del.getId() 
-//				+ " // password = " + del.getPassword());
-//		log.info("########################################");
-//		
-//		JdbcTemplate template = new JdbcTemplate(datasource);
-//		String sql = "select * from article where id = ?";
-//		
-//		Article article = template.queryForObject(sql, new Object[] {del.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
-//		
-////		log.info("password" + article.getPassword());
-//		
-//		boolean correct = true;
-//		
-//		if(del.getPassword().equals(article.getPassword())) {
-//			correct = true;
-//			log.info(correct);
-//			sql = "delete from article where id = ?";
-//			int count = template.update(sql, del.getId());
-//			
-//			if(count > 0) {
-//				log.info("삭제 완료");
-//			} else {
-//				log.info("없는 데이터를 삭제하려고 합니다.");
-//			}
-//			
-//		} else {
-//			correct = false;
-//			log.info(correct);
-//		}
-//		
-//		return correct;
-//	}
+	// update_list
+	@RequestMapping(value="/eee", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean question(@RequestBody Update up) {
+		
+		log.info("########################################");
+		log.info("update_list = > slected id = " + up.getId() 
+				+ " // password = " + up.getPassword());
+		log.info("########################################");
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		String sql = "select * from article where id = ?";
+		
+		Article article = template.queryForObject(sql, new Object[] {up.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		
+		boolean correct = true;
+		
+		if(up.getPassword().equals(article.getPassword())) {
+			correct = true;
+			log.info(correct);
+		} else {
+			correct = false;
+			log.info(correct);
+		}
+		
+		return correct;
+	}
+	
+	// update_form
+		@RequestMapping(value="/fff", method=RequestMethod.POST)
+		@ResponseBody
+		public boolean question(@RequestBody Article article) {
+			
+			log.info("########################################");
+			log.info("question() POST.......");
+			log.info("id = " + article.getId());
+			log.info("title = " + article.getTitle());
+			log.info("writerName = " + article.getWriterName());
+			log.info("password = " + article.getPassword());
+			log.info("content = " + article.getContent());
+			log.info("########################################");
+
+			JdbcTemplate template = new JdbcTemplate(datasource);
+			String sql = "update article set writerName = ?, password = ?, title = ?, content = ? where id = ?";
+			
+			Boolean correct = true;
+			
+			try {
+				int num = template.update(sql, article.getWriterName(), article.getPassword(), article.getTitle(),
+						article.getContent(), article.getId());
+//				log.info("num = " + num);
+				if(num > 0) {
+					correct = true;
+				} else {
+					correct = false;
+					log.info("없는 데이터를 수정하려고 합니다.");
+				}
+			} catch(DataAccessException e) {
+				correct = false;
+				log.info("DataAccessException");
+			}
+			
+			return correct;
+		
+		}
+	
+	
+	
 	
 	
 	

@@ -16,9 +16,8 @@
 		<td>작성자 : {{artices.writerName}}</td>
 	</tr>
 	<tr>
-		<td colspan="3">
-			<textarea rows="30" cols="50">{{artices.content}}</textarea>
-		</td>
+		<td colspan="3" width="70%" height="30%" ng-bind-html="newContent"></td>
+<!-- 		<td colspan="3" width="70%" height="30%">{{artices.content}}</td> -->
 	</tr>
 </table>
 </form>

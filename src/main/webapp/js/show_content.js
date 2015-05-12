@@ -11,6 +11,8 @@ app.controller("showController", function($scope, $http, $location) {
 
 		   $scope.artices = article;
 		   
+		   $scope.newContent =  $scope.artices.content;
+		   
 //		   alert(article.content);
 //		   $scope.ccc = article.content;
 
