@@ -2,7 +2,7 @@
  * contactController
  */
 
-app.controller("heartlinkrecordController", function($scope, $http) {
+app.controller("heartlinkrecordController", function($scope, $http, $location, $templateCache, $route) {
 //		alert("heartlinkrecordController");
 	console.log("heartlinkrecordController start...");
 	
@@ -10,6 +10,15 @@ app.controller("heartlinkrecordController", function($scope, $http) {
 		$scope.answers = result;
 	});
 	
+	$http.get("../m/heartlinkrecord/match").success(function(result) {
+		$scope.matchs = result;
+	});
 	
+	$scope.change = function(e) {
+
+		$http.post("../m/heartlinkrecord/changematch", e).success(function(result) {
+			$route.reload();
+		});
+	};
 	
 });
