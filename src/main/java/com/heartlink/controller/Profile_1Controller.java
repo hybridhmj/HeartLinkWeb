@@ -44,7 +44,7 @@ public class Profile_1Controller {
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		String sql = "update condition set message = ? where num=2";
+		String sql = "update profile set message = ? where num=2";
 		
 		template.update(sql, profile_1.getMessage());
 		
