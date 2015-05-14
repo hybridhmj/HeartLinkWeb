@@ -2,7 +2,7 @@
  * mainController
  */
 
-var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute", "ngTouch"]);
+var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute", "ngTouch", "ui.bootstrap"]);
 app.config(function($routeProvider) {
 	
     $routeProvider

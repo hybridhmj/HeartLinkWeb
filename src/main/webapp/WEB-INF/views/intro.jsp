@@ -6,11 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
 <%@ include file="/WEB-INF/common.jspf" %>
 
 <script type="text/javascript">
 
-var app = angular.module("myApp", ["ngAnimate", "ngSanitize", "ngRoute", "ngTouch"]);
+var app = angular.module("myApp", ["ngAnimate", "ngSanitize", "ngRoute", "ngTouch", "ui.bootstrap"]);
 
 app.controller("mainController", function($scope) {
 	$scope.num=0;

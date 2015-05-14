@@ -1,5 +1,7 @@
 package com.heartlink.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.model.Article;
 import com.heartlink.model.Condition;
 import com.heartlink.model.Member;
+import com.heartlink.model.Question;
 import com.heartlink.model.User;
 
 
@@ -48,7 +52,9 @@ public class ProfileController {
 		Member profile = template.queryForObject(sql, new Object[] {sessionuser.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
 		
 		log.info("#####################");
-		log.info("#######"+ profile.getRgarea() +"######");
+		log.info("지역:"+ profile.getRgarea());
+		log.info("아이디:" +profile.getRgid());
+		log.info("생일:"+profile.getRgbirth());
 		log.info("#####################");
 			
 		
@@ -57,31 +63,36 @@ public class ProfileController {
 	
 	
 	
+	
 	@ResponseBody
 	@RequestMapping(value="/condition", method=RequestMethod.GET)
-	public Condition getProfileMessage(){
+	public Condition getProfileMessage(HttpSession session){
+
+		log.info("#####################");
+		log.info("###getProfileMessage####");
+		log.info("#####################");
 		
+		
+		
+		
+		User sessionuser = (User)session.getAttribute("user");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		String sql = "select * from profile where num = 2";
+		String sql = "select * from profile where userid = ?";
 		
 		Condition message = new Condition();
 		
-		message = template.queryForObject(sql, new BeanPropertyRowMapper<Condition>(Condition.class));
+		message = template.queryForObject(sql, new Object[] {sessionuser.getId()}, new BeanPropertyRowMapper<Condition>(Condition.class));
 		
+
 		log.info("#####################");
-		log.info("#######"+ message.getMessage() +"######");
+		log.info(message.getMessage());
 		log.info("#####################");
 			
 		
 		return message;
 	}
-
-	
-	
-	
-	
 	
 	
 }

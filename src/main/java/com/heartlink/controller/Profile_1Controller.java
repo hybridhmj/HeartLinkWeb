@@ -2,6 +2,7 @@ package com.heartlink.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
@@ -35,7 +36,10 @@ public class Profile_1Controller {
 	
 	@ResponseBody
 	@RequestMapping(value="/profile_1", method=RequestMethod.POST)
-	public Condition getProfile_1(@RequestBody Condition profile_1){
+	public Condition getProfile_1(@RequestBody Condition profile_1, HttpSession usersession){
+		
+		User user = (User)usersession.getAttribute("user");
+		String nowUserId = user.getId();
 		
 		log.info("#####################");
 		log.info("getProfile_1() .........");
@@ -44,15 +48,31 @@ public class Profile_1Controller {
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		String sql = "update profile set message = ? where num=2";
+		String countsql = "select count(*) from profile where userid = ?";
 		
-		template.update(sql, profile_1.getMessage());
+		int count = template.queryForInt(countsql, nowUserId);
 		
 		
 		log.info("#####################");
-		log.info("templateerror() .........");
+		log.info(count);
 		log.info("#####################");
-				
+		
+		String insertsql = "insert into profile (message, userid) values (?, ?)";
+		String updatesql = "update profile set message = ? where userid = ?";
+
+		if(count != 1){
+			//처음 insert
+			log.info("레코드가 존재하지 않습니다. 생성하겠습니다.");
+			template.update(insertsql, profile_1.getMessage(), nowUserId);
+			
+			
+		}else {
+			//기존 update
+			log.info("레코드가 존재합니다. 수정하겠습니다.");
+			template.update(updatesql, profile_1.getMessage() ,nowUserId);
+			
+		}
+
 		return profile_1;
 	}
 	
