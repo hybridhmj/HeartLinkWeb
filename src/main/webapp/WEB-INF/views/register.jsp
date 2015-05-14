@@ -81,9 +81,9 @@
 			
 			
 			<div class="form-group">
-	      		 <label for="rgbirth" class="col-xs-3 control-label">생일</label>
+	      		 <label for="rgbirth" class="col-xs-3 control-label">나이</label>
 				 <div class="col-xs-9">
-				    <input type="number" class="form-control" data-ng-required="true" data-ng-model="rgbirth" id="rgbirth" name="rgbirth" placeholder="생년월일(-없이)">
+				    <input type="number" class="form-control" data-ng-required="true" data-ng-model="rgbirth" id="rgbirth" name="rgbirth" placeholder="예) 20세">
 				 </div>
 			</div>
 			
@@ -93,21 +93,23 @@
 				  <div class="col-xs-9">
 					  <div class="btn-group">
 						<label for="rgman" class="btn btn-default btn-lg" >
-							<input data-ng-required="true" type="radio" name="rgsex" id="rgman" data-ng-model="rgsex" autocomplete="off" value="mail"/>남
+							<input data-ng-required="true" type="radio" name="rgsex" id="rgman" data-ng-model="rgsex" autocomplete="off" value="mail" data-ng-checked="true"/>남
 						</label>
 						<label for="rgwomen" class="btn btn-default btn-lg">
 							 <input data-ng-required="true" type="radio" name="rgsex" id="rgwomen" data-ng-model="rgsex" autocomplete="off" value="femail"/>여
 						</label>
 						
 					  </div>
-					  <span style="color:red;" data-ng-show="registerForm.rgarea.$dirty==true">성별은 필수 입력 항목입니다.</span>
+					  <span style="color:red;" data-ng-show="registerForm.rgsex.$dirty==true">성별은 필수 입력 항목입니다.</span>
 				</div>
 			</div>
 			
 			
-      		<p>registerForm.rgsex.$dirty = {{registerForm.rgsex.$dirty}}</p>
+			<p>registerForm.rgsex.$dirty = {{registerForm.rgsex.$dirty}}</p>
 			<p>registerForm.rgsex.$pristine = {{registerForm.rgsex.$pristine}}</p>
-			<p>registerForm.rgsex.$error = {{registerForm.rgid.$error}}</p>
+			<p>registerForm.rgsex.$valid = {{registerForm.rgsex.$valid}}</p>
+			<p>registerForm.rgsex.$invalid = {{registerForm.rgsex.$invalid}}</p>
+			<p>registerForm.rgsex.$error = {{registerForm.rgsex.$error}}</p>
 			
 			
 				
