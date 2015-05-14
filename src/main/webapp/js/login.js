@@ -15,6 +15,18 @@ app.controller("loginController", function($scope, $http, $location) {
 	$scope.rgsex = "";
 	$scope.rgarea = "";
 	
+	
+	$http.get("../m/login/logincheck").success(function(loginstatus) {
+			$scope.login = loginstatus;
+			if($scope.login.status==true){
+				$location.path("/home");
+			}
+	}).error(function() {
+		alert("server error...");
+	});
+	
+	
+	
 	$scope.submit = function() {
 		console.log("login submit click...");
 		$http.post("../m/login/login", {id : $scope.id, password : $scope.password}).success(function(loginstatus) {
@@ -25,10 +37,14 @@ app.controller("loginController", function($scope, $http, $location) {
 				$location.path("/home");
 				
 			}else {
-				alert("로그인 실패...");
+//				alert("로그인 실패...");
+				$scope.loginfail = loginstatus;
+				$('#myModal').modal('show')
 			}
+			
 		}).error(function() {
-			alert("server error...");
+//			alert("server error...");
+			$('#myModal').modal('show')
 		});
 
 	};

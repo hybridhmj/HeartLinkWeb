@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -43,10 +44,11 @@ public class LoginController {
 		
 		String sql = "select * from member where rgid= ?";
 		
-		Member userinfo = template.queryForObject(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
-		
+		Member userinfo = new Member();
 		LoginStatus result = new LoginStatus();
 		
+		try{
+		userinfo = template.queryForObject(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
 		
 		if (userinfo.getRgpassword().equals(user.getPassword())) {
 			session.setAttribute("user", user);
@@ -55,7 +57,23 @@ public class LoginController {
 		} else {
 			// Login Fail
 			result.setStatus(false);
+			
+			log.info("#########################");
+			log.info("로그인 실패");
+			log.info("#########################");
+			
+			
 		}
+		
+		}catch(DataAccessException e){
+			
+			result.setStatus(false);
+			
+		}
+		
+		
+		
+		
 
 		result.setUser(user);
 		

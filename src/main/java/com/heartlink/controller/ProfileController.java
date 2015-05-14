@@ -64,7 +64,7 @@ public class ProfileController {
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		String sql = "select * from condition where num = 2";
+		String sql = "select * from profile where num = 2";
 		
 		Condition message = new Condition();
 		

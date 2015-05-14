@@ -9,8 +9,10 @@ app.controller("registerController", function($scope, $http, $location) {
 	
 	$scope.rgid = "";
 	$scope.rgpassword = "";
+	$scope.ckpassword = "";
 	$scope.rgsex = "";
 	$scope.rgarea = "";
+
 	
 	$scope.registersubmit = function() {
 		console.log("login submit click...");
