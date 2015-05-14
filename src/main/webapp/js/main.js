@@ -43,9 +43,9 @@ app.config(function($routeProvider) {
         })
         
         // profile_1 page
-        .when('/profile_1', {
-            templateUrl: 'profile_1',
-            controller: 'profile_1Controller'
+        .when('/profile_messagechange', {
+            templateUrl: 'profile_messagechange',
+            controller: 'profileMessageController'
         })
         
         // mysituation page

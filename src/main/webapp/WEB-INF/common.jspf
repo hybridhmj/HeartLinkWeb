@@ -35,7 +35,7 @@
 <script type="text/javascript" src="${js}/about.js"></script>
 <script type="text/javascript" src="${js}/signup.js"></script>
 <script type="text/javascript" src="${js}/profile.js"></script>
-<script type="text/javascript" src="${js}/profile_1.js"></script>
+<script type="text/javascript" src="${js}/profile_messagechange.js"></script>
 <script type="text/javascript" src="${js}/mysituation.js"></script>
 <script type="text/javascript" src="${js}/heartlinkrecord.js"></script>
 <script type="text/javascript" src="${js}/list_view.js"></script>
