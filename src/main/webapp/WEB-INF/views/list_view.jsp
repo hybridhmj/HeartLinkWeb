@@ -9,16 +9,15 @@
 <hr>
 
 <div>
-<table border="1">
-
-	<tr style="background-color: #33CCCC">
-		<th>글 번호</th>
-		<th>제목</th>
-		<th>작성자</th>
+<table>
+	<tr style="background-color: #33CCCC" height="30px">
+		<th width="80px">글 번호</th>
+		<th width="200px">제목</th>
+		<th width="100px">작성자</th>
 
 	</tr>
 	<tr data-ng-repeat="article in articles">
-		<td>{{article.id}}</td>
+		<td align="center">{{article.id}}</td>
 		<td><a class="btn" data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td>
 		<td>{{article.writerName}}</td>
 	</tr>

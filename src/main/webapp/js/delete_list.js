@@ -24,7 +24,7 @@ app.controller("deleteController", function($scope, $http, $location) {
 			}
 
 		   }).error(function() {
-		      alert("server error...");
+		      alert("server error...ToT(delete_list.jsp)");
 		   });
 	};
 	

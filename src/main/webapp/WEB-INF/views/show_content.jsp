@@ -7,21 +7,17 @@
 <hr>
 
 <div>
-
-<form>
-<table border="1">
+<table>
 	<tr>
-		<td>글 번호 : {{artices.id}}</td>
-		<td>제목 : {{artices.title}}</td>
-		<td>작성자 : {{artices.writerName}}</td>
+		<td><pre>글 번호 : {{artices.id}}</pre></td>
+		<td><pre>제목 : {{artices.title}}</pre></td>
+		<td><pre>작성자 : {{artices.writerName}}</pre></td>
 	</tr>
 	<tr>
-		<td colspan="3" width="70%" height="30%" ng-bind-html="newContent"></td>
-<!-- 		<td colspan="3" width="70%" height="30%">{{artices.content}}</td> -->
+<!-- 		<td colspan="3" width="70%" height="30%" ng-bind-html="newContent"></td> -->
+		<td colspan="3" width="70%" height="30%"><pre>{{artices.content}}</pre></td>
 	</tr>
 </table>
-</form>
-
 </div>
 
 <br>

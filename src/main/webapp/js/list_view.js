@@ -3,6 +3,7 @@
  */
 //http://stackoverflow.com/questions/11873570/angularjs-for-loop-with-numbers-ranges
 
+
 app.controller("listViewController", function($scope, $http, $location) {
 	
 //   $http.get("qna/aaa").success(function(loginstatus) {

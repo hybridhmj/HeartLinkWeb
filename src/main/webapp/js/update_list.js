@@ -21,7 +21,7 @@ app.controller("updatesController", function($scope, $http, $location) {
 			}
 
 		   }).error(function() {
-		      alert("server error...");
+		      alert("server error...ToT(update_list.jsp)");
 		   });
 	};
 	
