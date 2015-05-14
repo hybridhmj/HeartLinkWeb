@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -90,11 +91,16 @@ public class QnAController {
 		log.info("id =" + id);
 		article.setId(id);
 		
-		String sql = "insert into article (id, writerName, password, title, content) values (?, ?, ?, ?, ?)";
-		int num = template.update(sql, article.getId(), article.getWriterName(), article.getPassword(), article.getTitle(), article.getContent());
-		
-		result.setStatus(true);
-		
+		try {
+			
+			String sql = "insert into article (id, writerName, password, title, content) values (?, ?, ?, ?, ?)";
+			int num = template.update(sql, article.getId(), article.getWriterName(), article.getPassword(), article.getTitle(), article.getContent());
+			
+			result.setStatus(true);
+		}
+		catch(EmptyResultDataAccessException e) {
+				log.info("EmptyResultDataAccessException ㅜㅜㅜ왜그래");
+		}
 
 		return result;
 	
