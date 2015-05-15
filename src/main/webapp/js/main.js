@@ -2,7 +2,32 @@
  * mainController
  */
 
-var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute", "ngTouch", "ui.bootstrap"]);
+var app = angular.module("myApp", ["ngSanitize", "ngAnimate", "ngRoute", "ngTouch", 'ui.bootstrap']);
+
+app.directive('onTouch', function() {
+	  return {
+	        link: function(scope, elm, attrs) {
+	            var ontouchFn = scope.$eval(attrs.onTouch);
+	            
+	            elm.bind('touchstart', function(evt) {
+	                scope.$apply(function() {
+	                    ontouchFn.call(scope, evt.which);
+	                });
+	            });
+
+//	            elm.bind('click', function(evt){
+//	                    scope.$apply(function() {
+//	                        ontouchFn.call(scope, evt.which);
+//	                    });
+//	            });
+	        }
+	    };
+});
+
+
+
+
+
 app.config(function($routeProvider) {
 	
     $routeProvider
@@ -85,7 +110,7 @@ app.config(function($routeProvider) {
         })
         
         // write_form page
-        .when('/question', {
+        .when('/question/:questionNumber', {
             templateUrl: 'question',
             controller: 'questionController'
         })
@@ -112,11 +137,7 @@ app.config(function($routeProvider) {
             templateUrl: 'mapping',
             controller: 'mappingController'
         })
-        
-        .when('/examjsp', {
-            templateUrl: 'examjsp',
-            controller: 'examjspController'
-        })
+
     
 	 	// otherwise page
     	.otherwise({redirectTo: '/login'});
@@ -125,7 +146,7 @@ app.config(function($routeProvider) {
 
 
 app.controller("mainController", function($scope, $http, $rootScope, $templateCache, $location) {
-//	alert("mainController");
+	alert("mainController");
 	
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
     		if (typeof current != 'undefined') {
@@ -135,10 +156,12 @@ app.controller("mainController", function($scope, $http, $rootScope, $templateCa
     });
     
     $scope.swipeLeft = function() {
+    	alert("swipeleft")
     	console.log("swipeleft = " + $location.path());
     };
     
     $scope.swipeRight = function() {
+    	alert("swipeRight");
     	console.log("swipeRight = " + $location.path());
     };
     

@@ -27,8 +27,7 @@
 				<a class="navbar-brand active" href="#/profile"><small>프로필</small></a>
 				<a class="navbar-brand active" href="#/mysituation"><small>운명현황</small></a>
 				<a class="navbar-brand active" href="#/heartlinkrecord"><small>게임이력</small></a>
-				<a class="navbar-brand active" href="#/examjsp"><small>연습용</small></a>
-				<a class="navbar-brand active" href="#/last"><small>last연습용</small></a>
+
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 				    <span class="icon-bar"></span>
@@ -39,7 +38,6 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav" data-ng-show="login.status">
 				    <li><a href="#/list_view">Q&A 게시판</a></li>
-				    <li><a href="#/question">게임예시</a></li>
 				    <li class="dropdown">
 			        	<a class="dropdown-toggle" data-toggle="dropdown" href="">Page 3
 			        	<span class="caret"></span></a>
@@ -59,6 +57,8 @@
 			</div>
 		</div>
 	</nav>
+
+
 </div>
 
 <!-- ################ -->

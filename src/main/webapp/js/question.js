@@ -2,10 +2,10 @@
  * questionController
  */
 
-app.controller("questionController", function($scope, $http, $location) {
+app.controller("questionController", function($scope, $http, $location, $routeParams) {
 //		alert("questionController");
 	console.log("questionController start...");
-
+	$scope.questionNumber = $routeParams.questionNumber;
 	$scope.num=1;
 	$scope.s1='';
 	$scope.s2='';
@@ -39,7 +39,7 @@ app.controller("questionController", function($scope, $http, $location) {
 	};
 
 	
-	$http.get("q/question").success(function(questions) {
+	$http.post("q/question",$scope.questionNumber).success(function(questions) {
 	   $scope.ques = questions;
 	  }).error(function() {
 	     alert("server error...");
@@ -85,6 +85,26 @@ app.controller("questionController", function($scope, $http, $location) {
 		});
 		
 	};
+	
+	
+	
+	  
+	  
+
+    $scope.clickedOrTouched = function() {
+    	
+    	$scope.leftbtn();
+    	
+    };
+    
+    $scope.cliecked = function() {
+    	
+    	$scope.rightbtn();
+    	
+    };
+    
+    
+
 	
 	
 });

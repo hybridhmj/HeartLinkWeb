@@ -35,18 +35,20 @@ public class QuestionController {
 	DataSource datasource;
 	
 	
-	@RequestMapping(value="/question", method=RequestMethod.GET)
+	@RequestMapping(value="/question", method=RequestMethod.POST)
 	@ResponseBody
-	public List<Question> question() {
+	public List<Question> question(@RequestBody String questionNum) {
 		
 		log.info("########################################");
-		log.info("QuestionController()...");
+		log.info("QuestionController()..." +questionNum);
 		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		List<Question> questions = template.query("select * from a1_b1", new BeanPropertyRowMapper<Question>(Question.class));
+		String sql = "select * from "+questionNum;
 		
+		List<Question> questions = template.query(sql, new BeanPropertyRowMapper<Question>(Question.class));
+
 		if(questions.isEmpty()){
 			log.info("## list empty ##");
 		}else{

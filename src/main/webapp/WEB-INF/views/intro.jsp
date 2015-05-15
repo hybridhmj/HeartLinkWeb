@@ -72,7 +72,7 @@ app.controller("mainController", function($scope) {
 </head>
 <body data-ng-controller="mainController"
 	  data-ng-swipe-left="countp()"
-	  data-ng-swipe-right="countm()"      
+	  data-ng-swipe-right="countm()"   
 >
 
 <div class="row container-fluid">

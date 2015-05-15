@@ -29,8 +29,7 @@
 <mvc:view-controller path="register" view-name="register"/>
 <mvc:view-controller path="question" view-name="question"/>
 <mvc:view-controller path="mapping" view-name="mapping"/>
-<mvc:view-controller path="examjsp" view-name="examjsp"/>
-<mvc:view-controller path="last" view-name="last"/>
+
 
 <mvc:view-controller path="show_content" view-name="show_content"/>
 <mvc:view-controller path="delete_list" view-name="delete_list"/>

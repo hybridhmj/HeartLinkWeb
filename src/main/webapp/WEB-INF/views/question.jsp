@@ -2,16 +2,39 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
+<style>
+
+		#questionmenu {
+		font-size: x-large;
+		background-color: rgb(119,211,206);
+		color: white;
+		margin-bottom: 15%;
+	}
+
+.btn {
+    display: block;
+    border: 1px solid;
+    height: 200px;
+    width: 100px;
+    float: left;
+    margin: 20px;
+    padding: 10px;
+}
+  
+	
+</style>
+
+	<div>
+    <div class='a' data-on-touch="clickedOrTouched">Touch or click me</div>
+    <div class='btn' data-ng-click="cliecked()">Touch or click me</div>
+    </div>
+
+    
+
+<div id="questionmenu" class="container text-center" style="font-size: 2em;">질문</div>
 
 
-<div class="container-fluid" data-ng-swipe-left="countp()"
-	  data-ng-swipe-right="countm()" >
-
-  			
-  		<button type="button" data-ng-click="leftbtn()" class="btn btn-default carousel-control left">
-		<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-		</button>
-
+<div class="container-fluid" data-ng-swipe-left="countp()" data-ng-swipe-right="countm()">
 
 
 		<form data-ng-submit="question()" role="form" method="post" style="width: 300px; margin: 0 auto;">
@@ -31,13 +54,13 @@
 			</div>
 			<button data-ng-show="num == 24" type="submit" class="btn btn-primary center-block">보내기</button>
 		</form>
-		
-		
-		
+
 	
 		<button type="button" data-ng-click="rightbtn()" class="btn btn-default carousel-control right">
 		<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 		</button>
 
 
+
 </div>
+
