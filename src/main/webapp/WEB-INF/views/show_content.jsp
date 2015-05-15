@@ -24,5 +24,5 @@
 
 <a href="#/list_view" class="btn btn-primary" style="color: white">목록보기</a>
 <a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>
-<a href="#/update_list" class="btn btn-primary" style="color: white">수정</a>
-<a href="#/delete_list" class="btn btn-primary" style="color: white">삭제</a>
+<a href="#/update_list/{{id}}" class="btn btn-primary" style="color: white">수정</a>
+<a href="#/delete_list/{{id}}" class="btn btn-primary" style="color: white">삭제</a>

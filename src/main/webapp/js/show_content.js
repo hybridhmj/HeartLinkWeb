@@ -2,21 +2,17 @@
  * showController
  */
 
-app.controller("showController", function($scope, $http, $location) {
+app.controller("showController", function($scope, $http, $location, $routeParams) {
 	
-//	$scope.id = $scope.$parent.contentID;
-//	alert($scope.$parent.contentID);
+//	alert($routeParams.id);
+	$scope.id = $routeParams.id;
 	
-	   $http.post("qna/ccc", {id : $scope.$parent.contentID}).success(function(article) {
+	   $http.post("qna/ccc", {id : $scope.id}).success(function(article) {
 
 		   $scope.artices = article;
 		   
-//		   alert(article.content);
-//		   $scope.ccc = article.content;
-
 	   }).error(function() {
 	      alert("server error...ToT(show_content.jsp)");
 	   });
 
 });
-

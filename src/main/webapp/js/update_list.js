@@ -1,7 +1,7 @@
 
-app.controller("updatesController", function($scope, $http, $location) {
+app.controller("updatesController", function($scope, $http, $location, $routeParams) {
 	
-	$scope.id = $scope.$parent.contentID;
+	$scope.id = $routeParams.id;
 //	alert($scope.id);
 
 	$scope.updateID = function(password) {
@@ -14,7 +14,7 @@ app.controller("updatesController", function($scope, $http, $location) {
 			if($scope.correct == true) {
 //				alert("true = >" + correct);
 				alert($scope.id + "번 글을 수정하겠습니다 :)")
-				$location.path("/update_form");
+				$location.path("/update_form/"+$scope.id);
 			} else {
 //				alert("false = >" + correct);
 				alert("비밀번호가 틀렸습니다. 확인하세요 ;(")
@@ -24,5 +24,7 @@ app.controller("updatesController", function($scope, $http, $location) {
 		      alert("server error...ToT(update_list.jsp)");
 		   });
 	};
+	
+
 	
 });

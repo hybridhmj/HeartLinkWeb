@@ -73,7 +73,7 @@ app.config(function($routeProvider) {
         })
         
         // show_content page
-        .when('/show_content', {
+        .when('/show_content/:id', {
             templateUrl: 'show_content',
             controller: 'showController'
         })
@@ -91,19 +91,19 @@ app.config(function($routeProvider) {
         })
         
         // delete_list page
-        .when('/delete_list', {
+        .when('/delete_list/:id', {
             templateUrl: 'delete_list',
             controller: 'deleteController'
         })
         
         // update_list page
-        .when('/update_list', {
+        .when('/update_list/:id', {
             templateUrl: 'update_list',
             controller: 'updatesController'
         })
         
         // update_form page
-        .when('/update_form', {
+        .when('/update_form/:id', {
             templateUrl: 'update_form',
             controller: 'updateFormController'
         })
@@ -123,10 +123,9 @@ app.config(function($routeProvider) {
 
 });
 
+
 app.controller("mainController", function($scope, $http, $rootScope, $templateCache, $location) {
 //	alert("mainController");
-	
-	$scope.contentID=""; 
 	
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
     		if (typeof current != 'undefined') {

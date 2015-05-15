@@ -31,6 +31,7 @@ import com.heartlink.model.QnAResult;
 import com.heartlink.model.Qnapage;
 import com.heartlink.model.Show;
 import com.heartlink.model.Update;
+import com.heartlink.model.User;
 
 
 @Controller
@@ -39,7 +40,6 @@ public class QnAController {
 
 	static Log log = LogFactory.getLog(QnAController.class);
 	static int totalPageNum=0;
-	
 	
 	@Autowired
 	DataSource datasource;
@@ -72,7 +72,7 @@ public class QnAController {
 	// write_form
 	@RequestMapping(value="/bbb", method=RequestMethod.POST)
 	@ResponseBody
-	public QnAResult question(@RequestBody Article article, HttpSession session) throws SQLException { // 로그인 처리
+	public QnAResult question(@RequestBody Article article, HttpSession session) throws SQLException {
 		
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 		log.info("question() POST.......");
@@ -99,7 +99,7 @@ public class QnAController {
 			result.setStatus(true);
 		}
 		catch(EmptyResultDataAccessException e) {
-				log.info("EmptyResultDataAccessException ㅜㅜㅜ왜그래");
+				log.info("EmptyResultDataAccessException");
 		}
 
 		return result;
@@ -110,10 +110,11 @@ public class QnAController {
 	@RequestMapping(value="/ccc", method=RequestMethod.POST)
 	@ResponseBody
 	public Article question(@RequestBody Show show) {
+			
+		log.info("########################################");
+		log.info("show_content, slected id = " + show.getId());
+		log.info("########################################");
 		
-		log.info("########################################");
-		log.info("show_content = > slected id = " + show.getId());
-		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		String sql = "select * from article where id = ?";
@@ -304,10 +305,7 @@ public class QnAController {
 		return list;
 	}
 	
-	
-	
-	
-	
+
 	@RequestMapping(value="/qnapageminus", method=RequestMethod.POST)
 	@ResponseBody
 	public ArrayList<Integer> pageminus(@RequestBody Qnapage qnaTotalPage) {
@@ -322,13 +320,6 @@ public class QnAController {
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@RequestMapping(value="/callpage", method=RequestMethod.POST)
@@ -365,8 +356,6 @@ public class QnAController {
 
 		return list;
 	}
-	
-	
 	
 	
 	

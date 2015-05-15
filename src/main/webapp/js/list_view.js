@@ -24,16 +24,6 @@ app.controller("listViewController", function($scope, $http, $location) {
 	 });
    
    
-   
-   $scope.showId = function(id) {
-//	   alert("id = " + id);
-
-	   $scope.$parent.contentID = id;
-	   
-	   $location.path("/show_content");
-   };
-   
-   
    $scope.nextPage = function(e) {
 
 	   $scope.lastPageValue=e;

@@ -18,7 +18,8 @@
 	</tr>
 	<tr data-ng-repeat="article in articles">
 		<td align="center">{{article.id}}</td>
-		<td><a class="btn" data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td>
+		<td><a href="#/show_content/{{article.id}}" class="btn">{{article.title}}</a></td>
+<!-- 		<td><a class="btn" data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td> -->
 		<td>{{article.writerName}}</td>
 	</tr>
 </table> 

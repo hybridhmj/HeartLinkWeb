@@ -2,9 +2,9 @@
  * deleteController
  */
 
-app.controller("deleteController", function($scope, $http, $location) {
+app.controller("deleteController", function($scope, $http, $location, $routeParams) {
 	
-	$scope.id = $scope.$parent.contentID;
+	$scope.id = $routeParams.id;
 //	alert($scope.id);
 
 	$scope.deleteID = function(password) {

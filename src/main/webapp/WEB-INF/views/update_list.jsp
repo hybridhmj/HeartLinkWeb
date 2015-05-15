@@ -15,5 +15,4 @@ Password :
  
 <a href="#/list_view" class="btn btn-primary" style="color: white">목록보기</a>
 <a class="btn btn-primary" data-ng-click="updateID(password)" type="POST">확인</a>
-
 </form>

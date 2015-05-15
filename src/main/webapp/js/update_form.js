@@ -1,7 +1,7 @@
 
-app.controller("updateFormController", function($scope, $http, $location) {
+app.controller("updateFormController", function($scope, $http, $location, $routeParams) {
 	
-	$scope.id = $scope.$parent.contentID;
+	$scope.id = $routeParams.id;
 
 //	alert($scope.id);
 	
@@ -21,7 +21,7 @@ app.controller("updateFormController", function($scope, $http, $location) {
 	   	
 		$scope.updateForm = function() {
 			
-			$http.post("qna/fff", {id : $scope.artices.id, password : $scope.newPassword, title : $scope.newTitle,
+			$http.post("qna/fff", {id : $scope.id, password : $scope.newPassword, title : $scope.newTitle,
 									writerName : $scope.newWriterName, content : $scope.newContent}).success(function(correct) {
 
 										if(correct == true) {
