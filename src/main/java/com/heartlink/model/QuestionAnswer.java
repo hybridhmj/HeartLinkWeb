@@ -27,6 +27,7 @@ public class QuestionAnswer {
 	String answer23;
 	String answer24;
 	String recordid;
+	String questionnum;
 	
 	
 	public String getAnswer1() {
@@ -178,6 +179,12 @@ public class QuestionAnswer {
 	}
 	public void setRecordid(String recordid) {
 		this.recordid = recordid;
+	}
+	public String getQuestionnum() {
+		return questionnum;
+	}
+	public void setQuestionnum(String questionnum) {
+		this.questionnum = questionnum;
 	}
 
 	

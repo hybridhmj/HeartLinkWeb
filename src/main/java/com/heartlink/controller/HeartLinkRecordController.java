@@ -111,9 +111,9 @@ public class HeartLinkRecordController {
 		
 		
 		String sql5 = "insert into heartlinkrecord " +
-				 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, num) " +
+				 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, num, questionnum) " +
 				 " values " +
-				 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			
@@ -142,7 +142,8 @@ public class HeartLinkRecordController {
 				matchanswer.getAnswer23(),
 				matchanswer.getAnswer24(),
 				sessionuser.getId(),
-				num);
+				num,
+				matchanswer.getQuestionnum());
 		
 		result.setStatus(true);
 		
@@ -152,9 +153,9 @@ public class HeartLinkRecordController {
 		}
 		
 		String sql6 = "insert into matchingrecord " +
-				 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid) " +
+				 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, questionnum) " +
 				 " values " +
-				 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 		
@@ -182,7 +183,8 @@ public class HeartLinkRecordController {
 				changeanswer.getAnswer22(),
 				changeanswer.getAnswer23(),
 				changeanswer.getAnswer24(),
-				sessionuser.getId());
+				sessionuser.getId(),
+				changeanswer.getQuestionnum());
 		result.setStatus(true);
 		
 		} catch (DataAccessException e) {

@@ -8,6 +8,9 @@ public class Question {
 	Integer num;
 	String bind;
 	String value;
+	String forname1;
+	String forname2;
+	
 
 	public String getSel_1() {
 		return sel_1;
@@ -44,6 +47,18 @@ public class Question {
 	}
 	public void setValue(String value) {
 		this.value = value;
+	}
+	public String getForname1() {
+		return forname1;
+	}
+	public void setForname1(String forname1) {
+		this.forname1 = forname1;
+	}
+	public String getForname2() {
+		return forname2;
+	}
+	public void setForname2(String forname2) {
+		this.forname2 = forname2;
 	}
 	
 	

@@ -28,6 +28,7 @@ public class HeartLinkRecord {
 	String answer24;
 	String recordid;
 	Integer num;
+	String questionnum;
 	
 	
 	public String getAnswer1() {
@@ -186,7 +187,13 @@ public class HeartLinkRecord {
 	public void setNum(Integer num) {
 		this.num = num;
 	}
-
+	public String getQuestionnum() {
+		return questionnum;
+	}
+	public void setQuestionnum(String questionnum) {
+		this.questionnum = questionnum;
+	}
+	
 	
 	
 	
