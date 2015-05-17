@@ -9,7 +9,7 @@
 <hr>
 
 <div>
-<table>
+<table class="table table-hover">
 	<tr style="background-color: #33CCCC" height="30px">
 		<th width="80px">글 번호</th>
 		<th width="200px">제목</th>

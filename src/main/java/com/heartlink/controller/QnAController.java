@@ -43,31 +43,31 @@ public class QnAController {
 	
 	@Autowired
 	DataSource datasource;
-	
-	// list_view
-	@RequestMapping(value="/aaa", method=RequestMethod.GET)
-	@ResponseBody
-	public List<Article> question() {
-		
-		log.info("########################################");
-		log.info("List<Article> question()...");
-		log.info("########################################");
-		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		List<Article> list = template.query("select * from article order by 1 desc", new BeanPropertyRowMapper<Article>(Article.class));
-	
-		if(list.isEmpty()){
-			log.info("## list empty ##");
-		}else{
-			log.info("## list not empty ##");
-		}
-		
-		for(Article l : list) {
-			log.info(l.getTitle());
-		}
-
-		return list;
-	}
+//	
+//	// list_view
+//	@RequestMapping(value="/aaa", method=RequestMethod.GET)
+//	@ResponseBody
+//	public List<Article> question() {
+//		
+//		log.info("########################################");
+//		log.info("List<Article> question()...");
+//		log.info("########################################");
+//		
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		List<Article> list = template.query("select * from article order by 1 desc", new BeanPropertyRowMapper<Article>(Article.class));
+//	
+//		if(list.isEmpty()){
+//			log.info("## list empty ##");
+//		}else{
+//			log.info("## list not empty ##");
+//		}
+//		
+//		for(Article l : list) {
+//			log.info(l.getTitle());
+//		}
+//
+//		return list;
+//	}
 	
 	// write_form
 	@RequestMapping(value="/bbb", method=RequestMethod.POST)

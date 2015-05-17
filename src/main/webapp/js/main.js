@@ -146,7 +146,7 @@ app.config(function($routeProvider) {
 
 
 app.controller("mainController", function($scope, $http, $rootScope, $templateCache, $location) {
-	alert("mainController");
+//	alert("mainController");
 	
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
     		if (typeof current != 'undefined') {

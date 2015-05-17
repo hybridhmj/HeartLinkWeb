@@ -64,10 +64,11 @@
 <!-- ################ -->
 <!-- ng-view Template -->
 <!-- ################ -->
-<div class="page {{ pageClass }}" data-ng-view
-								  data-ng-swipe-left="swipeLeft()"
-								  data-ng-swipe-right="swipeRight()"
-								  >
+<!-- <div class="page {{ pageClass }}" data-ng-view -->
+<!-- 								  data-ng-swipe-left="swipeLeft()" -->
+<!-- 								  data-ng-swipe-right="swipeRight()" -->
+<!-- 								  > -->
+<div class="page {{ pageClass }}" data-ng-view>
 <!-- default page = home -->
 </div>
 

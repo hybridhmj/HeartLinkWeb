@@ -6,13 +6,17 @@
 
 app.controller("listViewController", function($scope, $http, $location) {
 	
-//   $http.get("qna/aaa").success(function(loginstatus) {
-//         $scope.articles = loginstatus;
-//                  $scope.$apply();
-//   }).error(function() {
-//      alert("server error...");
-//   });
-   
+	$scope.callPage=1;
+	
+	   $http.post("qna/callpage",{qnaTotalPage : $scope.callPage}).success(function(loginstatus) {
+		   $scope.articles = loginstatus;
+	          $scope.$apply();
+		 }).error(function() {
+		    alert("server error...");
+		 });
+  
+	
+	
    
    $http.get("qna/qnapage").success(function(loginstatus) {
        $scope.pages = loginstatus;
