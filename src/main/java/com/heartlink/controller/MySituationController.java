@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.heartlink.model.QuestionAnswer;
+import com.heartlink.model.Requestid;
 import com.heartlink.model.Show;
 import com.heartlink.model.User;
 
@@ -35,7 +35,7 @@ public class MySituationController {
 	
 	@RequestMapping(value="/request", method=RequestMethod.GET)
 	@ResponseBody
-	public List<Show> requestSituation(HttpSession session) {
+	public List<Requestid> requestSituation(HttpSession session) {
 		User user = (User)session.getAttribute("user");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
@@ -48,16 +48,16 @@ public class MySituationController {
 
 		String sql = "select requestid from rqkakaoid where userid = ? ";
 		
-		List<Show> requests = new ArrayList<Show>();
+		List<Requestid> requests = new ArrayList<Requestid>();
 		try{
-			requests = template.query(sql, new Object[] {user.getId()} , new BeanPropertyRowMapper<Show>(Show.class));
+			requests = template.query(sql, new Object[] {user.getId()} , new BeanPropertyRowMapper<Requestid>(Requestid.class));
 		}catch(DataAccessException e) {
 			log.info("requestSituation 에러");
 		}
 		
 		
-		for(Show id : requests){
-			log.info(id.getId());
+		for(Requestid id : requests){
+			log.info(id.getRequestid());
 		}
 		
 		

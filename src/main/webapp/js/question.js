@@ -86,7 +86,6 @@ app.controller("questionController", function($scope, $http, $location, $routePa
 	).success(function(memberstatus) {
 		if (memberstatus.status == true) {
 			alert("if==true들어옴");
-			$location.path("/home");
 			
 		}else {
 			alert("로그인 실패...");

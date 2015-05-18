@@ -10,6 +10,7 @@
 <h2>글 번호 : {{artices.id}}</h2>
 <hr>
 
+<<<<<<< HEAD
 <form>
 <pre>
 
@@ -21,6 +22,24 @@
 
 <label for="newPassword" class="control-label col-sm-2">비밀번호 : </label>
 <textarea data-ng-model="newPassword" id="newPassword" name="newPassword" class="form-control" cols="20" rows="2" maxlength="20"  data-ng-required="true">{{artices.password}}</textarea>	
+=======
+<div>
+<table class="table">
+	<tr>
+		<td><pre>글 번호 : {{artices.id}}</pre></td>
+		<td><pre>제목 : <textarea data-ng-model="newTitle">{{artices.title}}</textarea></pre></td>
+		<td><pre>작성자 : <textarea data-ng-model="newWriterName">{{artices.writerName}}</textarea></pre></td>
+		<td><pre>비밀번호 : <textarea data-ng-model="newPassword">{{artices.password}}</textarea></pre></td> 	
+	</tr>
+
+	<tr>
+		<td colspan="4">
+			<pre><textarea data-ng-model="newContent" rows="30" cols="50">{{newContent}}</textarea></pre>
+		</td>
+	</tr>
+</table>
+</div>
+>>>>>>> 8fd314567ddfba3aefa59872401ef33506e4d89a
 
 <label for="newContent" class="control-label col-sm-2">글내용 : </label>
 <textarea data-ng-model="newContent" id="newContent" name="newContent" class="form-control" cols="50" rows="30"  data-ng-required="true">{{newContent}}</textarea>
@@ -48,3 +67,4 @@
 <!-- 	</tr> -->
 <!-- </table> -->
 <!-- </div> -->
+
