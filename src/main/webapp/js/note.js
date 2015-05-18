@@ -11,13 +11,32 @@ app.controller("noteController", function($scope, $http) {
 	
 	$http.get("note/message").success(function(notes) {
 	       
-		alert("성공");
+//		alert("성공");
 		$scope.notes = notes;
 	       $scope.$apply();
 	                
 		 }).error(function() {
 		    alert("server error...");
 		 });
+	
+	
+	$scope.msgdelete = function(num) {
+//		alert("삭제합니다");
+//		alert(e);
+		
+		$http.post("note/msgdelete", num).success(function(result) {
+		       alert(result.status);
+			 }).error(function() {
+			    alert("server error...");
+		});
+		
+		
+	};
+	
+	
+	
+	
+	
 	
 	
 });

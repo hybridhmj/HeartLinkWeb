@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
+import com.heartlink.model.Condition;
 import com.heartlink.model.Member;
 import com.heartlink.model.Note;
 import com.heartlink.model.Status;
@@ -113,6 +114,50 @@ public class NoteController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/msgdelete", method=RequestMethod.POST)
+	@ResponseBody
+	public Status deleteMessage(@RequestBody String deletenum) {
+
+		Status status = new Status();
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		
+		log.info("#################################");
+		log.info("########deleteMessage#########" + deletenum);
+		log.info("#################################");
+
+		String sql = "delete from note where num = ?";
+		
+		
+		
+		try{
+			template.update(sql, deletenum);
+			status.setStatus(true);
+			return status;
+		}catch(DataAccessException e) {
+			log.info("데이터 베이스 에러");
+			status.setStatus(false);
+			return status;
+		}catch(IndexOutOfBoundsException e) {
+			status.setStatus(false);
+			log.info("데이터가 없습니다");
+			return status;
+		}
+
+
+		
+	}
 	
 	
 	
