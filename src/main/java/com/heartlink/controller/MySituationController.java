@@ -13,12 +13,14 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.model.Condition;
 import com.heartlink.model.Requestid;
-import com.heartlink.model.Show;
+import com.heartlink.model.Status;
 import com.heartlink.model.User;
 
 
@@ -63,4 +65,75 @@ public class MySituationController {
 		
 		return requests;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/requestprofile", method=RequestMethod.POST)
+	@ResponseBody
+	public Condition requestProfile(@RequestBody String requestid) {
+
+		
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		
+		log.info("#################################");
+		log.info("########requestProfile#########" + requestid);
+		log.info("#################################");
+		Condition con = new Condition();
+		String sql = "select * from profile where userid = ? ";
+		
+		
+		
+		try{
+		con = template.queryForObject(sql, new Object[] {requestid}, new BeanPropertyRowMapper<Condition>(Condition.class));
+		}catch(DataAccessException e) {
+			log.info("데이터 베이스 에러");
+		}
+
+		
+		
+		return con;
+	}
+	
+
+	
+	
+	
+	@RequestMapping(value="/reject", method=RequestMethod.POST)
+	@ResponseBody
+	public Status requestReject(@RequestBody String requestid) {
+
+		Status result = new Status();
+		JdbcTemplate template = new JdbcTemplate(datasource);
+		
+		log.info("#################################");
+		log.info("########requestAccept#########" + requestid);
+		log.info("#################################");
+		
+		String sql = "delete from rqkakaoid where userid = ?";
+		
+
+		try{
+			template.update(sql, requestid);
+			result.setStatus(true);
+		}catch(DataAccessException e) {
+			log.info("데이터 베이스 에러");
+			result.setStatus(false);
+		}
+
+		
+		
+		return result;
+	}
+	
+	
 }

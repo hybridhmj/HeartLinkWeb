@@ -120,7 +120,7 @@
 				  <div class="col-xs-9">
 					  <div class="btn-group">
 						<label for="rgman" class="btn btn-default btn-lg" >
-							<input data-ng-required="true" type="radio" name="rgsex" id="rgman" data-ng-model="rgsex" autocomplete="off" value="mail" data-ng-checked="true"/>남
+							<input data-ng-required="true" type="radio" name="rgsex" id="rgman" data-ng-model="rgsex" autocomplete="off" value="mail"/>남
 						</label>
 						<label for="rgwomen" class="btn btn-default btn-lg">
 							 <input data-ng-required="true" type="radio" name="rgsex" id="rgwomen" data-ng-model="rgsex" autocomplete="off" value="femail"/>여

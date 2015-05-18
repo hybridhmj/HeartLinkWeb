@@ -38,9 +38,9 @@ app.config(function($routeProvider) {
         })
 
         // about page
-        .when('/about', {
-            templateUrl: 'about',
-            controller: 'aboutController'
+        .when('/note', {
+            templateUrl: 'note',
+            controller: 'noteController'
         })
 
         // contact page

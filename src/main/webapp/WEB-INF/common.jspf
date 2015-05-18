@@ -32,7 +32,7 @@
 <script type="text/javascript" src="${js}/contact.js"></script>
 <script type="text/javascript" src="${js}/home.js"></script>
 <script type="text/javascript" src="${js}/login.js"></script>
-<script type="text/javascript" src="${js}/about.js"></script>
+<script type="text/javascript" src="${js}/note.js"></script>
 <script type="text/javascript" src="${js}/signup.js"></script>
 <script type="text/javascript" src="${js}/profile.js"></script>
 <script type="text/javascript" src="${js}/profile_messagechange.js"></script>

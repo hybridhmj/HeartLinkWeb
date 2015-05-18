@@ -16,7 +16,7 @@
 <mvc:view-controller path="intro" view-name="intro"/>
 <mvc:view-controller path="main" view-name="main"/>
 <mvc:view-controller path="home" view-name="home"/>
-<mvc:view-controller path="about" view-name="about"/>
+<mvc:view-controller path="note" view-name="note"/>
 <mvc:view-controller path="contact" view-name="contact"/>
 <mvc:view-controller path="signup" view-name="signup"/>
 <mvc:view-controller path="login" view-name="login"/>
