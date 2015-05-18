@@ -7,7 +7,7 @@
 <hr>
 
 <div>
-<table>
+<table class="table">
 	<tr>
 		<td><pre>글 번호 : {{artices.id}}</pre></td>
 		<td><pre>제목 : <textarea data-ng-model="newTitle">{{artices.title}}</textarea></pre></td>
