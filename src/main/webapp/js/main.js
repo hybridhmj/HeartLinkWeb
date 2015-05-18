@@ -155,15 +155,15 @@ app.controller("mainController", function($scope, $http, $rootScope, $templateCa
     		}
     });
     
-    $scope.swipeLeft = function() {
-    	alert("swipeleft")
-    	console.log("swipeleft = " + $location.path());
-    };
-    
-    $scope.swipeRight = function() {
-    	alert("swipeRight");
-    	console.log("swipeRight = " + $location.path());
-    };
+//    $scope.swipeLeft = function() {
+//    	alert("swipeleft")
+//    	console.log("swipeleft = " + $location.path());
+//    };
+//    
+//    $scope.swipeRight = function() {
+//    	alert("swipeRight");
+//    	console.log("swipeRight = " + $location.path());
+//    };
     
     /*
 	 * 로그아웃 상태 및 유저정보

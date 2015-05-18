@@ -9,11 +9,10 @@ app.controller("mysituationController", function($scope, $http, $location, $rout
 	
 	$http.get("situation/request").success(function(requeststatus) {
 	       
-		alert("성공");
+//		alert("성공");
 		$scope.requests = requeststatus;
 	       $scope.$apply();
 	                
-	       
 		 }).error(function() {
 		    alert("server error...");
 		 });

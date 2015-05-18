@@ -43,7 +43,7 @@ public class QuestionController {
 	public List<Question> question(@RequestBody String questionNum) {
 		
 		log.info("########################################");
-		log.info("QuestionController()..." +questionNum);
+		log.info("question()..." +questionNum);
 		log.info("########################################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
@@ -274,15 +274,17 @@ public class QuestionController {
 		String matchsql = "select * from profile where userid = ?";
 		Condition con = new Condition();
 		List <Condition> whomatch = new ArrayList<Condition>();
-		
+		log.info("###########1###########");
 		for(String match : name){
-			
+			log.info("###########3###########");
 //			log.info(match);
 			con = template.queryForObject(matchsql, new Object[] {match}, new BeanPropertyRowMapper<Condition>(Condition.class));
+			log.info("###########4###########");
 //			log.info(con.getMessage());
 			whomatch.add(con);
+			log.info("###########5###########");
 		}
-		
+		log.info("###########2###########");
 		
 
 		return whomatch;
