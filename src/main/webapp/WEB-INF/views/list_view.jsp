@@ -4,13 +4,14 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
 
+<div class="container">
 
-<h1>Q&A 리스트 :)</h1>
+<h1>Q&A 게시판</h1>
+
 <hr>
 
-<div>
-<table class="table table-hover">
-	<tr style="background-color: #33CCCC" height="30px">
+<table class="table table-hover" class="panel panel-default">
+	<tr style="background-color: #3083AC" height="30px">
 		<th width="80px">글 번호</th>
 		<th width="200px">제목</th>
 		<th width="100px">작성자</th>
@@ -23,7 +24,7 @@
 		<td>{{article.writerName}}</td>
 	</tr>
 </table> 
-</div>
+
 
 <hr>
 
@@ -43,13 +44,18 @@
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
+    
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>
   </ul>
+  
+  
 </nav>
 
-<a href="#/write_form" class="btn btn-primary" style="color: white">Q&A작성</a>
 
 
 
+</div>
 
 
 

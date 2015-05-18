@@ -3,7 +3,8 @@
  */
 
 app.controller("writeController", function($scope, $http, $location) {
-		
+
+	
 	$scope.qnasubmit = function() {
 
 //		alert($scope.contenta);

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/taglib.jspf" %>
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
 <div class="container">
 
 <h1>내용 보기 :)</h1>
@@ -10,9 +11,9 @@
 
 <table class="table">
 	<tr>
-		<td><pre>글 번호 : {{artices.id}}</pre></td>
-		<td><pre>제목 : {{artices.title}}</pre></td>
-		<td><pre>작성자 : {{artices.writerName}}</pre></td>
+		<th><pre>글 번호 : {{artices.id}}</pre></th>
+		<th><pre>제목 : {{artices.title}}</pre></th>
+		<th><pre>작성자 : {{artices.writerName}}</pre></th>
 	</tr>
 	<tr>
 <!-- 		<td colspan="3" width="70%" height="30%" ng-bind-html="newContent"></td> -->

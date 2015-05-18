@@ -20,7 +20,6 @@ app.controller("updateFormController", function($scope, $http, $location, $route
 	   
 	   	
 		$scope.updateForm = function() {
-			
 			$http.post("qna/fff", {id : $scope.id, password : $scope.newPassword, title : $scope.newTitle,
 									writerName : $scope.newWriterName, content : $scope.newContent}).success(function(correct) {
 
