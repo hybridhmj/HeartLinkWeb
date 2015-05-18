@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Member;
 import com.heartlink.model.MemberStatus;
+import com.heartlink.model.User;
 
 
 
@@ -34,7 +35,7 @@ public class RegisterController {
 	@ResponseBody
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public MemberStatus getLogin(@RequestBody Member member){
-		
+
 		log.info("#####################");
 		log.info("######register##POST###########");
 		log.info("######" + member.getRgid()+ member.getRgpassword()+ member.getRgbirth()+member.getRgsex()+ member.getRgarea()+ member.getKakaoid() + "#######");
@@ -47,6 +48,8 @@ public class RegisterController {
 				 "values " +
 				 " (?, ?, ?, ?, ?, ?)";
 		
+		String sql2 = "insert into profile " + "(message, userid) " + "values " + "(?, ?)";
+		
 		
 		MemberStatus result = new MemberStatus();
 		
@@ -58,6 +61,10 @@ public class RegisterController {
 			template.update(sql, member.getRgid(), member.getRgpassword(), member.getRgbirth(),member.getRgsex(), member.getRgarea(), member.getKakaoid());
 
 			result.setStatus(true);
+			
+			if((result.getStatus())==true){
+				template.update(sql2, "Welcome", member.getRgid());
+			}
 	
 
 		} catch (DataAccessException e) {
