@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.dao.MemberDao;
 import com.heartlink.model.LoginStatus;
 import com.heartlink.model.Member;
 import com.heartlink.model.User;
@@ -25,10 +26,8 @@ public class LoginController {
 
 	static Log log = LogFactory.getLog(LoginController.class);
 	
-
 	@Autowired
-	DataSource datasource;
-	
+	MemberDao memberdao;
 	
 	@ResponseBody
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -39,16 +38,14 @@ public class LoginController {
 		log.info("password=" + user.getPassword());
 		log.info("#########################");
 
-		JdbcTemplate template = new JdbcTemplate(datasource);
-
-		
-		String sql = "select * from member where rgid= ?";
 		
 		Member userinfo = new Member();
 		LoginStatus result = new LoginStatus();
 		
+		
+		
 		try{
-		userinfo = template.queryForObject(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<Member>(Member.class));
+		userinfo=memberdao.SelectMemberById(user.getId());
 		
 		if (userinfo.getRgpassword().equals(user.getPassword())) {
 			session.setAttribute("user", user);
