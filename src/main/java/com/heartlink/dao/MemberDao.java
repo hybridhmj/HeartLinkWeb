@@ -6,6 +6,6 @@ public interface MemberDao {
 	
 	public Member SelectMemberById(String rgid);
 	
-	
+	public int InsertMemberRegister(Member member);
 	
 }

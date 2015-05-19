@@ -45,7 +45,7 @@ public class LoginController {
 		
 		
 		try{
-		userinfo=memberdao.SelectMemberById(user.getId());
+		userinfo = memberdao.SelectMemberById(user.getId());
 		
 		if (userinfo.getRgpassword().equals(user.getPassword())) {
 			session.setAttribute("user", user);
