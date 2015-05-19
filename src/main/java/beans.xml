@@ -31,6 +31,7 @@
 			<list>
 				<value>classpath:/com/heartlink/dao/xml/MemberDao.xml</value>
 				<value>classpath:/com/heartlink/dao/xml/ProfileDao.xml</value>
+				<value>classpath:/com/heartlink/dao/xml/QuestionDao.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -43,6 +44,11 @@
     <bean id="ProfileDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
     	<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
     	<property name="mapperInterface" value="com.heartlink.dao.ProfileDao"/>
+    </bean>
+    
+    <bean id="QuestionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+    	<property name="mapperInterface" value="com.heartlink.dao.QuestionDao"/>
     </bean>
 
 

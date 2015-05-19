@@ -31,17 +31,20 @@ public class RegisterController {
 	
 	@Autowired
 	ProfileDao profiledao;
-	
-	@Autowired
-	DataSource datasource;
-	
+
 	@ResponseBody
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public MemberStatus getLogin(@RequestBody Member member){
 
-		log.info("#####################");
+		log.info("###############################");
 		log.info("######register##POST###########");
-		log.info("######" + member.getRgid()+ member.getRgpassword()+ member.getRgbirth()+member.getRgsex()+ member.getRgarea()+ member.getKakaoid() + "#######");
+		log.info("####" + member.getRgid()+ "####");
+		log.info("####" + member.getRgpassword()+ "####");
+		log.info("####" + member.getRgbirth()+ "####");
+		log.info("####" + member.getRgsex()+ "####");
+		log.info("####" + member.getRgarea()+ "####");
+		log.info("####" + member.getKakaoid()+ "####");
+		log.info("###############################");
 		
 	
 		MemberStatus result = new MemberStatus();
@@ -87,9 +90,6 @@ public class RegisterController {
 	}
 
 	
-	
-	
-	
-	
+
 	
 }

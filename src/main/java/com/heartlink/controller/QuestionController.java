@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.dao.QuestionDao;
 import com.heartlink.model.Condition;
 import com.heartlink.model.MappingAnswer;
 import com.heartlink.model.Question;
@@ -35,6 +36,9 @@ public class QuestionController {
 	@Autowired
 	DataSource datasource;
 	
+	@Autowired
+	QuestionDao questiondao;
+	
 	
 	@RequestMapping(value="/question", method=RequestMethod.POST)
 	@ResponseBody
@@ -43,12 +47,9 @@ public class QuestionController {
 		log.info("########################################");
 		log.info("question()..." +questionNum);
 		log.info("########################################");
+
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		
-		String sql = "select * from "+questionNum;
-		
-		List<Question> questions = template.query(sql, new BeanPropertyRowMapper<Question>(Question.class));
+		List<Question> questions = questiondao.SelectQuestionByName(questionNum);
 
 		if(questions.isEmpty()){
 			log.info("## list empty ##");
