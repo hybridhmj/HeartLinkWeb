@@ -25,22 +25,20 @@ import com.heartlink.model.User;
 @Controller
 @RequestMapping(value="/heartlinkrecord")
 public class HeartLinkRecordController {
-
-	
-	static Log log = LogFactory.getLog(HeartLinkRecordController.class);
-	
-	
 	@Autowired
 	DataSource datasource;
+	static Log log = LogFactory.getLog(HeartLinkRecordController.class);
+
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/record", method=RequestMethod.GET)
 	public List<HeartLinkRecord> getRecord(HttpSession session){
 		User sessionuser = (User)session.getAttribute("user");
 		
-		log.info("#####################");
-		log.info("########getRecord######");
-		log.info("#####################");
+		log.info("#########################");
+		log.info("########getRecord()######");
+		log.info("#########################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
@@ -58,9 +56,9 @@ public class HeartLinkRecordController {
 	public List<HeartLinkRecord> getMatch(HttpSession session){
 		User sessionuser = (User)session.getAttribute("user");
 		
-		log.info("#####################");
-		log.info("########getRecord######");
-		log.info("#####################");
+		log.info("########################");
+		log.info("########getMatch()######");
+		log.info("########################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
@@ -79,13 +77,10 @@ public class HeartLinkRecordController {
 	public QuestionAnswerStatus changeMatch(@RequestBody Integer num, HttpSession session){
 		User sessionuser = (User)session.getAttribute("user");
 		
-		log.info("#####################");
-		log.info("########changeMatch######");
-		log.info("#####################");
-		
-		log.info("#####################");
-		log.info(num);
-		log.info("#####################");
+		log.info("#########################");
+		log.info("########changeMatch()######");
+		log.info("#########################");
+
 		
 		QuestionAnswerStatus result = new QuestionAnswerStatus();
 		JdbcTemplate template = new JdbcTemplate(datasource);

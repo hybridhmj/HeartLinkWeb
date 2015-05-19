@@ -31,9 +31,7 @@ public class ProfileController {
 
 	static Log log = LogFactory.getLog(ProfileController.class);
 	
-	User user;
-	
-	
+
 	@Autowired
 	DataSource datasource;
 	
@@ -69,9 +67,9 @@ public class ProfileController {
 	@RequestMapping(value="/condition", method=RequestMethod.GET)
 	public Condition getProfileMessage(HttpSession session){
 
-		log.info("#####################");
+		log.info("#######################");
 		log.info("###getProfileMessage####");
-		log.info("#####################");
+		log.info("#######################");
 		
 		
 		
@@ -105,7 +103,7 @@ public class ProfileController {
 		String nowUserId = user.getId();
 		
 		log.info("#####################");
-		log.info("getProfile_1() .........");
+		log.info("getCondition() .........");
 		log.info("#####################");
 		log.info(messageChange.getMessage());
 		
@@ -138,5 +136,7 @@ public class ProfileController {
 
 		return messageChange;
 	}
+	
+	
 	
 }

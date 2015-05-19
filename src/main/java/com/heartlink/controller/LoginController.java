@@ -70,16 +70,16 @@ public class LoginController {
 			result.setStatus(false);
 			
 		}
-		
-		
-		
-		
 
 		result.setUser(user);
 		
 		return result;
 		
 	}
+	
+	
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/logincheck", method=RequestMethod.GET)
@@ -101,6 +101,11 @@ public class LoginController {
 		return status;
 	}
 	
+	
+	
+	
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public LoginStatus logout(HttpSession session) {
@@ -115,6 +120,10 @@ public class LoginController {
 		
 		return status;
 	}
+	
+	
+	
+	
 	
 	
 }

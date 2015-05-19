@@ -18,9 +18,9 @@ $scope.questionnum=0;
 $scope.ratenum=0;
 $scope.differSex="true";
 $scope.sameSex="";
-$scope.sexModel="이성";
+$scope.sexModel="differ";
 $scope.questionModel="a1_b1";
-$scope.rateModel="50";
+$scope.rateModel=50;
 
 
 	
@@ -97,10 +97,10 @@ $scope.rateModel="50";
 		$scope.linknumcountm();
 		
 		if($scope.linknum==0){
-			$scope.radioModel="이성";
+			$scope.radioModel="differ";
 
 		}else{
-			$scope.radioModel="동성";
+			$scope.radioModel="same";
 		}
 		
 
@@ -112,10 +112,10 @@ $scope.rateModel="50";
 		$scope.linknumcountp();
 		
 		if($scope.linknum==0){
-			$scope.sexModel="이성";
+			$scope.sexModel="differ";
 
 		}else{
-			$scope.sexModel="동성";
+			$scope.sexModel="same";
 		}
 		
 		
@@ -177,17 +177,17 @@ $scope.rateModel="50";
 		
 		
 		if($scope.ratenum==0){
-			$scope.rateModel="50";
+			$scope.rateModel=50;
 		}else if($scope.ratenum==1){
-			$scope.rateModel="60";
+			$scope.rateModel=60;
 		}else if($scope.ratenum==2){
-			$scope.rateModel="70";
+			$scope.rateModel=70;
 		}else if($scope.ratenum==3){
-			$scope.rateModel="80";
+			$scope.rateModel=80;
 		}else if($scope.ratenum==4){
-			$scope.rateModel="90";
+			$scope.rateModel=90;
 		}else {
-			$scope.rateModel="100";
+			$scope.rateModel=100;
 		}
 		
 	};
@@ -197,26 +197,24 @@ $scope.rateModel="50";
 		$scope.ratenumcountp();
 		
 		if($scope.ratenum==0){
-			$scope.rateModel="50";
+			$scope.rateModel=50;
 		}else if($scope.ratenum==1){
-			$scope.rateModel="60";
+			$scope.rateModel=60;
 		}else if($scope.ratenum==2){
-			$scope.rateModel="70";
+			$scope.rateModel=70;
 		}else if($scope.ratenum==3){
-			$scope.rateModel="80";
+			$scope.rateModel=80;
 		}else if($scope.ratenum==4){
-			$scope.rateModel="90";
+			$scope.rateModel=90;
 		}else {
-			$scope.rateModel="100";
+			$scope.rateModel=100;
 		}
 		
 	};
 	
 	
-	
-	
-	
-	
+
+
 
 	
 	

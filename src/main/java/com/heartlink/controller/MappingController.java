@@ -41,9 +41,9 @@ public class MappingController {
 		
 		User user = (User)session.getAttribute("user");
 		
-		log.info("########################################");
-		log.info("QuestionController()...");
-		log.info("########################################");
+		log.info("####################");
+		log.info("#####mapping()######");
+		log.info("####################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		

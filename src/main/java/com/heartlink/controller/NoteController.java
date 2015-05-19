@@ -91,6 +91,12 @@ public class NoteController {
 	@RequestMapping(value="/message", method=RequestMethod.GET)
 	@ResponseBody
 	public List<Note> requestMessage(HttpSession session) {
+		
+		log.info("#################################");
+		log.info("########requestMessage#########");
+		log.info("#################################");
+		
+
 		User user = (User)session.getAttribute("user");
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		List<Note> notes = new ArrayList<Note>(); 
@@ -101,11 +107,9 @@ public class NoteController {
 		
 		try{
 			notes = template.query(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<Note>(Note.class));
-		}catch(DataAccessException e) {
-			log.info("서버에러");
+		}catch(Exception e) {
+			log.info(e);
 		}
-		
-		log.info(notes.get(0).getMessage());
 		
 		
 		return notes;
@@ -145,18 +149,12 @@ public class NoteController {
 			template.update(sql, deletenum);
 			status.setStatus(true);
 			return status;
-		}catch(DataAccessException e) {
+		}catch(Exception e) {
 			log.info("데이터 베이스 에러");
 			status.setStatus(false);
 			return status;
-		}catch(IndexOutOfBoundsException e) {
-			status.setStatus(false);
-			log.info("데이터가 없습니다");
-			return status;
 		}
 
-
-		
 	}
 	
 	

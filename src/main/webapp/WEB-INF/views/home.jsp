@@ -135,12 +135,13 @@
 		<br><br><br><br><br>
 			<div class="row text-center form-group">
 			  <div class="col-xs-4"></div>
-			  <div class="col-xs-4"><a href="#/question/{{questionModel}}" class="btn btn-default"><c:url var="image" value="/image"/> 
+			  <div class="col-xs-4"><a href="#/question/{{sexModel}}/{{questionModel}}/{{rateModel}}" class="btn btn-default"><c:url var="image" value="/image"/> 
      <img src="${image}/go.jpg" class="img-responsive center-block" alt="Responsive image" style="width: 50px;height: 50px;"></a></div>
 			  <div class="col-xs-4"></div>
 			</div>
 
 
 </form>
+
 
 </div>

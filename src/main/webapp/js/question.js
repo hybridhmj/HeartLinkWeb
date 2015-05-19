@@ -12,9 +12,9 @@ app.controller("questionController", function($scope, $http, $location, $routePa
 	
 	
 	
-	$scope.questionNumber = $routeParams.questionNumber;
-	$scope.rate=50;
-	$scope.sex="이성"
+	$scope.questionNumber = $routeParams.questionModel;
+	$scope.rate = $routeParams.rateModel;
+	$scope.sex = $routeParams.sexModel;
 	
 	
 	$scope.countp = function() {
@@ -86,6 +86,7 @@ app.controller("questionController", function($scope, $http, $location, $routePa
 	).success(function(memberstatus) {
 		if (memberstatus.status == true) {
 			alert("if==true들어옴");
+			$location.path("/home");
 			
 		}else {
 			alert("로그인 실패...");
@@ -125,7 +126,9 @@ app.controller("questionController", function($scope, $http, $location, $routePa
 		answer22 : $scope.ques[21].value,
 		answer23 : $scope.ques[22].value,
 		answer24 : $scope.ques[23].value,
-		questionnum : $scope.questionNumber}
+		questionnum : $scope.questionNumber,
+		rate : $scope.rate,
+		sex : $scope.sex}
 
 	).success(function(memberstatus) {
 		$scope.oh = memberstatus;
@@ -149,7 +152,7 @@ app.controller("questionController", function($scope, $http, $location, $routePa
     
     $scope.requestKakaoId = function(e) {
     	$http.post("q/requestkakao", e).success(function(questions) {
-    		  $location.path("/mysituation")
+    		$('#rqkakao').modal('show');
     		 }).error(function() {
     		     alert("server error...");
     		});

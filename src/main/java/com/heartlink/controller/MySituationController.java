@@ -116,7 +116,7 @@ public class MySituationController {
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
 		log.info("#################################");
-		log.info("########requestAccept#########" + requestid);
+		log.info("########requestReject#########" + requestid);
 		log.info("#################################");
 		
 		String sql = "delete from rqkakaoid where userid = ?";

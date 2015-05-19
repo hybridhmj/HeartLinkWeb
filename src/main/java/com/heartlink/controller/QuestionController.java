@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.heartlink.model.Article;
 import com.heartlink.model.Condition;
-import com.heartlink.model.Member;
-import com.heartlink.model.MemberStatus;
+import com.heartlink.model.MappingAnswer;
 import com.heartlink.model.Question;
 import com.heartlink.model.QuestionAnswer;
 import com.heartlink.model.QuestionAnswerStatus;
@@ -65,11 +63,11 @@ public class QuestionController {
 	
 	@ResponseBody
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public QuestionAnswerStatus answer(@RequestBody QuestionAnswer QuestionAnswer, HttpSession session){
+	public QuestionAnswerStatus save(@RequestBody QuestionAnswer QuestionAnswer, HttpSession session){
 		
 		User user = (User)session.getAttribute("user");
 		log.info("#####################");
-		log.info("######answer##POST###########");
+		log.info("######save##POST###########");
 		log.info("#####################");
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
@@ -196,12 +194,12 @@ public class QuestionController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mapping", method=RequestMethod.POST)
-	public List<Condition> mapping(@RequestBody QuestionAnswer QuestionAnswer, HttpSession session){
+	public List<Condition> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
 		
 		log.info("################################################");
-		log.info("################mapping####################");
-		log.info("################################################");
-
+		log.info("################mapping####################"+QuestionAnswer.getSex());
+		log.info("################################################"+QuestionAnswer.getQuestionnum());
+		int rate = QuestionAnswer.getRate();
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		
 		List<String> name = new ArrayList<String>();
@@ -265,7 +263,7 @@ public class QuestionController {
 			
 			log.info(i.getRecordid() + ":" +num);
 			
-			if((num*4.16)>50){
+			if((num*4.16)>rate){
 				name.add(i.getRecordid());
 			};
 			
@@ -315,17 +313,17 @@ public class QuestionController {
 		log.info("########################################");
 		
 		RequestkakaorStatus result = new RequestkakaorStatus();
-		
+		log.info("#################1####################");
 		JdbcTemplate template = new JdbcTemplate(datasource);
-		
+		log.info("##################2####################");
 		int num = template.queryForInt("select MAX(num) from rqkakaoid");
 		num += 1;
-		
+		log.info("#################3#####################");
 		String sql = "insert into rqkakaoid (userid, requestid, num) values (?, ?, ?)";
-		
+		log.info("#################4####################");
 		try{
 		template.update(sql, username, user.getId(), num);
-		
+		log.info("################5#####################");
 		result.setStatus(true);
 		
 		}catch(DataAccessException e){

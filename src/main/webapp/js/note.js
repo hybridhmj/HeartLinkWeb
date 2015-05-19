@@ -2,7 +2,7 @@
  * aboutController
  */
 
-app.controller("noteController", function($scope, $http) {
+app.controller("noteController", function($scope, $http, $route) {
 //		alert("aboutController");
 	console.log("noteController start...");
 //	alert("note");
@@ -26,6 +26,7 @@ app.controller("noteController", function($scope, $http) {
 		
 		$http.post("note/msgdelete", num).success(function(result) {
 		       alert(result.status);
+		       $route.reload();
 			 }).error(function() {
 			    alert("server error...");
 		});

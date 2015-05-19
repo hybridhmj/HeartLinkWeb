@@ -110,7 +110,7 @@ app.config(function($routeProvider) {
         })
         
         // write_form page
-        .when('/question/:questionNumber', {
+        .when('/question/:sexModel/:questionModel/:rateModel', {
             templateUrl: 'question',
             controller: 'questionController'
         })
