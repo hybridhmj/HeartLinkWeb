@@ -6,6 +6,6 @@ import com.heartlink.model.Question;
 
 public interface QuestionDao {
 
-	public List<Question> SelectQuestionByName(String questionNum);
+	public List<Question> SelectQuestionByName(String type);
 	
 }

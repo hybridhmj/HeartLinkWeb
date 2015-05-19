@@ -42,14 +42,14 @@ public class QuestionController {
 	
 	@RequestMapping(value="/question", method=RequestMethod.POST)
 	@ResponseBody
-	public List<Question> question(@RequestBody String questionNum) {
+	public List<Question> question(@RequestBody String type) {
 		
 		log.info("########################################");
-		log.info("question()..." +questionNum);
+		log.info("question()..." +type);
 		log.info("########################################");
 
 		
-		List<Question> questions = questiondao.SelectQuestionByName(questionNum);
+		List<Question> questions = questiondao.SelectQuestionByName(type);
 
 		if(questions.isEmpty()){
 			log.info("## list empty ##");

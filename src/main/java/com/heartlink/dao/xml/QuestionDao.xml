@@ -3,7 +3,7 @@
 
 <mapper namespace="com.heartlink.dao.QuestionDao">
     <select id="SelectQuestionByName" resultType="com.heartlink.model.Question" parameterType="String">
-        select * from ${tableName}
+        select * from question where type = #{type}
     </select>
 
 </mapper>

@@ -10,6 +10,7 @@ public class Question {
 	String value;
 	String forname1;
 	String forname2;
+	String type;
 	
 
 	public String getSel_1() {
@@ -59,6 +60,12 @@ public class Question {
 	}
 	public void setForname2(String forname2) {
 		this.forname2 = forname2;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	
