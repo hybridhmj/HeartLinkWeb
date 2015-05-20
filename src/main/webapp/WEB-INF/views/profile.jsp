@@ -3,38 +3,16 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 <style type="text/css">
-/* .container { */
-/* 	 background-color: #f0ad4e; */
-/* 	 border: 4px outset gray; */
-/* } */
-
-/* .container#c2{ */
-/* 	background-color: white; */
-/* } */
-
-/* h2 { */
-/* 	text-align: center; */
-/* } */
-
-/* .hh2 { */
-/* 	text-align: center; */
-/* 	color: gray; */
-/* } */
-/* .success { */
-/* 	text-color: #5bc0de; */
-/* } */
-
-/* table, td, th { */
-/*     border: 4px outset gray; */
-/* } */
-
-/* th { */
-/*     background-color: green; */
-/*     color: white; */
-/* } */
 
 </style>
-
+	<div class="container">
+			사진
+			<hr>
+			<form action="pro/upload/picture" method="post" enctype="multipart/form-data">
+				파일 : <input type="file" name="f"><br/>
+				<input type="submit" value="MultipartFile 예로 전송"/>			
+			</form>
+		</div>
 	<div class="container" id="c1">
 	
 	<h2>Profile</h2>
@@ -62,7 +40,10 @@
 			    </tr>
 		    </tbody>
 		</table>
-
+		
+		<img src="pro/download/picture" alt="나와라" class="img-circle" width="256" height="256"/>
+		
+		
 		
 	</div>
 

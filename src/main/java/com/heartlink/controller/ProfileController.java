@@ -1,7 +1,12 @@
 package com.heartlink.controller;
 
-import java.util.List;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -11,15 +16,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.heartlink.model.Article;
+import com.heartlink.dao.MemberDao;
+import com.heartlink.dao.PictureDao;
 import com.heartlink.model.Condition;
 import com.heartlink.model.Member;
-import com.heartlink.model.Question;
+import com.heartlink.model.Picture;
 import com.heartlink.model.User;
 
 
@@ -34,6 +43,9 @@ public class ProfileController {
 
 	@Autowired
 	DataSource datasource;
+	@Autowired
+	PictureDao picturedao;
+
 	
 	@ResponseBody
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
@@ -135,6 +147,54 @@ public class ProfileController {
 		}
 
 		return messageChange;
+	}
+	
+	
+
+	
+	
+	@RequestMapping(value="/upload/picture", method=RequestMethod.POST)
+	public String savePicture(@RequestParam("f") MultipartFile multipartFile, Model model, HttpSession usersession) throws IOException{
+		User user = (User)usersession.getAttribute("user");
+		log.info("#############################");
+		log.info("########savePicture#########");
+		log.info("#############################");
+		
+		if(!multipartFile.isEmpty()) {
+			Picture pic = new Picture();
+			
+			pic.setPicbytes(multipartFile.getBytes());
+			pic.setUserid(user.getId());
+			
+			int num = picturedao.selectMaxNumber(user.getId());
+			if(num == 1){
+				picturedao.updateFile(pic);
+			}else {
+				picturedao.uploadFile(pic);
+			}
+			
+		}
+		
+	
+		return "redirect:/m/main#/profile";
+	}
+	
+	
+	@RequestMapping(value="/download/picture", method=RequestMethod.GET)
+	public void downloadPicture(HttpSession usersession, HttpServletResponse response) throws IOException{
+		User user = (User)usersession.getAttribute("user");
+		log.info("#############################");
+		log.info("########downloadPicture#########");
+		log.info("#############################");
+		
+		Picture picture =  picturedao.downloadFile(user.getId());
+		
+		response.setContentType("image/jpg");
+		response.getOutputStream().write(picture.getPicbytes());
+	
+		
+		
+		
 	}
 	
 	
