@@ -5,4 +5,11 @@
     <insert id="InsertFirstProfileCondtion" parameterType="hashmap">
        insert into profile (message, userid) values (#{welcome}, #{member.rgid})
     </insert>
+    
+    
+    <select id="selectProfileByName" resultType="com.heartlink.model.Condition" parameterType="String">
+        select * from profile where userid = #{userid}
+    </select>
+    
+    
 </mapper>

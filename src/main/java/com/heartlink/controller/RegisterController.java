@@ -2,7 +2,6 @@ package com.heartlink.controller;
 
 import java.util.HashMap;
 
-import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,23 +18,32 @@ import com.heartlink.dao.ProfileDao;
 import com.heartlink.model.Member;
 import com.heartlink.model.MemberStatus;
 
-
 @Controller
 @RequestMapping(value="/login")
 public class RegisterController {
 
 	static Log log = LogFactory.getLog(RegisterController.class);
 	
+	
+
 	@Autowired
 	MemberDao memberdao;
 	
 	@Autowired
 	ProfileDao profiledao;
 
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public MemberStatus getLogin(@RequestBody Member member){
-
+		Encrypt encrypt = new Encrypt();
+		try{
+		String encryptPassword = encrypt.encrypt(member.getRgpassword());
+		member.setRgpassword(encryptPassword);
+		}catch (Exception e){
+			log.info("비밀번호 암호화 에러");
+		}
 		log.info("###############################");
 		log.info("######register##POST###########");
 		log.info("####" + member.getRgid()+ "####");

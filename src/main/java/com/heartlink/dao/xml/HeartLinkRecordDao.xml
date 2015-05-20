@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.heartlink.dao.HeartLinkRecordDao">
+    
+    <insert id="insertHeartLinkRecord" parameterType="hashmap">
+       insert into heartlinkrecord (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, num, questionnum ) 
+       values (#{questionAnswer.answer1}, #{questionAnswer.answer2}, #{questionAnswer.answer3}, 
+				#{questionAnswer.answer4}, #{questionAnswer.answer5}, #{questionAnswer.answer6}, 
+				#{questionAnswer.answer7}, #{questionAnswer.answer8}, #{questionAnswer.answer9}, 
+				#{questionAnswer.answer10}, #{questionAnswer.answer11}, #{questionAnswer.answer12}, 
+				#{questionAnswer.answer13}, #{questionAnswer.answer14}, #{questionAnswer.answer15}, 
+				#{questionAnswer.answer16}, #{questionAnswer.answer17}, #{questionAnswer.answer18}, 
+				#{questionAnswer.answer19}, #{questionAnswer.answer20}, #{questionAnswer.answer21}, 
+				#{questionAnswer.answer22}, #{questionAnswer.answer23}, #{questionAnswer.answer24}, 
+				#{userid}, #{num}, #{questionAnswer.questionnum} )
+    </insert>
+    
+    <select id="selectMaxNumber" resultType="int">
+		select MAX(num) from heartlinkrecord
+    </select>
+    
+</mapper>

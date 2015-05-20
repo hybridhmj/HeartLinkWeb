@@ -1,6 +1,7 @@
 package com.heartlink.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.dao.HeartLinkRecordDao;
+import com.heartlink.dao.MatchingRecordDao;
+import com.heartlink.dao.ProfileDao;
 import com.heartlink.dao.QuestionDao;
 import com.heartlink.model.Condition;
 import com.heartlink.model.MappingAnswer;
@@ -38,6 +42,20 @@ public class QuestionController {
 	
 	@Autowired
 	QuestionDao questiondao;
+	
+	@Autowired
+	HeartLinkRecordDao heartLinkRecordDao;
+	
+	@Autowired
+	MatchingRecordDao matchingRecordDao;
+	
+	@Autowired
+	ProfileDao profileDao;
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping(value="/question", method=RequestMethod.POST)
@@ -62,133 +80,69 @@ public class QuestionController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public QuestionAnswerStatus save(@RequestBody QuestionAnswer QuestionAnswer, HttpSession session){
-		
 		User user = (User)session.getAttribute("user");
 		log.info("#####################");
 		log.info("######save##POST###########");
 		log.info("#####################");
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
 		QuestionAnswerStatus result = new QuestionAnswerStatus();
-		String countsql = "select count(*) from matchingrecord where recordid = ?";
+
 		
-	
-		log.info("#####################");
-		log.info(template.queryForInt(countsql, user.getId()));
-		log.info("#####################");
+		int count = matchingRecordDao.selectMaxNumber(user.getId());
 		
-		int count = template.queryForInt(countsql, user.getId());
-		log.info("여기1");
+		int num = heartLinkRecordDao.selectMaxNumber();
+		num += 1;
+		
+		
+		HashMap<String, Object> heartlinkHashmap = new HashMap<String, Object>(); 
+		heartlinkHashmap.put("questionAnswer", QuestionAnswer);
+		heartlinkHashmap.put("num", num);
+		heartlinkHashmap.put("userid", user.getId());
+		
+		HashMap<String, Object> matchingHashmap = new HashMap<String, Object>(); 
+		matchingHashmap.put("questionAnswer", QuestionAnswer);
+		matchingHashmap.put("userid", user.getId());
+		
+
 		if(0<count){
 			
-			int num = template.queryForInt("select MAX(num) from heartlinkrecord");
-			num += 1;
-			log.info("id =" + num);
-
-			
-			String sql = "insert into heartlinkrecord " +
-					 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, num, questionnum ) " +
-					 " values " +
-					 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
-
-			try {
-
-				template.update(sql, QuestionAnswer.getAnswer1(),
-									QuestionAnswer.getAnswer2(),
-									QuestionAnswer.getAnswer3(),
-									QuestionAnswer.getAnswer4(),
-									QuestionAnswer.getAnswer5(),
-									QuestionAnswer.getAnswer6(),
-									QuestionAnswer.getAnswer7(),
-									QuestionAnswer.getAnswer8(),
-									QuestionAnswer.getAnswer9(),
-									QuestionAnswer.getAnswer10(),
-									QuestionAnswer.getAnswer11(),
-									QuestionAnswer.getAnswer12(),
-									QuestionAnswer.getAnswer13(),
-									QuestionAnswer.getAnswer14(),
-									QuestionAnswer.getAnswer15(),
-									QuestionAnswer.getAnswer16(),
-									QuestionAnswer.getAnswer17(),
-									QuestionAnswer.getAnswer18(),
-									QuestionAnswer.getAnswer19(),
-									QuestionAnswer.getAnswer20(),
-									QuestionAnswer.getAnswer21(),
-									QuestionAnswer.getAnswer22(),
-									QuestionAnswer.getAnswer23(),
-									QuestionAnswer.getAnswer24(),
-									user.getId(),
-									num,
-									QuestionAnswer.getQuestionnum());
-
+			try {	
+				heartLinkRecordDao.insertHeartLinkRecord(heartlinkHashmap);
 				result.setStatus(true);
-		
-
 			} catch (DataAccessException e) {
 				result.setStatus(false);
-
 			}
-			
 			return result;
-		}else{
-			log.info("여기2");
-			String sql = "insert into matchingrecord " +
-					 " (answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, answer11, answer12, answer13, answer14, answer15, answer16, answer17, answer18, answer19, answer20, answer21, answer22, answer23, answer24, recordid, questionnum) " +
-					 " values " +
-					 " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+			
+		}else {
+			
 			try {
-
-				template.update(sql, QuestionAnswer.getAnswer1(),
-									QuestionAnswer.getAnswer2(),
-									QuestionAnswer.getAnswer3(),
-									QuestionAnswer.getAnswer4(),
-									QuestionAnswer.getAnswer5(),
-									QuestionAnswer.getAnswer6(),
-									QuestionAnswer.getAnswer7(),
-									QuestionAnswer.getAnswer8(),
-									QuestionAnswer.getAnswer9(),
-									QuestionAnswer.getAnswer10(),
-									QuestionAnswer.getAnswer11(),
-									QuestionAnswer.getAnswer12(),
-									QuestionAnswer.getAnswer13(),
-									QuestionAnswer.getAnswer14(),
-									QuestionAnswer.getAnswer15(),
-									QuestionAnswer.getAnswer16(),
-									QuestionAnswer.getAnswer17(),
-									QuestionAnswer.getAnswer18(),
-									QuestionAnswer.getAnswer19(),
-									QuestionAnswer.getAnswer20(),
-									QuestionAnswer.getAnswer21(),
-									QuestionAnswer.getAnswer22(),
-									QuestionAnswer.getAnswer23(),
-									QuestionAnswer.getAnswer24(),
-									user.getId(),
-									QuestionAnswer.getQuestionnum());
-
+				matchingRecordDao.insertMatchingRecord(matchingHashmap);
 				result.setStatus(true);
-		
-
 			} catch (DataAccessException e) {
 				result.setStatus(false);
-
 			}
 			
 			return result;
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -197,17 +151,15 @@ public class QuestionController {
 	@RequestMapping(value="/mapping", method=RequestMethod.POST)
 	public List<Condition> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
 		
-		log.info("################################################");
-		log.info("################mapping####################"+QuestionAnswer.getSex());
-		log.info("################################################"+QuestionAnswer.getQuestionnum());
+		log.info("################################");
+		log.info("################mapping#########");
+		log.info("################################");
 		int rate = QuestionAnswer.getRate();
-		JdbcTemplate template = new JdbcTemplate(datasource);
 		
 		List<String> name = new ArrayList<String>();
 		
-		String sql = "select * from matchingrecord where QUESTIONNUM = ? ";
+		List<QuestionAnswer> matching = matchingRecordDao.selectMatchingRecordAllByQuestionNum(QuestionAnswer.getQuestionnum());
 		
-		List<QuestionAnswer> matching = template.query(sql, new Object[] {QuestionAnswer.getQuestionnum()} , new BeanPropertyRowMapper<QuestionAnswer>(QuestionAnswer.class));
 		
 		int num=0;
 		for(QuestionAnswer i :  matching){
@@ -270,20 +222,13 @@ public class QuestionController {
 			
 		};
 		
-		String matchsql = "select * from profile where userid = ?";
-		Condition con = new Condition();
+		Condition profile = new Condition();
+		
 		List <Condition> whomatch = new ArrayList<Condition>();
-		log.info("###########1###########");
 		for(String match : name){
-			log.info("###########3###########");
-//			log.info(match);
-			con = template.queryForObject(matchsql, new Object[] {match}, new BeanPropertyRowMapper<Condition>(Condition.class));
-			log.info("###########4###########");
-//			log.info(con.getMessage());
-			whomatch.add(con);
-			log.info("###########5###########");
+			profile = profileDao.selectProfileByName(match);
+			whomatch.add(profile);
 		}
-		log.info("###########2###########");
 		
 
 		return whomatch;
@@ -298,11 +243,7 @@ public class QuestionController {
 	
 	
 	
-	
-	
-	
-	
-	
+
 	
 	
 	@RequestMapping(value="/requestkakao", method=RequestMethod.POST)
@@ -314,17 +255,12 @@ public class QuestionController {
 		log.info("########################################");
 		
 		RequestkakaorStatus result = new RequestkakaorStatus();
-		log.info("#################1####################");
 		JdbcTemplate template = new JdbcTemplate(datasource);
-		log.info("##################2####################");
 		int num = template.queryForInt("select MAX(num) from rqkakaoid");
 		num += 1;
-		log.info("#################3#####################");
 		String sql = "insert into rqkakaoid (userid, requestid, num) values (?, ?, ?)";
-		log.info("#################4####################");
 		try{
 		template.update(sql, username, user.getId(), num);
-		log.info("################5#####################");
 		result.setStatus(true);
 		
 		}catch(DataAccessException e){
