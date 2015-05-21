@@ -6,6 +6,8 @@ public interface HeartLinkRecordDao {
 	
 	public int insertHeartLinkRecord(HashMap<String, Object> map);
 	
-	public int selectMaxNumber();
+	public int selectMaxNumber(String userid);
+	
+	public int selectCheckNumber(String userid);
 	
 }

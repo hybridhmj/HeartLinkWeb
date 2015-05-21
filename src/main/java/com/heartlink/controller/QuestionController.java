@@ -93,19 +93,27 @@ public class QuestionController {
 		log.info("#####################");
 		log.info("######save##POST###########");
 		log.info("#####################");
-		
+		int HLRMaxnum = 0;
 		QuestionAnswerStatus result = new QuestionAnswerStatus();
 
 		
 		int count = matchingRecordDao.selectMaxNumber(user.getId());
 		
-		int num = heartLinkRecordDao.selectMaxNumber();
-		num += 1;
+		
+		int HLRNum = heartLinkRecordDao.selectCheckNumber(user.getId());
 		
 		
+		if(HLRNum == 0){
+			HLRMaxnum = 1;
+		}else{
+			HLRMaxnum = heartLinkRecordDao.selectMaxNumber(user.getId());
+			HLRMaxnum += 1;
+		}
+
+
 		HashMap<String, Object> heartlinkHashmap = new HashMap<String, Object>(); 
 		heartlinkHashmap.put("questionAnswer", QuestionAnswer);
-		heartlinkHashmap.put("num", num);
+		heartlinkHashmap.put("num", HLRMaxnum);
 		heartlinkHashmap.put("userid", user.getId());
 		
 		HashMap<String, Object> matchingHashmap = new HashMap<String, Object>(); 

@@ -14,17 +14,10 @@ app.controller("profileController", function($scope, $http) {
 		
 	});
 	
-//	$http.get("../m/pro/condition").success(function(messasge) {
-//		$scope.msg = messasge;
-//		
-//	});
-//	
-//	
+	$http.get("../m/pro/condition").success(function(messasge) {
+		$scope.msg = messasge;
+		
+	});
 	
-//	$http.get("../m/pro/profile").success(function(result) {
-//		$scope.re = result;
-//		
-//		alert($scope.re.rgarea);
-//	});
 	
 });
