@@ -7,8 +7,32 @@
     </insert>
     
     
-    <select id="selectProfileByName" resultType="com.heartlink.model.Condition" parameterType="String">
+    <select id="selectProfileByName" resultType="com.heartlink.model.Profile" parameterType="String">
         select * from profile where userid = #{userid}
+    </select>
+    
+    <update id="updateProfileCondition" parameterType="com.heartlink.model.Profile">
+        update profile set message = #{message} where userid = #{userid}
+    </update>
+    
+    
+    
+
+    
+    <insert id="uploadFile" parameterType="com.heartlink.model.Profile"> 
+     	INSERT INTO profile (USERID, picbytes) VALUES (#{userid}, #{picbytes}) 
+    </insert>
+    
+    <select id="downloadFile" parameterType="String" resultType="com.heartlink.model.Profile">
+        select * from profile where userid = #{userid}
+    </select>
+    
+    <update id="updateFile" parameterType="com.heartlink.model.Profile">
+        update profile set picbytes = #{picbytes} where userid = #{userid}
+    </update>
+	
+    <select id="selectMaxNumber" resultType="int" parameterType="String">
+		select count(*) from profile where userid = #{userid}
     </select>
     
     

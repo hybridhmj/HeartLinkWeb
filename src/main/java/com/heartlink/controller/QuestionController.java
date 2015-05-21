@@ -23,7 +23,7 @@ import com.heartlink.dao.HeartLinkRecordDao;
 import com.heartlink.dao.MatchingRecordDao;
 import com.heartlink.dao.ProfileDao;
 import com.heartlink.dao.QuestionDao;
-import com.heartlink.model.Condition;
+import com.heartlink.model.Profile;
 import com.heartlink.model.MappingAnswer;
 import com.heartlink.model.Question;
 import com.heartlink.model.QuestionAnswer;
@@ -160,7 +160,7 @@ public class QuestionController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mapping", method=RequestMethod.POST)
-	public List<Condition> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
+	public List<Profile> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
 		
 		log.info("################################");
 		log.info("################mapping#########");
@@ -233,9 +233,9 @@ public class QuestionController {
 			
 		};
 		
-		Condition profile = new Condition();
+		Profile profile = new Profile();
 		
-		List <Condition> whomatch = new ArrayList<Condition>();
+		List <Profile> whomatch = new ArrayList<Profile>();
 		for(String match : name){
 			profile = profileDao.selectProfileByName(match);
 			whomatch.add(profile);

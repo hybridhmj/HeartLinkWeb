@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.heartlink.model.Article;
-import com.heartlink.model.Condition;
+import com.heartlink.model.Profile;
 import com.heartlink.model.Member;
 import com.heartlink.model.Note;
 import com.heartlink.model.Status;
