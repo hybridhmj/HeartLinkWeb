@@ -8,10 +8,10 @@ app.controller("profileMessageController", function($scope, $http, $location) {
 	
 	$scope.sendmessage= function() {
 
-		alert($scope.conditionMessage);
+//		alert($scope.conditionMessage);
 		
 		$http.post("../m/pro/condition", {message : $scope.conditionMessage}).success(function() {
-			alert("안녕");
+//			alert("안녕");
 			$location.path("/profile");
 		});
 		

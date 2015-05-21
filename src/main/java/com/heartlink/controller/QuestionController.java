@@ -98,16 +98,19 @@ public class QuestionController {
 
 		
 		int count = matchingRecordDao.selectMaxNumber(user.getId());
-		
+		log.info("##########count#####"+count);
 		
 		int HLRNum = heartLinkRecordDao.selectCheckNumber(user.getId());
+		log.info("########HLRNum#######"+HLRNum);
 		
 		
 		if(HLRNum == 0){
 			HLRMaxnum = 1;
+			log.info("########HLRMaxnum#######"+HLRNum);
 		}else{
 			HLRMaxnum = heartLinkRecordDao.selectMaxNumber(user.getId());
 			HLRMaxnum += 1;
+			log.info("########HLRMaxnum#######"+HLRNum);
 		}
 
 

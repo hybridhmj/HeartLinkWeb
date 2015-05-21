@@ -39,12 +39,12 @@ app.controller("loginController", function($scope, $http, $location) {
 			}else {
 //				alert("로그인 실패...");
 				$scope.loginfail = loginstatus;
-				$('#myModal').modal('show')
+				$('#myModal').modal('show');
 			}
 			
 		}).error(function() {
 //			alert("server error...");
-			$('#myModal').modal('show')
+			$('#myModal').modal('show');
 		});
 
 	};

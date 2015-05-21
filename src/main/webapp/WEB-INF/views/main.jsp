@@ -38,16 +38,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav" data-ng-show="login.status">
 				    <li><a href="#/list_view">Q&A 게시판</a></li>
-				    <li class="dropdown">
-			        	<a class="dropdown-toggle" data-toggle="dropdown" href="">Page 3
-			        	<span class="caret"></span></a>
-				        <ul class="dropdown-menu">
-				            <li><a href="#">Page 3-1</a></li>
-				            <li><a href="#">Page 3-2</a></li>
-				            <li><a href="#">Page 3-3</a></li>
-				        </ul>
-			        </li>
-				    <li><a href="#/note">Message</a></li>
+				    <li><a href="#/note">내 편지</a></li>
 				    <li><a href="#/contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

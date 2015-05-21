@@ -21,4 +21,10 @@ app.controller("heartlinkrecordController", function($scope, $http, $location, $
 		});
 	};
 	
+	$scope.detail = function() {
+		
+		$('#myModal').modal('show');
+		
+	};
+	
 });
