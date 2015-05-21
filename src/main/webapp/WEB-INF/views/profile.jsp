@@ -3,14 +3,28 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 <style type="text/css">
-
+	#topbar {
+			background-color: rgb(119,211,206);
+			color: white;
+			margin-bottom: 15%;
+			font-size: 2em;
+			}
+			
+			
 </style>
+
+
+<div id="topbar" class="container">프로필</div>
+
+
+
+
 	<div class="container">
 			사진
 			<hr>
 			<form action="pro/upload/picture" method="post" enctype="multipart/form-data">
 				파일 : <input type="file" name="f"><br/>
-				<input type="submit" value="MultipartFile 예로 전송"/>			
+				<input type="submit" value="사진 올리기"/>			
 			</form>
 		</div>
 	<div class="container" id="c1">

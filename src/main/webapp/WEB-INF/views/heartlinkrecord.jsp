@@ -3,9 +3,18 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 
-<h2>여기는 heartlinkrecord 입니다</h2>
-<h3>heartlinkrecordCOntroller를 heartlink 게임 내역을 보여줍니다.</h3>
+<style type="text/css">
+	#topbar {
+			background-color: rgb(119,211,206);
+			color: white;
+			margin-bottom: 15%;
+			font-size: 2em;
+			}
+		
+</style>
 
+
+<div id="topbar" class="container">HearLink 이력</div>
 
 <h1>여기는 대표 </h1>
 <div data-ng-repeat="match in matchs">

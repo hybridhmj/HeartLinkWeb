@@ -4,17 +4,17 @@
 
 <style>
 
-	#homebar {
-		font-size: x-large;
+	#topbar {
 		background-color: rgb(119,211,206);
 		color: white;
 		margin-bottom: 15%;
+		font-size: 2em;
 	}
 
 
 </style>
 
-<div id="homebar" class="container" style="font-size: 2em;">Heart Link Home</div>
+<div id="topbar" class="container">Heart Link Home</div>
 
 <div class="container text-center" style="font-size: 150%;">
 
