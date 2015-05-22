@@ -13,6 +13,7 @@ app.controller("deleteController", function($scope, $http, $location, $routePara
 		$http.post("qna/ddd", {id : $scope.id, password : password}).success(function(correct) {
 
 			$scope.correct = correct;
+			$scope.message = "";
 			
 			if($scope.correct == true) {
 //				alert("true = >" + correct);
@@ -20,7 +21,8 @@ app.controller("deleteController", function($scope, $http, $location, $routePara
 				$location.path("/list_view");
 			} else {
 //				alert("false = >" + correct);
-				alert("비밀번호가 틀렸습니다. 확인하세요 ;(")
+//				alert("비밀번호가 틀렸습니다. 확인하세요 ;(")
+				$scope.message = "비밀번호가 틀렸습니다. 확인하세요 ;(";
 			}
 
 		   }).error(function() {

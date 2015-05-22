@@ -3,16 +3,24 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
+<div class="container">
+
 <h1>수정 :)</h1>
 <hr>
 
-<form>
+<form class="form-group">
+<pre>
 수정하려면, <br> 
 비밀번호를 입력하세요 :) <br>
-Password : 
-<input type="password" id="password" name="password" data-ng-model="password" size="20" placeholder="비밀번호를 입력하세요" required="required"/><br>
+
+<label for="password">Password : </label>
+<input class="form-control" type="password" id="password" name="password" data-ng-model="password" size="20" placeholder="비밀번호를 입력하세요" required="required"/><br>
+<span style="color: #0066FF">{{message}}</span>
 <br>
- 
+</pre>
+
 <a href="#/list_view" class="btn btn-primary" style="color: white">목록보기</a>
 <a class="btn btn-primary" data-ng-click="updateID(password)" type="POST">확인</a>
+
 </form>
+</div>
