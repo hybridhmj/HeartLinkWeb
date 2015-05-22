@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
-<style>
+<style type="text/css">
+	#topbar {
+			background-color: rgb(119,211,206);
+			color: white;
+			font-size: 2em;
+			}
 
-	#questionmenu {
-	font-size: x-large;
-	background-color: rgb(119,211,206);
-	color: white;
-	margin-bottom: 3%;
-}
 
 .btn2 {
 
@@ -34,7 +33,7 @@
 
 
 <div class="container-fluid">
-	<div id="questionmenu" style="font-size: 2em;">질문</div>
+	<div id="topbar" style="font-size: 2em;">Q 질문</div>
 	
 	
 	<div data-ng-swipe-left="countp()" data-ng-swipe-right="countm()" style="width: 100%; height: 30em">
@@ -106,7 +105,7 @@
 			<div data-ng-show="num == 26">
 				<table class="table">
 				<thead class="text-center"><tr><td>아이뒤</td><td>상태 메시지</td><td>신청</td></tr></thead>
-				<tr data-ng-repeat="ah in oh">
+				<tr data-ng-repeat="ah in oh" class="text-center">
 					<td>{{ah.userid}}</td> <td>{{ah.message}}</td>
 					<td><span data-ng-click="requestKakaoId(ah.userid)" class="btn btn-default">링크신청</span></td>
 				</tr>

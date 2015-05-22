@@ -1,25 +1,30 @@
 package com.heartlink.controller;
 
-import java.util.List;
+import java.io.IOException;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.heartlink.model.Article;
-import com.heartlink.model.Condition;
+import com.heartlink.dao.ProfileDao;
+import com.heartlink.model.Profile;
 import com.heartlink.model.Member;
-import com.heartlink.model.Question;
+import com.heartlink.model.ProfileStatus;
 import com.heartlink.model.User;
 
 
@@ -34,10 +39,13 @@ public class ProfileController {
 
 	@Autowired
 	DataSource datasource;
+	@Autowired
+	ProfileDao profiledao;
+
 	
 	@ResponseBody
 	@RequestMapping(value="/profile", method=RequestMethod.GET)
-	public Member getProfile(HttpSession session){
+	public Member getMemberInfo(HttpSession session){
 		User sessionuser = (User)session.getAttribute("user");
 		
 		log.info("#####################");
@@ -65,25 +73,13 @@ public class ProfileController {
 	
 	@ResponseBody
 	@RequestMapping(value="/condition", method=RequestMethod.GET)
-	public Condition getProfileMessage(HttpSession session){
-
+	public Profile getProfileMessage(HttpSession session){
+		User user = (User)session.getAttribute("user");
 		log.info("#######################");
 		log.info("###getProfileMessage####");
 		log.info("#######################");
 		
-		
-		
-		
-		User sessionuser = (User)session.getAttribute("user");
-		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		
-		String sql = "select * from profile where userid = ?";
-		
-		Condition message = new Condition();
-		
-		message = template.queryForObject(sql, new Object[] {sessionuser.getId()}, new BeanPropertyRowMapper<Condition>(Condition.class));
-		
+		Profile message = profiledao.selectProfileByName(user.getId());
 
 		log.info("#####################");
 		log.info(message.getMessage());
@@ -97,44 +93,79 @@ public class ProfileController {
 	
 	@ResponseBody
 	@RequestMapping(value="/condition", method=RequestMethod.POST)
-	public Condition getCondition(@RequestBody Condition messageChange, HttpSession usersession){
-		
+	public ProfileStatus getCondition(@RequestBody String messageChange, HttpSession usersession){
 		User user = (User)usersession.getAttribute("user");
-		String nowUserId = user.getId();
 		
 		log.info("#####################");
 		log.info("getCondition() .........");
 		log.info("#####################");
-		log.info(messageChange.getMessage());
+		log.info(messageChange);
+		ProfileStatus status = new ProfileStatus();
+		Profile changemessage = new Profile();
+		changemessage.setMessage(messageChange);
+		changemessage.setUserid(user.getId());
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		
-		String countsql = "select count(*) from profile where userid = ?";
-		
-		int count = template.queryForInt(countsql, nowUserId);
-		
-		
-		log.info("#####################");
-		log.info(count);
-		log.info("#####################");
-		
-		String insertsql = "insert into profile (message, userid) values (?, ?)";
-		String updatesql = "update profile set message = ? where userid = ?";
-
-		if(count != 1){
-			//처음 insert
-			log.info("레코드가 존재하지 않습니다. 생성하겠습니다.");
-			template.update(insertsql, messageChange.getMessage(), nowUserId);
-			
-			
-		}else {
-			//기존 update
-			log.info("레코드가 존재합니다. 수정하겠습니다.");
-			template.update(updatesql, messageChange.getMessage() ,nowUserId);
-			
+		try{
+			int num = profiledao.updateProfileCondition(changemessage);
+			if(num == 1){
+				log.info("수정 성공");
+				status.setStatus(true);
+			}else {
+				log.info("디비접근은 성공했으나 수정 실패");
+				status.setStatus(false);
+			}
+		}catch(DataAccessException e) {
+			log.info("상태메시지 수정 실패");
+			status.setStatus(false);
 		}
 
-		return messageChange;
+		return status;
+	}
+	
+	
+
+	
+	
+	@RequestMapping(value="/upload/picture", method=RequestMethod.POST)
+	public String savePicture(@RequestParam("f") MultipartFile multipartFile, Model model, HttpSession usersession) throws IOException{
+		User user = (User)usersession.getAttribute("user");
+		log.info("#############################");
+		log.info("########savePicture#########");
+		log.info("#############################");
+		
+		if(!multipartFile.isEmpty()) {
+			Profile pic = new Profile();
+			
+			pic.setPicbytes(multipartFile.getBytes());
+			pic.setUserid(user.getId());
+			
+			int num = profiledao.selectMaxNumber(user.getId());
+			if(num == 1){
+				profiledao.updateFile(pic);
+			}else {
+				profiledao.uploadFile(pic);
+			}
+			
+		}
+		
+	
+		return "redirect:/m/main#/profile";
+	}
+	
+	
+	@RequestMapping(value="/download/picture", method=RequestMethod.GET)
+	public void downloadPicture(HttpSession usersession, HttpServletResponse response) throws IOException{
+		User user = (User)usersession.getAttribute("user");
+		log.info("#############################");
+		log.info("########downloadPicture#########");
+		log.info("#############################");
+		
+		Profile picture =  profiledao.downloadFile(user.getId());
+		
+		response.setContentType("image/jpg");
+		response.getOutputStream().write(picture.getPicbytes());
+	
+
 	}
 	
 	

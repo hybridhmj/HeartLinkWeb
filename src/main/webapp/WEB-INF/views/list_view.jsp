@@ -4,14 +4,32 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
 
+
+<style type="text/css">
+	#topbar {
+			background-color: rgb(119,211,206);
+			color: white;
+			margin-bottom: 15%;
+			font-size: 1em;
+			height="30px";
+			}
+		
+</style>
+
+
+
+
+
+
+
 <div class="container">
 
 <h1>Q&A 게시판</h1>
 
 <hr>
 
-<table class="table table-hover" class="panel panel-default">
-	<tr style="background-color: #3083AC" height="30px">
+<table class="table table-hover text-center" class="panel panel-default">
+	<tr id="topbar">
 		<th width="80px">글 번호</th>
 		<th width="200px">제목</th>
 		<th width="100px">작성자</th>
@@ -20,7 +38,6 @@
 	<tr data-ng-repeat="article in articles">
 		<td align="center">{{article.id}}</td>
 		<td><a href="#/show_content/{{article.id}}" class="btn">{{article.title}}</a></td>
-<!-- 		<td><a class="btn" data-ng-click="showId(article.id)" type="GET">{{article.title}}</a></td> -->
 		<td>{{article.writerName}}</td>
 	</tr>
 </table> 

@@ -4,9 +4,11 @@
 
 <style>
 
-	#logmenu {
-		font-size: x-large;
+	#topbar {
 		background-color: rgb(119,211,206);
+		color: white;
+		margin-bottom: 15%;
+		font-size: 2em;
 	}
 	
 	
@@ -31,7 +33,7 @@
 
 
 <!-- login.jsp -->
-<div id="logmenu" class="container-fluid">로그인</div>
+<div id="topbar" class="container-fluid">로그인</div>
 
 <div class="contatiner">
 <c:url var="image" value="/image"/> 

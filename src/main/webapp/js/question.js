@@ -133,6 +133,9 @@ app.controller("questionController", function($scope, $http, $location, $routePa
 	).success(function(memberstatus) {
 		$scope.oh = memberstatus;
 		$scope.num = 26;
+		
+		
+		
 	}).error(function() {
 		alert("server error...");
 	});
@@ -156,7 +159,6 @@ app.controller("questionController", function($scope, $http, $location, $routePa
     		 }).error(function() {
     		     alert("server error...");
     		});
-    	
 	};
 
     

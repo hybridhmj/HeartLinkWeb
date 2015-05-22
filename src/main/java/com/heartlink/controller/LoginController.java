@@ -37,7 +37,15 @@ public class LoginController {
 		log.info("id=" + user.getId());
 		log.info("password=" + user.getPassword());
 		log.info("#########################");
-
+		
+		Encrypt encrypt = new Encrypt();
+		try{
+		String enterPassword = encrypt.encrypt(user.getPassword());
+		user.setPassword(enterPassword);
+		}catch (Exception e) {
+			
+		}
+		
 		
 		Member userinfo = new Member();
 		LoginStatus result = new LoginStatus();

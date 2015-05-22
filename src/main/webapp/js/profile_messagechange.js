@@ -8,19 +8,20 @@ app.controller("profileMessageController", function($scope, $http, $location) {
 	
 	$scope.sendmessage= function() {
 
-		alert($scope.conditionMessage);
+//		alert($scope.conditionMessage);
 		
-		$http.post("../m/pro/condition", {message : $scope.conditionMessage}).success(function() {
-			alert("안녕");
+		$http.post("../m/pro/condition", $scope.conditionMessage).success(function(result) {
+			
+			if(result.status == true){
+				console.log("프로필 수정 성공");
+			}else{
+				console.log("프로필 수정 실패 ");	
+			}
+			
 			$location.path("/profile");
 		});
 		
 	};
-	
-//	$http.get("../m/pro/profile").success(function(result) {
-//		$scope.re = result;
-//		
-//		alert($scope.re.rgarea);
-//	});
+
 	
 });

@@ -3,8 +3,23 @@
 <%@ include file="/WEB-INF/taglib.jspf" %>
 
 
-<h2>여기는 mysituation 입니다</h2>
-<h3>mysituationCOntroller를 heartlink 상황을 보여줍니다.</h3>
+
+
+<style type="text/css">
+	#topbar {
+			background-color: rgb(119,211,206);
+			color: white;
+			margin-bottom: 15%;
+			font-size: 2em;
+			}
+		
+</style>
+
+
+<div id="topbar" class="container">운명 현황</div>
+
+
+
 <div class="container">
 	<table class="table">
 	<tr data-ng-repeat="request in requests">

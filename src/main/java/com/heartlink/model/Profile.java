@@ -1,9 +1,10 @@
 package com.heartlink.model;
 
-public class Condition {
+public class Profile {
 
 	String message;
 	String userid;
+	public byte[] picbytes;
 
 	public String getMessage() {
 		return message;
@@ -20,7 +21,15 @@ public class Condition {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	
+
+	public byte[] getPicbytes() {
+		return picbytes;
+	}
+
+	public void setPicbytes(byte[] picbytes) {
+		this.picbytes = picbytes;
+	}
+
 	
 	
 	

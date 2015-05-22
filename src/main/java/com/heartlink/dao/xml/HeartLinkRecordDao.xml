@@ -15,9 +15,14 @@
 				#{questionAnswer.answer22}, #{questionAnswer.answer23}, #{questionAnswer.answer24}, 
 				#{userid}, #{num}, #{questionAnswer.questionnum} )
     </insert>
+
+    <select id="selectMaxNumber" resultType="int" parameterType="String">
+		select MAX(num) from heartlinkrecord where recordid = #{userid}
+    </select>
     
-    <select id="selectMaxNumber" resultType="int">
-		select MAX(num) from heartlinkrecord
+    
+    <select id="selectCheckNumber" resultType="int" parameterType="String">
+		select count(*) from heartlinkrecord where recordid = #{userid}
     </select>
     
 </mapper>

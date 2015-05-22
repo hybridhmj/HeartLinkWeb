@@ -23,7 +23,7 @@ import com.heartlink.dao.HeartLinkRecordDao;
 import com.heartlink.dao.MatchingRecordDao;
 import com.heartlink.dao.ProfileDao;
 import com.heartlink.dao.QuestionDao;
-import com.heartlink.model.Condition;
+import com.heartlink.model.Profile;
 import com.heartlink.model.MappingAnswer;
 import com.heartlink.model.Question;
 import com.heartlink.model.QuestionAnswer;
@@ -93,19 +93,30 @@ public class QuestionController {
 		log.info("#####################");
 		log.info("######save##POST###########");
 		log.info("#####################");
-		
+		int HLRMaxnum = 0;
 		QuestionAnswerStatus result = new QuestionAnswerStatus();
 
 		
 		int count = matchingRecordDao.selectMaxNumber(user.getId());
+		log.info("##########count#####"+count);
 		
-		int num = heartLinkRecordDao.selectMaxNumber();
-		num += 1;
+		int HLRNum = heartLinkRecordDao.selectCheckNumber(user.getId());
+		log.info("########HLRNum#######"+HLRNum);
 		
 		
+		if(HLRNum == 0){
+			HLRMaxnum = 1;
+			log.info("########HLRMaxnum#######"+HLRNum);
+		}else{
+			HLRMaxnum = heartLinkRecordDao.selectMaxNumber(user.getId());
+			HLRMaxnum += 1;
+			log.info("########HLRMaxnum#######"+HLRNum);
+		}
+
+
 		HashMap<String, Object> heartlinkHashmap = new HashMap<String, Object>(); 
 		heartlinkHashmap.put("questionAnswer", QuestionAnswer);
-		heartlinkHashmap.put("num", num);
+		heartlinkHashmap.put("num", HLRMaxnum);
 		heartlinkHashmap.put("userid", user.getId());
 		
 		HashMap<String, Object> matchingHashmap = new HashMap<String, Object>(); 
@@ -149,7 +160,7 @@ public class QuestionController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mapping", method=RequestMethod.POST)
-	public List<Condition> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
+	public List<Profile> mapping(@RequestBody MappingAnswer QuestionAnswer, HttpSession session){
 		
 		log.info("################################");
 		log.info("################mapping#########");
@@ -222,9 +233,9 @@ public class QuestionController {
 			
 		};
 		
-		Condition profile = new Condition();
+		Profile profile = new Profile();
 		
-		List <Condition> whomatch = new ArrayList<Condition>();
+		List <Profile> whomatch = new ArrayList<Profile>();
 		for(String match : name){
 			profile = profileDao.selectProfileByName(match);
 			whomatch.add(profile);

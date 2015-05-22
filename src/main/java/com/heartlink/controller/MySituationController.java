@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.heartlink.model.Condition;
+import com.heartlink.model.Profile;
 import com.heartlink.model.Requestid;
 import com.heartlink.model.Status;
 import com.heartlink.model.User;
@@ -80,7 +80,7 @@ public class MySituationController {
 	
 	@RequestMapping(value="/requestprofile", method=RequestMethod.POST)
 	@ResponseBody
-	public Condition requestProfile(@RequestBody String requestid) {
+	public Profile requestProfile(@RequestBody String requestid) {
 
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
@@ -88,13 +88,13 @@ public class MySituationController {
 		log.info("#################################");
 		log.info("########requestProfile#########" + requestid);
 		log.info("#################################");
-		Condition con = new Condition();
+		Profile con = new Profile();
 		String sql = "select * from profile where userid = ? ";
 		
 		
 		
 		try{
-		con = template.queryForObject(sql, new Object[] {requestid}, new BeanPropertyRowMapper<Condition>(Condition.class));
+		con = template.queryForObject(sql, new Object[] {requestid}, new BeanPropertyRowMapper<Profile>(Profile.class));
 		}catch(DataAccessException e) {
 			log.info("데이터 베이스 에러");
 		}
