@@ -23,7 +23,7 @@
 <textarea data-ng-model="newPassword" id="newPassword" name="newPassword" class="form-control" cols="20" rows="2" maxlength="20"  data-ng-required="true">{{artices.password}}</textarea>	
 
 <label for="newContent" class="control-label col-sm-2">글내용 : </label>
-<textarea data-ng-model="newContent" id="newContent" name="newContent" class="form-control" cols="50" rows="30"  data-ng-required="true">{{newContent}}</textarea>
+<textarea data-ng-model="newContent" id="newContent" name="newContent" class="form-control" cols="40" rows="5"  data-ng-required="true">{{newContent}}</textarea>
 
 </pre>
 <a href="#list_view" class="btn btn-primary" style="color: white">목록보기</a>

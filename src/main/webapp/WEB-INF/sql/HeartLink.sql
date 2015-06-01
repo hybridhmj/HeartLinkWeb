@@ -229,7 +229,7 @@
 
 
 --------------------------------------------------------
---  DDL for Table QnAÅ×ÀÌºí!!!!!!!!!!!!
+--  DDL for Table ARTICLE
 --------------------------------------------------------
 
   CREATE TABLE "SCOTT"."ARTICLE" 
@@ -237,7 +237,8 @@
 	"WRITERNAME" VARCHAR2(20 BYTE), 
 	"PASSWORD" VARCHAR2(20 BYTE), 
 	"TITLE" VARCHAR2(100 BYTE), 
-	"CONTENT" CLOB
+	"CONTENT" CLOB, 
+	"WRITEDATE" VARCHAR2(100 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -261,10 +262,10 @@
 --  Constraints for Table ARTICLE
 --------------------------------------------------------
 
+  ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("TITLE" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("PASSWORD" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("ID" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("WRITERNAME" NOT NULL ENABLE);
-  ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("PASSWORD" NOT NULL ENABLE);
-  ALTER TABLE "SCOTT"."ARTICLE" MODIFY ("TITLE" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."ARTICLE" ADD CONSTRAINT "ARTICLE_PK" PRIMARY KEY ("ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -298,8 +299,9 @@
 
 
 
+
 --------------------------------------------------------
---  DDL for Table ¸â¹ö Å×ÀÌºí!!!!!!!!!!!!!!!!!!!!!
+--  DDL for Table ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½!!!!!!!!!!!!!!!!!!!!!
 --------------------------------------------------------
 
   CREATE TABLE "SCOTT"."MEMBER" 
@@ -386,150 +388,150 @@
   
   
   
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¾ç³ä', 'ÈÄ¶óÀÌµå ', '1', 's1', 'name1', 'name2', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '»ç¶û', '¿ìÁ¤ ', '2', 's2', 'name3', 'name4', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', 'Â¥Àå ', 'Â«»Í', '3', 's3', 'name5', 'name6', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'Ãà±¸', '¾ß±¸', '4', 's4', 'name7', 'name8', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', 'ÄÝ¶ó', '»çÀÌ´Ù ', '5', 's5', 'name9', 'name10', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '°­¾ÆÁö', '°í¾çÀÌ', '6', 's6', 'name11', 'name12', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '´ÜÆÏ»§', 'Å©¸²»§', '7', 's7', 'name13', 'name14', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Çâ¼ö³¿»õ', 'ºñ´©³¿»õ', '8', 's8', 'name15', 'name16', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'ÇÏ¾áÇÇºÎ', '±î¸¸ÇÇºÎ', '9', 's9', 'name17', 'name18', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', 'ºñºö³Ã¸é', '¹°³Ã¸é', '10', 's10', 'name19', 'name20', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁÖÀ§¿¡¼­ ¹Ù¶óº¸´Â ÀÚ½ÅÀÇ ¿¬·ÉÀº?', '¸¹°Ô º»´Ù', 'Àû°Ô º»´Ù', '11', 's11', 'name21', 'name22', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æÀ» °È´ÂÁß¿¡ 100¿øÂ¥¸® µ¿ÀüÀÌ ´«¾Õ¿¡ ¶³¾îÁ® ÀÖ´Ù ', 'ÁÝ´Â´Ù', '±×³É Áö³ªÄ£´Ù', '12', 's12', 'name23', 'name24', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±Í½ÅÀÌ ÀÖ´Ù°í »ý°¢ÇÏ³ª?', 'ÀÖ´Ù', '¾ø´Ù', '13', 's13', 'name25', 'name26', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¸î±ÛÀÚ ÀÎ°¡?', '¼¼±ÛÀÚ', '´Ù¼¸±ÛÀÚ', '14', 's14', 'name27', 'name28', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('µÑÁß¿¡ ´õ ÁÁ¾ÆÇÏ´Â ³îÀÌ±â±¸´Â?', 'ÀÚÀÌ·Îµå·Ó', 'È¸Àü¸ñ¸¶', '15', 's15', 'name29', 'name30', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('Ã¹ µ¥ÀÌÆ® Àå¼Ò·Î ÀûÇÕÇÑ °÷Àº?', '¿µÈ­°ü', 'Ä¿ÇÇ¼ó', '16', 's16', 'name31', 'name32', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ °©ÀÚ±â »ìÀÌ ¸¹ÀÌ ÂÈ´Ù', '±¦Âú´Ù', '½È´Ù', '17', 's17', 'name33', 'name34', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÀ» Ã³À½ º¼¶§ ¸ÕÀú º¸´Â °÷', '¾ó±¼', '¸ö¸Å', '18', 's18', 'name35', 'name36', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÀÌ ÀÔ¾úÀ¸¸é ÇÏ´Â ¼Ó¿Ê »öÀº?', '´Ü»ö', 'È­·ÁÇÑ»ö', '19', 's19', 'name37', 'name38', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÚ½ÅÀÇ ¼ºÀû ¼ºÇâÀº?', '³·Á®¹ãÀÌ', '³·ÀÌ¹ãÁ®', '20', 's20', 'name39', 'name40', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ ¶ó¸é ¸Ô°í °¡¶ó°í ¼Ó»èÀÎ´Ù', '¸Ô°í°£´Ù', '±×³É°£´Ù', '21', 's21', 'name41', 'name42', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('½ÅÈ¥¿©Çà Àå¼Ò´Â?', '±¹³»', 'ÇØ¿Ü', '22', 's22', 'name43', 'name44', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ºÎ¸ð´ÔÀÌ °áÈ¥À» ¹Ý´ëÇÑ´Ù¸é?', 'µµ¸Á°£´Ù', 'Çì¾îÁø´Ù', '23', 's23', 'name45', 'name46', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¹äÀº ¿©ÀÚ°¡ Â÷·Á¾ß ÇÑ´Ù', '±×·¸´Ù', '¾Æ´Ï´Ù', '24', 's24', 'name47', 'name48', 'a1_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¾ç³ä', 'ÈÄ¶óÀÌµå ', '1', 's1', 'name1', 'name2', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '»ç¶û', '¿ìÁ¤ ', '2', 's2', 'name3', 'name4', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', 'Â¥Àå ', 'Â«»Í', '3', 's3', 'name5', 'name6', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'Ãà±¸', '¾ß±¸', '4', 's4', 'name7', 'name8', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', 'ÄÝ¶ó', '»çÀÌ´Ù ', '5', 's5', 'name9', 'name10', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '°­¾ÆÁö', '°í¾çÀÌ', '6', 's6', 'name11', 'name12', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '´ÜÆÏ»§', 'Å©¸²»§', '7', 's7', 'name13', 'name14', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Çâ¼ö³¿»õ', 'ºñ´©³¿»õ', '8', 's8', 'name15', 'name16', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'ÇÏ¾áÇÇºÎ', '±î¸¸ÇÇºÎ', '9', 's9', 'name17', 'name18', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', 'ºñºö³Ã¸é', '¹°³Ã¸é', '10', 's10', 'name19', 'name20', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿¬¿¹ÀÎÀÌ »ç±ÍÀÚ°í ÇÑ´Ù', '»ç±Ï´Ù', '¾È»ç±Ï´Ù', '11', 's11', 'name21', 'name22', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¼±È£ÇÏ´Â ÇÚµåÆùÀº?', '¾ÆÀÌÆù', '°¶·°½Ã', '12', 's12', 'name23', 'name24', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æ°¡´Ù ³Ñ¾îÁ³´Ù', '¹Ù·Î ÀÏ¾î³­´Ù', '°è¼Ó ´©¿öÀÖ´Â´Ù', '13', 's13', 'name25', 'name26', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('º¸ÀÌ½ºÇÇ½Ì ÀüÈ­°¡ °É·Á¿Ô´Ù', '¹Ù·Î ²÷´Â´Ù', 'Àå³­Ä¡´Ù ²÷´Â´Ù', '14', 's14', 'name27', 'name28', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÇÒÀÏÀÌ »ý°å´Ù¸é', '¹Ù·Î ½ÃÀÛÇÑ´Ù', '¹Ì·é´Ù', '15', 's15', 'name29', 'name30', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ°ú ´ÙÅùÀ» ÇÏ¿´À»¶§', '±× ÀÚ¸®¿¡¼­ ³¡À» º»´Ù', '½Ã°£À» °®°í »ý°¢Á¤¸®¸¦ ¸ÕÀú ÇÑ´Ù', '16', 's16', 'name31', 'name32', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ¿¡°Ô ¸ÕÀú ¿¬¶ôÀ» ÀÚÁÖ ÇÏ´Â°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '17', 's17', 'name33', 'name34', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('´ÜÄ­¹æºÎÅÍ °áÈ¥»ýÈ°À» ½ÃÀÛÇÒ ¼ö ÀÖ³ª?', 'ÀÖ´Ù', '¾ø´Ù', '18', 's18', 'name35', 'name36', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥Àü¼ø°áÀÎ°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '19', 's19', 'name37', 'name38', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ ÈÄ ¾îµð¼­ »ì°ÍÀÎ°¡?', 'ºÐ°¡ÇÑ´Ù', '¾ç°¡ºÎ¸ð´Ô°ú »ê´Ù', '20', 's20', 'name39', 'name40', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ ÀÚ½Å°ú ¿¬¿¹ÀÎÀ» ºñ±³ÇÑ´Ù¸é?', '¶È°°ÀÌ ´ëÀÀÇÑ´Ù', 'ÄðÇÏ°Ô ÀÎÁ¤ÇÑ´Ù', '21', 's21', 'name41', 'name42', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥¼ö´Â ÇØ¾ß ÇÑ´Ù°í »ý°¢ÇÏ³ª?', '±×·¸´Ù', '¾Æ´Ï´Ù', '22', 's22', 'name43', 'name44', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥Àü µ¿°Å°¡ °¡´ÉÇÑ°¡?', '°¡´É', 'ºÒ°¡´É', '23', 's23', 'name45', 'name46', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁúÅõ°¡ ¸¹Àº ÆíÀÎ°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '24', 's24', 'name47', 'name48', 'a1_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¾ç³ä', 'ÈÄ¶óÀÌµå ', '1', 's1', 'name1', 'name2', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '»ç¶û', '¿ìÁ¤ ', '2', 's2', 'name3', 'name4', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', 'Â¥Àå ', 'Â«»Í', '3', 's3', 'name5', 'name6', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'Ãà±¸', '¾ß±¸', '4', 's4', 'name7', 'name8', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', 'ÄÝ¶ó', '»çÀÌ´Ù ', '5', 's5', 'name9', 'name10', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '°­¾ÆÁö', '°í¾çÀÌ', '6', 's6', 'name11', 'name12', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '´ÜÆÏ»§', 'Å©¸²»§', '7', 's7', 'name13', 'name14', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Çâ¼ö³¿»õ', 'ºñ´©³¿»õ', '8', 's8', 'name15', 'name16', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'ÇÏ¾áÇÇºÎ', '±î¸¸ÇÇºÎ', '9', 's9', 'name17', 'name18', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', 'ºñºö³Ã¸é', '¹°³Ã¸é', '10', 's10', 'name19', 'name20', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°ÅÁþ¸» ÇÑ °ÍÀÌ µéÅë³¯ °Í °°´Ù¸é?', 'ÀÚ¹éÇÑ´Ù', '³¡±îÁö °£´Ù', '11', 's11', 'name21', 'name22', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¹è°íÇÂµ¥ ÀáÀÌ ¿Â´Ù¸é?', '¸Ô°íÀÜ´Ù', '±×³ÉÀÜ´Ù', '12', 's12', 'name23', 'name24', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æÀ» °È´Ù°¡ Áö°©À» ÁÖ¿ü´Ù', 'ÁÖÀÎÀ» Ã£¾ÆÁØ´Ù', 'ÀÚ½ÅÀÌ °¡Áø´Ù', '13', 's13', 'name25', 'name26', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ»óÇüÀÌ Áö³ª°£´Ù', 'µ¥½¬ÇÑ´Ù ', '±×³É°£´Ù', '14', 's14', 'name27', 'name28', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿µÈ­¸¦ º¼ »ç¶÷ÀÌ ¾ø´Ù¸é?', 'È¥ÀÚ º¸·¯ °£´Ù', 'º¸·¯°¡Áö ¾Ê´Â´Ù', '15', 's15', 'name29', 'name30', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('µ¥ÀÌÆ® ºñ¿ëÀÌ ¾ø´Ù¸é?', '¸¸³­´Ù', '¸¸³ªÁö ¾Ê´Â´Ù', '16', 's16', 'name31', 'name32', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÄ£±¸°¡ ¹Ù¶÷À» ÇÇ¿ì´Ù °É·È´Ù', '¸Â¹Ù¶÷À» ÇÉ´Ù', 'Çì¾îÁø´Ù', '17', 's17', 'name33', 'name34', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ Àü µ¿°Å°¡ °¡´ÉÇÑ°¡?', '°¡´É', 'ºÒ°¡´É', '18', 's18', 'name35', 'name36', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ°ú Á¾±³°¡ ´Ù¸£´Ù¸é?', '¸ÂÃç°¡¾ßÇÑ´Ù', '´Þ¶óµµ µÈ´Ù', '19', 's19', 'name37', 'name38', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿øÇÏ´Â ÀÌ¼ºÀÇ ¼ºÇâÀº?', 'ºñ½ÁÇÑ ¼ºÇâ', '¹Ý´ëÀÇ ¼ºÇâ', '20', 's20', 'name39', 'name40', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁÁ¾ÆÇÑ´Ù¸é ³ªÀÌ´Â »ó°ü¾ø´Ù?', '»ó°üÀÖ´Ù', '»ó°ü¾ø´Ù', '21', 's21', 'name41', 'name42', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ È¥ÀÎ½Å°í ÇÒ°ÍÀÎ°¡?', 'ÇÑ´Ù', '¾ÈÇÑ´Ù', '22', 's22', 'name43', 'name44', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ °ø°øÀå¼Ò¿¡¼­ ½ºÅ²½±À» ½ÃµµÇÑ´Ù¸é?', 'ÇÑ´Ù', '°ÅºÎÇÑ´Ù', '23', 's23', 'name45', 'name46', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('»ç¶ûÇÑ´Ù¸é ÀáÀÚ¸®±îÁö °¡´Â ±â°£Àº ±â°£Àº Áß¿äÇÏÁö ¾Ê´Ù', 'Áß¿äÇÏ´Ù', 'Áß¿äÇÏÁö ¾Ê´Ù', '24', 's24', 'name47', 'name48', 'a1_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¸á·Î¿µÈ­', '°øÆ÷¿µÈ­', '1', 's1', 'name1', 'name2', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '¶±', '»§', '2', 's2', 'name3', 'name4', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', '¾ç½Ä', 'ÇÑ½Ä', '3', 's3', 'name5', 'name6', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'µ¿¹°¿ø', '¼öÁ·°ü', '4', 's4', 'name7', 'name8', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', '´«', 'ºñ', '5', 's5', 'name9', 'name10', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '¾çº¸´Ù Áú', 'Áúº¸´Ù ¾ç', '6', 's6', 'name11', 'name12', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '¼º°Ý', '¿Ü¸ð', '7', 's7', 'name13', 'name14', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Á¤Àå', 'Ä³ÁÖ¾ó', '8', 's8', 'name15', 'name16', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'Ã»¹ÙÁö', '¸é¹ÙÁö', '9', 's9', 'name17', 'name18', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', '½ºÅ°', 'º¸µå', '10', 's10', 'name19', 'name20', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁÖÀ§¿¡¼­ ¹Ù¶óº¸´Â ÀÚ½ÅÀÇ ¿¬·ÉÀº?', '¸¹°Ô º»´Ù', 'Àû°Ô º»´Ù', '11', 's11', 'name21', 'name22', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æÀ» °È´ÂÁß¿¡ 100¿øÂ¥¸® µ¿ÀüÀÌ ´«¾Õ¿¡ ¶³¾îÁ® ÀÖ´Ù ', 'ÁÝ´Â´Ù', '±×³É Áö³ªÄ£´Ù', '12', 's12', 'name23', 'name24', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±Í½ÅÀÌ ÀÖ´Ù°í »ý°¢ÇÏ³ª?', 'ÀÖ´Ù', '¾ø´Ù', '13', 's13', 'name25', 'name26', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¸î±ÛÀÚ ÀÎ°¡?', '¼¼±ÛÀÚ', '´Ù¼¸±ÛÀÚ', '14', 's14', 'name27', 'name28', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('µÑÁß¿¡ ´õ ÁÁ¾ÆÇÏ´Â ³îÀÌ±â±¸´Â?', 'ÀÚÀÌ·Îµå·Ó', 'È¸Àü¸ñ¸¶', '15', 's15', 'name29', 'name30', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('Ã¹ µ¥ÀÌÆ® Àå¼Ò·Î ÀûÇÕÇÑ °÷Àº?', '¿µÈ­°ü', 'Ä¿ÇÇ¼ó', '16', 's16', 'name31', 'name32', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ °©ÀÚ±â »ìÀÌ ¸¹ÀÌ ÂÈ´Ù', '±¦Âú´Ù', '½È´Ù', '17', 's17', 'name33', 'name34', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÀ» Ã³À½ º¼¶§ ¸ÕÀú º¸´Â °÷', '¾ó±¼', '¸ö¸Å', '18', 's18', 'name35', 'name36', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÚ½ÅÀÇ ¼ºÀû ¼ºÇâÀº?', '³·Á®¹ãÀÌ', '³·ÀÌ¹ãÁ®', '20', 's20', 'name39', 'name40', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ ¶ó¸é ¸Ô°í °¡¶ó°í ¼Ó»èÀÎ´Ù', '¸Ô°í°£´Ù', '±×³É°£´Ù', '21', 's21', 'name41', 'name42', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('½ÅÈ¥¿©Çà Àå¼Ò´Â?', '±¹³»', 'ÇØ¿Ü', '22', 's22', 'name43', 'name44', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ºÎ¸ð´ÔÀÌ °áÈ¥À» ¹Ý´ëÇÑ´Ù¸é?', 'µµ¸Á°£´Ù', 'Çì¾îÁø´Ù', '23', 's23', 'name45', 'name46', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¹äÀº ¿©ÀÚ°¡ Â÷·Á¾ß ÇÑ´Ù', '±×·¸´Ù', '¾Æ´Ï´Ù', '24', 's24', 'name47', 'name48', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¸á·Î¿µÈ­', '°øÆ÷¿µÈ­', '1', 's1', 'name1', 'name2', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÀÌ ÀÔ¾úÀ¸¸é ÇÏ´Â ¼Ó¿Ê »öÀº?', '´Ü»ö', 'È­·ÁÇÑ»ö', '19', 's19', 'name37', 'name38', 'a2_b1');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '¶±', '»§', '2', 's2', 'name3', 'name4', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', '¾ç½Ä', 'ÇÑ½Ä', '3', 's3', 'name5', 'name6', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'µ¿¹°¿ø', '¼öÁ·°ü', '4', 's4', 'name7', 'name8', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', '´«', 'ºñ', '5', 's5', 'name9', 'name10', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '¾çº¸´Ù Áú', 'Áúº¸´Ù ¾ç', '6', 's6', 'name11', 'name12', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '¼º°Ý', '¿Ü¸ð', '7', 's7', 'name13', 'name14', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Á¤Àå', 'Ä³ÁÖ¾ó', '8', 's8', 'name15', 'name16', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'Ã»¹ÙÁö', '¸é¹ÙÁö', '9', 's9', 'name17', 'name18', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', '½ºÅ°', 'º¸µå', '10', 's10', 'name19', 'name20', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿¬¿¹ÀÎÀÌ »ç±ÍÀÚ°í ÇÑ´Ù', '»ç±Ï´Ù', '¾È»ç±Ï´Ù', '11', 's11', 'name21', 'name22', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¼±È£ÇÏ´Â ÇÚµåÆùÀº?', '¾ÆÀÌÆù', '°¶·°½Ã', '12', 's12', 'name23', 'name24', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æ°¡´Ù ³Ñ¾îÁ³´Ù', '¹Ù·Î ÀÏ¾î³­´Ù', '°è¼Ó ´©¿öÀÖ´Â´Ù', '13', 's13', 'name25', 'name26', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('º¸ÀÌ½ºÇÇ½Ì ÀüÈ­°¡ °É·Á¿Ô´Ù', '¹Ù·Î ²÷´Â´Ù', 'Àå³­Ä¡´Ù ²÷´Â´Ù', '14', 's14', 'name27', 'name28', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÇÒÀÏÀÌ »ý°å´Ù¸é', '¹Ù·Î ½ÃÀÛÇÑ´Ù', '¹Ì·é´Ù', '15', 's15', 'name29', 'name30', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ°ú ´ÙÅùÀ» ÇÏ¿´À»¶§', '±× ÀÚ¸®¿¡¼­ ³¡À» º»´Ù', '½Ã°£À» °®°í »ý°¢Á¤¸®¸¦ ¸ÕÀú ÇÑ´Ù', '16', 's16', 'name31', 'name32', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ¿¡°Ô ¸ÕÀú ¿¬¶ôÀ» ÀÚÁÖ ÇÏ´Â°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '17', 's17', 'name33', 'name34', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('´ÜÄ­¹æºÎÅÍ °áÈ¥»ýÈ°À» ½ÃÀÛÇÒ ¼ö ÀÖ³ª?', 'ÀÖ´Ù', '¾ø´Ù', '18', 's18', 'name35', 'name36', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥Àü¼ø°áÀÎ°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '19', 's19', 'name37', 'name38', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ ÈÄ ¾îµð¼­ »ì°ÍÀÎ°¡?', 'ºÐ°¡ÇÑ´Ù', '¾ç°¡ºÎ¸ð´Ô°ú »ê´Ù', '20', 's20', 'name39', 'name40', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ ÀÚ½Å°ú ¿¬¿¹ÀÎÀ» ºñ±³ÇÑ´Ù¸é?', '¶È°°ÀÌ ´ëÀÀÇÑ´Ù', 'ÄðÇÏ°Ô ÀÎÁ¤ÇÑ´Ù', '21', 's21', 'name41', 'name42', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥¼ö´Â ÇØ¾ß ÇÑ´Ù°í »ý°¢ÇÏ³ª?', '±×·¸´Ù', '¾Æ´Ï´Ù', '22', 's22', 'name43', 'name44', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥Àü µ¿°Å°¡ °¡´ÉÇÑ°¡?', '°¡´É', 'ºÒ°¡´É', '23', 's23', 'name45', 'name46', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁúÅõ°¡ ¸¹Àº ÆíÀÎ°¡?', '±×·¸´Ù', '¾Æ´Ï´Ù', '24', 's24', 'name47', 'name48', 'a2_b2');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 1', '¸á·Î¿µÈ­', '°øÆ÷¿µÈ­', '1', 's1', 'name1', 'name2', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 2', '¶±', '»§', '2', 's2', 'name3', 'name4', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 3', '¾ç½Ä', 'ÇÑ½Ä', '3', 's3', 'name5', 'name6', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 4', 'µ¿¹°¿ø', '¼öÁ·°ü', '4', 's4', 'name7', 'name8', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 5', '´«', 'ºñ', '5', 's5', 'name9', 'name10', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 6', '¾çº¸´Ù Áú', 'Áúº¸´Ù ¾ç', '6', 's6', 'name11', 'name12', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 7', '¼º°Ý', '¿Ü¸ð', '7', 's7', 'name13', 'name14', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 8', 'Á¤Àå', 'Ä³ÁÖ¾ó', '8', 's8', 'name15', 'name16', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 9', 'Ã»¹ÙÁö', '¸é¹ÙÁö', '9', 's9', 'name17', 'name18', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾çÀÚÅÃÀÏ 10', '½ºÅ°', 'º¸µå', '10', 's10', 'name19', 'name20', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°ÅÁþ¸» ÇÑ °ÍÀÌ µéÅë³¯ °Í °°´Ù¸é?', 'ÀÚ¹éÇÑ´Ù', '³¡±îÁö °£´Ù', '11', 's11', 'name21', 'name22', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¹è°íÇÂµ¥ ÀáÀÌ ¿Â´Ù¸é?', '¸Ô°íÀÜ´Ù', '±×³ÉÀÜ´Ù', '12', 's12', 'name23', 'name24', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('±æÀ» °È´Ù°¡ Áö°©À» ÁÖ¿ü´Ù', 'ÁÖÀÎÀ» Ã£¾ÆÁØ´Ù', 'ÀÚ½ÅÀÌ °¡Áø´Ù', '13', 's13', 'name25', 'name26', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ»óÇüÀÌ Áö³ª°£´Ù', 'µ¥½¬ÇÑ´Ù ', '±×³É°£´Ù', '14', 's14', 'name27', 'name28', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿µÈ­¸¦ º¼ »ç¶÷ÀÌ ¾ø´Ù¸é?', 'È¥ÀÚ º¸·¯ °£´Ù', 'º¸·¯°¡Áö ¾Ê´Â´Ù', '15', 's15', 'name29', 'name30', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('µ¥ÀÌÆ® ºñ¿ëÀÌ ¾ø´Ù¸é?', '¸¸³­´Ù', '¸¸³ªÁö ¾Ê´Â´Ù', '16', 's16', 'name31', 'name32', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÀÌ¼ºÄ£±¸°¡ ¹Ù¶÷À» ÇÇ¿ì´Ù °É·È´Ù', '¸Â¹Ù¶÷À» ÇÉ´Ù', 'Çì¾îÁø´Ù', '17', 's17', 'name33', 'name34', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ Àü µ¿°Å°¡ °¡´ÉÇÑ°¡?', '°¡´É', 'ºÒ°¡´É', '18', 's18', 'name35', 'name36', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎ°ú Á¾±³°¡ ´Ù¸£´Ù¸é?', '¸ÂÃç°¡¾ßÇÑ´Ù', '´Þ¶óµµ µÈ´Ù', '19', 's19', 'name37', 'name38', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¿øÇÏ´Â ÀÌ¼ºÀÇ ¼ºÇâÀº?', 'ºñ½ÁÇÑ ¼ºÇâ', '¹Ý´ëÀÇ ¼ºÇâ', '20', 's20', 'name39', 'name40', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ÁÁ¾ÆÇÑ´Ù¸é ³ªÀÌ´Â »ó°ü¾ø´Ù?', '»ó°üÀÖ´Ù', '»ó°ü¾ø´Ù', '21', 's21', 'name41', 'name42', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('°áÈ¥ È¥ÀÎ½Å°í ÇÒ°ÍÀÎ°¡?', 'ÇÑ´Ù', '¾ÈÇÑ´Ù', '22', 's22', 'name43', 'name44', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('¾ÖÀÎÀÌ °ø°øÀå¼Ò¿¡¼­ ½ºÅ²½±À» ½ÃµµÇÑ´Ù¸é?', 'ÇÑ´Ù', '°ÅºÎÇÑ´Ù', '23', 's23', 'name45', 'name46', 'a2_b3');
-INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('»ç¶ûÇÑ´Ù¸é ÀáÀÚ¸®±îÁö °¡´Â ±â°£Àº ±â°£Àº Áß¿äÇÏÁö ¾Ê´Ù', 'Áß¿äÇÏ´Ù', 'Áß¿äÇÏÁö ¾Ê´Ù', '24', 's24', 'name47', 'name48', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½ï¿½', 'ï¿½Ä¶ï¿½ï¿½Ìµï¿½ ', '1', 's1', 'name1', 'name2', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ', '2', 's2', 'name3', 'name4', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'Â¥ï¿½ï¿½ ', 'Â«ï¿½ï¿½', '3', 's3', 'name5', 'name6', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½à±¸', 'ï¿½ß±ï¿½', '4', 's4', 'name7', 'name8', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½Ý¶ï¿½', 'ï¿½ï¿½ï¿½Ì´ï¿½ ', '5', 's5', 'name9', 'name10', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½Ï»ï¿½', 'Å©ï¿½ï¿½ï¿½ï¿½', '7', 's7', 'name13', 'name14', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ñ´©³ï¿½ï¿½ï¿½', '8', 's8', 'name15', 'name16', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'ï¿½Ï¾ï¿½ï¿½Çºï¿½', 'ï¿½î¸¸ï¿½Çºï¿½', '9', 's9', 'name17', 'name18', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½', 'ï¿½ï¿½ï¿½Ã¸ï¿½', '10', 's10', 'name19', 'name20', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '11', 's11', 'name21', 'name22', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½ï¿½ß¿ï¿½ 100ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ', 'ï¿½Ý´Â´ï¿½', 'ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½', '12', 's12', 'name23', 'name24', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Í½ï¿½ï¿½ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½?', 'ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '13', 's13', 'name25', 'name26', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½ï¿½', '14', 's14', 'name27', 'name28', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì±â±¸ï¿½ï¿½?', 'ï¿½ï¿½ï¿½Ì·Îµï¿½ï¿½', 'È¸ï¿½ï¿½ï¿½ï¿½', '15', 's15', 'name29', 'name30', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('Ã¹ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½È­ï¿½ï¿½', 'Ä¿ï¿½Ç¼ï¿½', '16', 's16', 'name31', 'name32', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½È´ï¿½', '17', 's17', 'name33', 'name34', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ó¿ï¿½ ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ü»ï¿½', 'È­ï¿½ï¿½ï¿½Ñ»ï¿½', '19', 's19', 'name37', 'name38', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó»ï¿½ï¿½Î´ï¿½', 'ï¿½Ô°ï¿½ï¿½ï¿½', 'ï¿½×³É°ï¿½ï¿½ï¿½', '21', 's21', 'name41', 'name42', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò´ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ø¿ï¿½', '22', 's22', 'name43', 'name44', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Î¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¥ï¿½ï¿½ ï¿½Ý´ï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '23', 's23', 'name45', 'name46', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '24', 's24', 'name47', 'name48', 'a1_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½ï¿½', 'ï¿½Ä¶ï¿½ï¿½Ìµï¿½ ', '1', 's1', 'name1', 'name2', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ', '2', 's2', 'name3', 'name4', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'Â¥ï¿½ï¿½ ', 'Â«ï¿½ï¿½', '3', 's3', 'name5', 'name6', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½à±¸', 'ï¿½ß±ï¿½', '4', 's4', 'name7', 'name8', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½Ý¶ï¿½', 'ï¿½ï¿½ï¿½Ì´ï¿½ ', '5', 's5', 'name9', 'name10', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½Ï»ï¿½', 'Å©ï¿½ï¿½ï¿½ï¿½', '7', 's7', 'name13', 'name14', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ñ´©³ï¿½ï¿½ï¿½', '8', 's8', 'name15', 'name16', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'ï¿½Ï¾ï¿½ï¿½Çºï¿½', 'ï¿½î¸¸ï¿½Çºï¿½', '9', 's9', 'name17', 'name18', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½', 'ï¿½ï¿½ï¿½Ã¸ï¿½', '10', 's10', 'name19', 'name20', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ñ´ï¿½', 'ï¿½ï¿½Ï´ï¿½', 'ï¿½È»ï¿½Ï´ï¿½', '11', 's11', 'name21', 'name22', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È£ï¿½Ï´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '12', 's12', 'name23', 'name24', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½æ°¡ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ù·ï¿½ ï¿½Ï¾î³­ï¿½ï¿½', 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â´ï¿½', '13', 's13', 'name25', 'name26', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½É·ï¿½ï¿½Ô´ï¿½', 'ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½Â´ï¿½', 'ï¿½å³­Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½', '14', 's14', 'name27', 'name28', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½', 'ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½Ì·ï¿½ï¿½', '15', 's15', 'name29', 'name30', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½', '16', 's16', 'name31', 'name32', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Â°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '17', 's17', 'name33', 'name34', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½Ä­ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¥ï¿½ï¿½È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö³ï¿½?', 'ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '19', 's19', 'name37', 'name38', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½Ð°ï¿½ï¿½Ñ´ï¿½', 'ï¿½ç°¡ï¿½Î¸ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½È°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', '21', 's21', 'name41', 'name42', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ ï¿½Ñ´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '22', 's22', 'name43', 'name44', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ï¿½ï¿½ ï¿½ï¿½ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ò°ï¿½ï¿½ï¿½', '23', 's23', 'name45', 'name46', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '24', 's24', 'name47', 'name48', 'a1_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½ï¿½', 'ï¿½Ä¶ï¿½ï¿½Ìµï¿½ ', '1', 's1', 'name1', 'name2', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ', '2', 's2', 'name3', 'name4', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'Â¥ï¿½ï¿½ ', 'Â«ï¿½ï¿½', '3', 's3', 'name5', 'name6', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½à±¸', 'ï¿½ß±ï¿½', '4', 's4', 'name7', 'name8', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½Ý¶ï¿½', 'ï¿½ï¿½ï¿½Ì´ï¿½ ', '5', 's5', 'name9', 'name10', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½Ï»ï¿½', 'Å©ï¿½ï¿½ï¿½ï¿½', '7', 's7', 'name13', 'name14', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ñ´©³ï¿½ï¿½ï¿½', '8', 's8', 'name15', 'name16', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'ï¿½Ï¾ï¿½ï¿½Çºï¿½', 'ï¿½î¸¸ï¿½Çºï¿½', '9', 's9', 'name17', 'name18', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½', 'ï¿½ï¿½ï¿½Ã¸ï¿½', '10', 's10', 'name19', 'name20', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë³¯ ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'ï¿½Ú¹ï¿½ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '11', 's11', 'name21', 'name22', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â´Ù¸ï¿½?', 'ï¿½Ô°ï¿½ï¿½Ü´ï¿½', 'ï¿½×³ï¿½ï¿½Ü´ï¿½', '12', 's12', 'name23', 'name24', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½È´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¿ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½Ø´ï¿½', 'ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '13', 's13', 'name25', 'name26', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ ', 'ï¿½×³É°ï¿½ï¿½ï¿½', '14', 's14', 'name27', 'name28', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'È¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½', '15', 's15', 'name29', 'name30', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½', '16', 's16', 'name31', 'name32', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½Ç¿ï¿½ï¿½ ï¿½É·È´ï¿½', 'ï¿½Â¹Ù¶ï¿½ï¿½ï¿½ ï¿½É´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '17', 's17', 'name33', 'name34', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ ï¿½ï¿½ ï¿½ï¿½ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ò°ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ç°¡ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½Þ¶ï¿½ ï¿½È´ï¿½', '19', 's19', 'name37', 'name38', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ý´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '21', 's21', 'name41', 'name42', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ È¥ï¿½Î½Å°ï¿½ ï¿½Ò°ï¿½ï¿½Î°ï¿½?', 'ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½Ñ´ï¿½', '22', 's22', 'name43', 'name44', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½ï¿½Å²ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½Ñ´ï¿½', 'ï¿½Åºï¿½ï¿½Ñ´ï¿½', '23', 's23', 'name45', 'name46', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½â°£ï¿½ï¿½ ï¿½â°£ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½', 'ï¿½ß¿ï¿½ï¿½Ï´ï¿½', 'ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½', '24', 's24', 'name47', 'name48', 'a1_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½Î¿ï¿½È­', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­', '1', 's1', 'name1', 'name2', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½', 'ï¿½ï¿½', '2', 's2', 'name3', 'name4', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'ï¿½ï¿½ï¿½', 'ï¿½Ñ½ï¿½', '3', 's3', 'name5', 'name6', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '4', 's4', 'name7', 'name8', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½ï¿½', 'ï¿½ï¿½', '5', 's5', 'name9', 'name10', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½çº¸ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ü¸ï¿½', '7', 's7', 'name13', 'name14', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½', 'Ä³ï¿½Ö¾ï¿½', '8', 's8', 'name15', 'name16', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'Ã»ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '9', 's9', 'name17', 'name18', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½Å°', 'ï¿½ï¿½ï¿½ï¿½', '10', 's10', 'name19', 'name20', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '11', 's11', 'name21', 'name22', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½ï¿½ß¿ï¿½ 100ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ', 'ï¿½Ý´Â´ï¿½', 'ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½', '12', 's12', 'name23', 'name24', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Í½ï¿½ï¿½ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½?', 'ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '13', 's13', 'name25', 'name26', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½ï¿½', '14', 's14', 'name27', 'name28', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì±â±¸ï¿½ï¿½?', 'ï¿½ï¿½ï¿½Ì·Îµï¿½ï¿½', 'È¸ï¿½ï¿½ï¿½ï¿½', '15', 's15', 'name29', 'name30', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('Ã¹ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½È­ï¿½ï¿½', 'Ä¿ï¿½Ç¼ï¿½', '16', 's16', 'name31', 'name32', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½È´ï¿½', '17', 's17', 'name33', 'name34', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó»ï¿½ï¿½Î´ï¿½', 'ï¿½Ô°ï¿½ï¿½ï¿½', 'ï¿½×³É°ï¿½ï¿½ï¿½', '21', 's21', 'name41', 'name42', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò´ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ø¿ï¿½', '22', 's22', 'name43', 'name44', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Î¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¥ï¿½ï¿½ ï¿½Ý´ï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '23', 's23', 'name45', 'name46', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '24', 's24', 'name47', 'name48', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½Î¿ï¿½È­', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­', '1', 's1', 'name1', 'name2', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ó¿ï¿½ ï¿½ï¿½ï¿½ï¿½?', 'ï¿½Ü»ï¿½', 'È­ï¿½ï¿½ï¿½Ñ»ï¿½', '19', 's19', 'name37', 'name38', 'a2_b1');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½', 'ï¿½ï¿½', '2', 's2', 'name3', 'name4', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'ï¿½ï¿½ï¿½', 'ï¿½Ñ½ï¿½', '3', 's3', 'name5', 'name6', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '4', 's4', 'name7', 'name8', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½ï¿½', 'ï¿½ï¿½', '5', 's5', 'name9', 'name10', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½çº¸ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ü¸ï¿½', '7', 's7', 'name13', 'name14', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½', 'Ä³ï¿½Ö¾ï¿½', '8', 's8', 'name15', 'name16', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'Ã»ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '9', 's9', 'name17', 'name18', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½Å°', 'ï¿½ï¿½ï¿½ï¿½', '10', 's10', 'name19', 'name20', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ñ´ï¿½', 'ï¿½ï¿½Ï´ï¿½', 'ï¿½È»ï¿½Ï´ï¿½', '11', 's11', 'name21', 'name22', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È£ï¿½Ï´ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '12', 's12', 'name23', 'name24', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½æ°¡ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ù·ï¿½ ï¿½Ï¾î³­ï¿½ï¿½', 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â´ï¿½', '13', 's13', 'name25', 'name26', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½É·ï¿½ï¿½Ô´ï¿½', 'ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½Â´ï¿½', 'ï¿½å³­Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½', '14', 's14', 'name27', 'name28', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½', 'ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½Ì·ï¿½ï¿½', '15', 's15', 'name29', 'name30', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½', '16', 's16', 'name31', 'name32', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Â°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '17', 's17', 'name33', 'name34', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½Ä­ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¥ï¿½ï¿½È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö³ï¿½?', 'ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '19', 's19', 'name37', 'name38', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½Ð°ï¿½ï¿½Ñ´ï¿½', 'ï¿½ç°¡ï¿½Î¸ï¿½Ô°ï¿½ ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½È°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½', '21', 's21', 'name41', 'name42', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('È¥ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ ï¿½Ñ´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '22', 's22', 'name43', 'name44', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ï¿½ï¿½ ï¿½ï¿½ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ò°ï¿½ï¿½ï¿½', '23', 's23', 'name45', 'name46', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½?', 'ï¿½×·ï¿½ï¿½ï¿½', 'ï¿½Æ´Ï´ï¿½', '24', 's24', 'name47', 'name48', 'a2_b2');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1', 'ï¿½ï¿½Î¿ï¿½È­', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­', '1', 's1', 'name1', 'name2', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2', 'ï¿½ï¿½', 'ï¿½ï¿½', '2', 's2', 'name3', 'name4', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3', 'ï¿½ï¿½ï¿½', 'ï¿½Ñ½ï¿½', '3', 's3', 'name5', 'name6', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '4', 's4', 'name7', 'name8', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5', 'ï¿½ï¿½', 'ï¿½ï¿½', '5', 's5', 'name9', 'name10', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6', 'ï¿½çº¸ï¿½ï¿½ ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', '6', 's6', 'name11', 'name12', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 7', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ü¸ï¿½', '7', 's7', 'name13', 'name14', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8', 'ï¿½ï¿½ï¿½ï¿½', 'Ä³ï¿½Ö¾ï¿½', '8', 's8', 'name15', 'name16', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 9', 'Ã»ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½', '9', 's9', 'name17', 'name18', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10', 'ï¿½ï¿½Å°', 'ï¿½ï¿½ï¿½ï¿½', '10', 's10', 'name19', 'name20', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë³¯ ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'ï¿½Ú¹ï¿½ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '11', 's11', 'name21', 'name22', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â´Ù¸ï¿½?', 'ï¿½Ô°ï¿½ï¿½Ü´ï¿½', 'ï¿½×³ï¿½ï¿½Ü´ï¿½', '12', 's12', 'name23', 'name24', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ ï¿½È´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¿ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½Ø´ï¿½', 'ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '13', 's13', 'name25', 'name26', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ ', 'ï¿½×³É°ï¿½ï¿½ï¿½', '14', 's14', 'name27', 'name28', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'È¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½', '15', 's15', 'name29', 'name30', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½', '16', 's16', 'name31', 'name32', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½Ì¼ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½ï¿½ ï¿½Ç¿ï¿½ï¿½ ï¿½É·È´ï¿½', 'ï¿½Â¹Ù¶ï¿½ï¿½ï¿½ ï¿½É´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '17', 's17', 'name33', 'name34', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ ï¿½ï¿½ ï¿½ï¿½ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½?', 'ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ò°ï¿½ï¿½ï¿½', '18', 's18', 'name35', 'name36', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ù¸ï¿½?', 'ï¿½ï¿½ï¿½ç°¡ï¿½ï¿½ï¿½Ñ´ï¿½', 'ï¿½Þ¶ï¿½ ï¿½È´ï¿½', '19', 's19', 'name37', 'name38', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', 'ï¿½Ý´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½', '20', 's20', 'name39', 'name40', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?', 'ï¿½ï¿½ï¿½ï¿½Ö´ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '21', 's21', 'name41', 'name42', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½È¥ È¥ï¿½Î½Å°ï¿½ ï¿½Ò°ï¿½ï¿½Î°ï¿½?', 'ï¿½Ñ´ï¿½', 'ï¿½ï¿½ï¿½Ñ´ï¿½', '22', 's22', 'name43', 'name44', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½ï¿½Å²ï¿½ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ï¿½Ñ´Ù¸ï¿½?', 'ï¿½Ñ´ï¿½', 'ï¿½Åºï¿½ï¿½Ñ´ï¿½', '23', 's23', 'name45', 'name46', 'a2_b3');
+INSERT INTO "SCOTT"."QUESTION" (SEL_1, SEL_2, SEL_3, NUM, BIND, FORNAME1, FORNAME2, TYPE) VALUES ('ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½â°£ï¿½ï¿½ ï¿½â°£ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½', 'ï¿½ß¿ï¿½ï¿½Ï´ï¿½', 'ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½', '24', 's24', 'name47', 'name48', 'a2_b3');
 
   
   

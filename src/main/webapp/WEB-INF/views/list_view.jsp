@@ -17,28 +17,26 @@
 </style>
 
 
-
-
-
-
-
 <div class="container">
 
 <h1>Q&A 게시판</h1>
 
 <hr>
 
-<table class="table table-hover text-center" class="panel panel-default">
-	<tr id="topbar">
-		<th width="80px">글 번호</th>
-		<th width="200px">제목</th>
-		<th width="100px">작성자</th>
-
+<table class="table table-hover" class="panel panel-default">
+	<tr id="topbar" class="table text-center">
+		<th width="150">번호</th>
+		<th width="500px">제목</th>
+		<th width="150">작성자</th>
+		<th width="100">작성일</th>
+<!-- 		<th width="100">조회수</th> -->
 	</tr>
 	<tr data-ng-repeat="article in articles">
-		<td align="center">{{article.id}}</td>
-		<td><a href="#/show_content/{{article.id}}" class="btn">{{article.title}}</a></td>
+		<td>{{article.id}}</td>
+		<td><a href="#/show_content/{{article.id}}" class="btn" data-ng-click="readCount()">{{article.title}}</a></td>
 		<td>{{article.writerName}}</td>
+		<td>{{article.writeDate}}</td>
+<!-- 		<td>{{article.readCount}}</td> -->
 	</tr>
 </table> 
 

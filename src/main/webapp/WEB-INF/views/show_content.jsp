@@ -14,13 +14,15 @@
 
 <table class="table">
 	<tr>
-		<th><pre>글 번호 : {{artices.id}}</pre></th>
+		<th><pre>번호 : {{artices.id}}</pre></th>
 		<th><pre>제목 : {{artices.title}}</pre></th>
 		<th><pre>작성자 : {{artices.writerName}}</pre></th>
+		<th><pre>작성일 : {{artices.writeDate}}</pre></th>
+<!-- 		<th><pre>조회수 : {{artices.readCount}}</pre></th> -->
 	</tr>
 	<tr>
 <!-- 		<td colspan="3" width="70%" height="30%" ng-bind-html="newContent"></td> -->
-		<td colspan="3" width="70%" height="30%"><pre>{{artices.content}}</pre></td>
+		<td colspan="5" width="70%" height="30%"><pre>{{artices.content}}</pre></td>
 	</tr>
 </table>
 

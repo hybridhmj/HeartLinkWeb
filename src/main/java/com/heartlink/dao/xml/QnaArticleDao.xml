@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.heartlink.dao.QnaArticleDao">
+    
+<!--     write_form -->
+    <select id="selectMaxId" resultType="int">
+        select MAX(id) from article
+    </select>
+    
+    <insert id="writeNewArticle" parameterType="com.heartlink.model.Article">
+        insert into article (id, writerName, password, title, content, writeDate) 
+        values (#{id}, #{writerName}, #{password}, #{title}, #{content}, #{writeDate})
+    </insert>
+    
+<!--     show_content -->
+    <select id="showSelectIdsContent" parameterType="com.heartlink.model.Show" resultType="com.heartlink.model.Article">
+        select * from article where id = #{id}
+    </select>
+    
+<!-- 	delete_list -->
+	<select id="deleteSelectIdsContent" parameterType="com.heartlink.model.Delete" resultType="com.heartlink.model.Article">
+	    select * from article where id = #{id}
+	</select>
+    
+	<update id="deleteSelectIdsContentDelete" parameterType="com.heartlink.model.Delete">
+	    delete from article where id = #{id}
+	</update>
+    
+<!-- 	update_list -->
+	<select id="updateSelectIdsContent" parameterType="com.heartlink.model.Update" resultType="com.heartlink.model.Article">
+	    select * from article where id = #{id}
+	</select>
+	
+<!-- 	update_form -->
+	<update id="updateSelectIdsContentUpdate" parameterType="com.heartlink.model.Article">
+	    update article set writerName = #{writerName}, password = #{password}, title = #{title}, 
+	    				content = #{content}, writeDate = #{writeDate} where id = #{id}
+	</update>
+	
+	
+<!-- 	qnapage -->
+	<select id="qnapage" resultType="int">
+	    select count(*) from article
+	</select>
+	
+<!-- 	callpage -->
+<!-- 	<select id="callpage" resultType="com.heartlink.model.Article" parameterType="com.heartlink.model.Callpage"> -->
+<!-- 	    select * from (select rownum rn, aa.* from (select * from article order by id desc)aa) where rn between #{start} and #{end} -->
+<!-- 	</select> -->
+
+	
+	
+</mapper>

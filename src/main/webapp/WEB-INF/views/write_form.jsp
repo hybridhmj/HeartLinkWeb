@@ -28,7 +28,7 @@
 	
 	<label class="control-label col-sm-2" for="contenta">글내용 : </label>
 	<!-- 이름을 content 로 하지말것 에러난다 바인딩이 안됨 -->
-	<textarea class="form-control" name="contenta" id="contenta" data-ng-model="contenta" cols="40" rows="10" data-ng-required="true" placeholder="내용을 입력하세요"> </textarea>
+	<textarea class="form-control" name="contenta" id="contenta" data-ng-model="contenta" cols="40" rows="5" data-ng-required="true" placeholder="내용을 입력하세요"> </textarea>
 	<span style="color: #0066FF" data-ng-show="writeForm.contenta.$dirty==true && writeForm.contenta.$valid==false">내용은 필수입력입니다 :)</span>
 </pre>
 </form>

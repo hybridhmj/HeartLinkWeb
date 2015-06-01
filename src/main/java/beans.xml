@@ -34,10 +34,18 @@
 				<value>classpath:/com/heartlink/dao/xml/QuestionDao.xml</value>
 				<value>classpath:/com/heartlink/dao/xml/HeartLinkRecordDao.xml</value>
 				<value>classpath:/com/heartlink/dao/xml/MatchingRecordDao.xml</value>
+				<value>classpath:/com/heartlink/dao/xml/QnaArticleDao.xml</value>
 			</list>
 		</property>
 	</bean>
     
+	
+	<bean id="QnaArticleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+	    <property name="mapperInterface" value="com.heartlink.dao.QnaArticleDao"/>
+	</bean>
+	
+	
     <bean id="MemberDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
     	<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
     	<property name="mapperInterface" value="com.heartlink.dao.MemberDao"/>

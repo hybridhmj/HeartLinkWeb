@@ -6,6 +6,11 @@
 
 app.controller("listViewController", function($scope, $http, $location) {
 	
+//	$scope.readCount = function() {
+//		alert("click");
+//	}
+//	
+	
 	$scope.callPage=1;
 	
 	   $http.post("qna/callpage",{qnaTotalPage : $scope.callPage}).success(function(loginstatus) {
@@ -14,7 +19,6 @@ app.controller("listViewController", function($scope, $http, $location) {
 		 }).error(function() {
 		    alert("server error...");
 		 });
-  
 	
 	
    

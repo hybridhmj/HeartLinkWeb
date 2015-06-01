@@ -4,6 +4,7 @@ package com.heartlink.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.heartlink.dao.QnaArticleDao;
 import com.heartlink.model.Article;
+import com.heartlink.model.Callpage;
 import com.heartlink.model.Delete;
 import com.heartlink.model.QnAResult;
 import com.heartlink.model.Qnapage;
@@ -40,34 +43,15 @@ public class QnAController {
 
 	static Log log = LogFactory.getLog(QnAController.class);
 	static int totalPageNum=0;
+	int readCount = 0;
 	
 	@Autowired
-	DataSource datasource;
-//	
-//	// list_view
-//	@RequestMapping(value="/aaa", method=RequestMethod.GET)
-//	@ResponseBody
-//	public List<Article> question() {
-//		
-//		log.info("########################################");
-//		log.info("List<Article> question()...");
-//		log.info("########################################");
-//		
-//		JdbcTemplate template = new JdbcTemplate(datasource);
-//		List<Article> list = template.query("select * from article order by 1 desc", new BeanPropertyRowMapper<Article>(Article.class));
-//	
-//		if(list.isEmpty()){
-//			log.info("## list empty ##");
-//		}else{
-//			log.info("## list not empty ##");
-//		}
-//		
-//		for(Article l : list) {
-//			log.info(l.getTitle());
-//		}
-//
-//		return list;
-//	}
+	DataSource datasource; // JDBC
+	
+	@Autowired
+	QnaArticleDao qnaArticleDao; // MyBatis
+	
+	int id;
 	
 	// write_form
 	@RequestMapping(value="/bbb", method=RequestMethod.POST)
@@ -82,25 +66,39 @@ public class QnAController {
 		log.info("content = " + article.getContent());
 		log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
-		JdbcTemplate template = new JdbcTemplate(datasource);
+//		JdbcTemplate template = new JdbcTemplate(datasource);
 		
-		QnAResult result = new QnAResult();
+		QnAResult result = new QnAResult();	
 		
-		int id = template.queryForInt("select MAX(id) from article");
+//		int id = template.queryForInt("select MAX(id) from article");
+		if(id != 0) {
+			id = qnaArticleDao.selectMaxId();
+		}
+		
 		id += 1;
-		log.info("id =" + id);
 		article.setId(id);
 		
-		try {
-			
-			String sql = "insert into article (id, writerName, password, title, content) values (?, ?, ?, ?, ?)";
-			int num = template.update(sql, article.getId(), article.getWriterName(), article.getPassword(), article.getTitle(), article.getContent());
-			
-			result.setStatus(true);
-		}
-		catch(EmptyResultDataAccessException e) {
-				log.info("EmptyResultDataAccessException");
-		}
+		Date writeDate = new Date();
+		String date = (writeDate.getYear()+1900) + "." + (writeDate.getMonth()+1) + "." + (writeDate.getDate()) + " " 
+					+ (writeDate.getHours()) + ":" + (writeDate.getMinutes());
+
+		article.setWriteDate(date);
+		
+		log.info("id = " + id + "writeDate = " + writeDate);
+		
+		int num = qnaArticleDao.writeNewArticle(article);
+		result.setStatus(true);
+		
+//		try {
+//			
+//			String sql = "insert into article (id, writerName, password, title, content) values (?, ?, ?, ?, ?)";
+//			int num = template.update(sql, article.getId(), article.getWriterName(), article.getPassword(), article.getTitle(), article.getContent());
+//			
+//			result.setStatus(true);
+//		}
+//		catch(EmptyResultDataAccessException e) {
+//				log.info("EmptyResultDataAccessException");
+//		}
 
 		return result;
 	
@@ -115,12 +113,11 @@ public class QnAController {
 		log.info("show_content, slected id = " + show.getId());
 		log.info("########################################");
 		
+		Article article = qnaArticleDao.showSelectIdsContent(show);
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		String sql = "select * from article where id = ?";
-		
-		Article article = template.queryForObject(sql, new Object[] {show.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
-
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		String sql = "select * from article where id = ?";
+//		Article article = template.queryForObject(sql, new Object[] {show.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
 		
 		return article;
 	}
@@ -137,8 +134,8 @@ public class QnAController {
 		
 		JdbcTemplate template = new JdbcTemplate(datasource);
 		String sql = "select * from article where id = ?";
-		
-		Article article = template.queryForObject(sql, new Object[] {del.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+//		Article article = template.queryForObject(sql, new Object[] {del.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		Article article = qnaArticleDao.deleteSelectIdsContent(del);
 		
 //		log.info("password" + article.getPassword());
 		
@@ -147,8 +144,10 @@ public class QnAController {
 		if(del.getPassword().equals(article.getPassword())) {
 			correct = true;
 			log.info(correct);
-			sql = "delete from article where id = ?";
-			int count = template.update(sql, del.getId());
+//			sql = "delete from article where id = ?";
+//			int count = template.update(sql, del.getId());
+			
+			int count = qnaArticleDao.deleteSelectIdsContentDelete(del);
 			
 			if(count > 0) {
 				log.info("삭제 완료");
@@ -175,10 +174,11 @@ public class QnAController {
 				+ " // password = " + up.getPassword());
 		log.info("########################################");
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		String sql = "select * from article where id = ?";
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		String sql = "select * from article where id = ?";
+//		Article article = template.queryForObject(sql, new Object[] {up.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
 		
-		Article article = template.queryForObject(sql, new Object[] {up.getId()}, new BeanPropertyRowMapper<Article>(Article.class));
+		Article article = qnaArticleDao.updateSelectIdsContent(up);
 		
 		boolean correct = true;
 		
@@ -207,26 +207,43 @@ public class QnAController {
 			log.info("content = " + article.getContent());
 			log.info("########################################");
 
-			JdbcTemplate template = new JdbcTemplate(datasource);
-			String sql = "update article set writerName = ?, password = ?, title = ?, content = ? where id = ?";
-			
 			Boolean correct = true;
 			
-			try {
-				int num = template.update(sql, article.getWriterName(), article.getPassword(), article.getTitle(),
-						article.getContent(), article.getId());
-//				log.info("num = " + num);
-				if(num > 0) {
-					correct = true;
-				} else {
-					correct = false;
-					log.info("없는 데이터를 수정하려고 합니다.");
-				}
-			} catch(DataAccessException e) {
+			Date writeDate = new Date();
+			String date = (writeDate.getYear()+1900) + "." + (writeDate.getMonth()+1) + "." + (writeDate.getDate()) + " " 
+						+ (writeDate.getHours()) + ":" + (writeDate.getMinutes());
+
+			article.setWriteDate(date);
+			log.info(article.getWriteDate());
+			
+			int num = qnaArticleDao.updateSelectIdsContentUpdate(article);
+			
+			if(num > 0) {
+				correct = true;
+			} else {
 				correct = false;
-				log.info("DataAccessException");
+				log.info("없는 데이터를 수정하려고 합니다.");
 			}
 			
+//			JdbcTemplate template = new JdbcTemplate(datasource);
+//			String sql = "update article set writerName = ?, password = ?, title = ?, content = ? where id = ?";
+			
+//			try {
+//				int num = template.update(sql, article.getWriterName(), article.getPassword(), article.getTitle(),
+//						article.getContent(), article.getId());
+				
+//				log.info("num = " + num);
+//				if(num > 0) {
+//					correct = true;
+//				} else {
+//					correct = false;
+//					log.info("없는 데이터를 수정하려고 합니다.");
+//				}
+//			} catch(DataAccessException e) {
+//				correct = false;
+//				log.info("DataAccessException");
+//			}
+//			
 			return correct;
 		
 		}
@@ -251,8 +268,9 @@ public class QnAController {
 		int qnaTotalRow=0;
 		int qnaTotalPage=0;
 		
-		JdbcTemplate template = new JdbcTemplate(datasource);
-		qnaTotalRow = template.queryForInt("select count(*) from article");
+//		JdbcTemplate template = new JdbcTemplate(datasource);
+//		qnaTotalRow = template.queryForInt("select count(*) from article");
+		qnaTotalRow = qnaArticleDao.qnapage();
 		
 		log.info("#########################################"+qnaTotalRow);
 		
@@ -340,12 +358,18 @@ public class QnAController {
 		log.info("########################################");
 		log.info(end);
 		
+		Callpage cal = new Callpage();
+		cal.setStart(start);
+		cal.setEnd(end);
+		
 		String sql = "select * from (select rownum rn, aa.* from (select * from article order by id desc)aa) where rn between ? and ?";
-
-		 List<Article> list =template.query(sql, new Object[] {start, end}, new BeanPropertyRowMapper<Article>(Article.class));
+		List<Article> list = template.query(sql, new Object[] {start, end}, new BeanPropertyRowMapper<Article>(Article.class));
+		
+//		List<Article> list = qnaArticleDao.callpage(cal);
 		
 		if(list.isEmpty()){
 			log.info("## list empty ##");
+			id = 0;
 		}else{
 			log.info("## list not empty ##");
 		}

@@ -5,8 +5,8 @@ import java.util.Date;
 public class Article {
 
 	int id; // 글번호
-//	Date postingDate; // 등록일
-//	int readCount; // 조회수
+	String writeDate; // 등록일
+	int readCount; // 조회수
 	
 	String writerName; // 작성자 이름
 	String password; // 비밀번호
@@ -43,5 +43,13 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
+	}
+	
+	
 	
 }
